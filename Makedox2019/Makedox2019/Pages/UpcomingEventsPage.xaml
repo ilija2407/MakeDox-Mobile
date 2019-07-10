@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Makedox2019.Pages.UpcomingEventsPage">
+    <AbsoluteLayout>
+
+
+        <StackLayout
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All" 
+            VerticalOptions="Start">
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <Grid  
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All" 
+            VerticalOptions="EndAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0"
+                   Source="films.png"
+                   />
+            <Image Grid.Column="1"
+                   Source="films.png"
+                   />
+            <Image Grid.Column="2"
+                   Source="films.png"
+                   />
+            <Image Grid.Column="3"
+                   Source="films.png"
+                   />
+            <Image Grid.Column="4"
+                   Source="films.png"
+                   />
+        </Grid>
+    </AbsoluteLayout>
+
+</ContentPage>
