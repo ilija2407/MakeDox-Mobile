@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Makedox2019.Pages.FilmsPage"
+             NavigationPage.HasNavigationBar="False">
+   
+    <AbsoluteLayout>
+       
+        <StackLayout
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All" 
+            VerticalOptions="Start">
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+         </StackLayout>
+      
+        <Grid  
+            HeightRequest="50"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All" 
+            VerticalOptions="EndAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0"
+                   Source="home.png"
+               HeightRequest="50"
+               WidthRequest="50"
+                   >
+            <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToUpcommingEventsPageCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Image Grid.Column="1"
+                   Source="timeline.png"
+                    HeightRequest="50"
+               WidthRequest="50"
+                   />
+        <Image Grid.Column="2"
+                   Source="films.png"
+                    HeightRequest="50"
+               WidthRequest="50"
+                   />
+        <Image Grid.Column="3"
+                   Source="makedox.png"
+                    HeightRequest="50"
+               WidthRequest="50"
+                   />
+        <Image Grid.Column="4"
+                   Source="menu.png"
+                    HeightRequest="50"
+               WidthRequest="50"
+                   />
+    </Grid>
+    </AbsoluteLayout>
+</ContentPage>

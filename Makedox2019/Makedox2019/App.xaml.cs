@@ -13,7 +13,7 @@ namespace Makedox2019
         {
             InitializeComponent();
 
-            var page = FreshPageModelResolver.ResolvePageModel<UpcomingEventsPageModel>();
+            var page = FreshPageModelResolver.ResolvePageModel<FilmsPageModel>();
             var basicNavContainer = new FreshNavigationContainer(page);
             MainPage = basicNavContainer;
         }

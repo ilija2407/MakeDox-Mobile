@@ -6,38 +6,32 @@ using Xamarin.Forms;
 
 namespace Makedox2019.PageModels
 {
-    public class UpcomingEventsPageModel : FreshMvvm.FreshBasePageModel
+    public class FilmsPageModel : FreshMvvm.FreshBasePageModel
     {
         #region Commands
-        public ICommand NavigateToFilmsPageCommand { get; set; }
+        public ICommand NavigateToUpcommingEventsPageCommand { get; set; }
         #endregion
 
-        #region CTOR
-        public UpcomingEventsPageModel()
+        public FilmsPageModel()
         {
             SetCommands();
         }
-
-      
 
         public override void Init(object initData)
         {
             base.Init(initData);
         }
 
-        #endregion
-
-
         #region Methods
 
         private void SetCommands()
         {
-            NavigateToFilmsPageCommand = new Command(NavigateToFilmsPage);
+            NavigateToUpcommingEventsPageCommand = new Command(NavigateToUpcommingEventsPage);
         }
 
-        private void NavigateToFilmsPage(object obj)
+        private void NavigateToUpcommingEventsPage(object obj)
         {
-            CoreMethods.PushPageModel<FilmsPageModel>(true);
+            CoreMethods.PushPageModel<UpcomingEventsPageModel>(true);
         }
 
 
