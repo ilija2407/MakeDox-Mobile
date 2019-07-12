@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Makedox2019.PageModels
+namespace Makedox2019.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MenuPage : ContentPage
