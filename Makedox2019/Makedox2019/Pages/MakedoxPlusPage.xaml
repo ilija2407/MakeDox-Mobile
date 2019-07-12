@@ -16,6 +16,7 @@
         </StackLayout>
 
         <Grid  
+            BackgroundColor="#f7b217"
             HeightRequest="50"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All" 
@@ -60,7 +61,7 @@
             </Image>
 
             <Image Grid.Column="3"
-                   Source="makedox.png"
+                   Source="makedox1.png"
                     HeightRequest="50"
                WidthRequest="50"
                   />
