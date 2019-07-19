@@ -95,7 +95,6 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -204,8 +203,5 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\makedox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>

@@ -24,12 +24,15 @@ namespace Makedox2019
                 tabbedNavigation.AddTab<FilmsPageModel>("Films", "films_menu.png");
                 tabbedNavigation.AddTab<MakedoxPlusPageModel>("Makedox+", "makedox_gray.png");
                 tabbedNavigation.AddTab<MenuPageModel>("Menu", "menu_gray.png");
+                tabbedNavigation.BarBackgroundColor = Color.Yellow;
                 //tabbedNavigation.AddTab<UpcomingEventsPageModel>(null, "home_gray.png");
                 //tabbedNavigation.AddTab<TimelinePageModel>(null, "timeline_gray.png");
                 //tabbedNavigation.AddTab<FilmsPageModel>(null, "films_gray.png");
                 //tabbedNavigation.AddTab<MakedoxPlusPageModel>(null, "makedox_gray.png");
                 //tabbedNavigation.AddTab<MenuPageModel>(null, "menu_gray.png");
                 MainPage = tabbedNavigation;
+                var x = MainPage as Xamarin.Forms.TabbedPage;
+                x.BarBackgroundColor = Color.FromHex("#f7b217");
             }
             else
             {
