@@ -19,12 +19,16 @@ namespace Makedox2019
             if (Device.RuntimePlatform == Device.iOS)
             {
                 var tabbedNavigation = new FreshTabbedNavigationContainer();
-                tabbedNavigation.On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
-                tabbedNavigation.AddTab<UpcomingEventsPageModel>(null, "home.png");
-                tabbedNavigation.AddTab<TimelinePageModel>(null, "timeline.png");
-                tabbedNavigation.AddTab<FilmsPageModel>(null, "films.png");
-                tabbedNavigation.AddTab<MakedoxPlusPageModel>(null, "makedox.png");
-                tabbedNavigation.AddTab<MenuPageModel>(null, "menu.png");
+                tabbedNavigation.AddTab<UpcomingEventsPageModel>("Home", "home_gray.png");
+                tabbedNavigation.AddTab<TimelinePageModel>("Timeline", "timeline_gray.png");
+                tabbedNavigation.AddTab<FilmsPageModel>("Films", "films_menu.png");
+                tabbedNavigation.AddTab<MakedoxPlusPageModel>("Makedox+", "makedox_gray.png");
+                tabbedNavigation.AddTab<MenuPageModel>("Menu", "menu_gray.png");
+                //tabbedNavigation.AddTab<UpcomingEventsPageModel>(null, "home_gray.png");
+                //tabbedNavigation.AddTab<TimelinePageModel>(null, "timeline_gray.png");
+                //tabbedNavigation.AddTab<FilmsPageModel>(null, "films_gray.png");
+                //tabbedNavigation.AddTab<MakedoxPlusPageModel>(null, "makedox_gray.png");
+                //tabbedNavigation.AddTab<MenuPageModel>(null, "menu_gray.png");
                 MainPage = tabbedNavigation;
             }
             else

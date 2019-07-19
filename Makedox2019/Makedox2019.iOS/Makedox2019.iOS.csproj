@@ -95,6 +95,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -183,9 +184,14 @@
     <BundleResource Include="Resources\saat.png" />
     <BundleResource Include="Resources\testbackground.png" />
     <BundleResource Include="Resources\timeline1.png" />
-    <BundleResource Include="Resources\films1.png" />
     <BundleResource Include="Resources\home1.png" />
     <BundleResource Include="Resources\ic_newcomers.png" />
+    <BundleResource Include="Resources\films_menu.png" />
+    <BundleResource Include="Resources\home_gray.png" />
+    <BundleResource Include="Resources\makedox_gray.png" />
+    <BundleResource Include="Resources\films_gray.png" />
+    <BundleResource Include="Resources\menu_gray.png" />
+    <BundleResource Include="Resources\timeline_gray.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\timeline.png" />
@@ -198,5 +204,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\makedox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>
