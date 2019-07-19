@@ -16,6 +16,7 @@
          </StackLayout>
 
         <Grid  
+            IsVisible="False"
             BackgroundColor="#f7b217"
             HeightRequest="50"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
