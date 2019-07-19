@@ -168,12 +168,21 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Makedox2019\Makedox2019.csproj">
-      <Project>{6DC31D1C-6E59-4BCB-9B0D-FE74D85B1FFD}</Project>
+      <Project>{241405B9-9C34-465A-BB9D-F1E0C2F70770}</Project>
       <Name>Makedox2019</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\menu.png" />
+    <BundleResource Include="Resources\loc.png" />
+    <BundleResource Include="Resources\makedox1.png" />
+    <BundleResource Include="Resources\menu1.png" />
+    <BundleResource Include="Resources\saat.png" />
+    <BundleResource Include="Resources\testbackground.png" />
+    <BundleResource Include="Resources\timeline1.png" />
+    <BundleResource Include="Resources\films1.png" />
+    <BundleResource Include="Resources\home1.png" />
+    <BundleResource Include="Resources\ic_newcomers.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\timeline.png" />
