@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FreshMvvm;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -14,6 +15,14 @@ namespace Makedox2019.PageModels
         public ICommand NavigateToMakedoxPageCommand { get; set; }
         public ICommand NavigateToMenuPageCommand { get; set; }
         public ICommand NavigateToFilmsPageCommand { get; set; }
+
+        public ICommand NavigateToInfoPageCommand { get; set; }
+        public ICommand NavigateToGuestPageCommand { get; set; }
+        public ICommand NavigateToVenuesPageCommand { get; set; }
+        public ICommand NavigateToTicketsPageCommand { get; set; }
+        public ICommand NavigateToSocialPageCommand { get; set; }
+        public ICommand NavigateToMapsPageCommand { get; set; }
+        
         #endregion
 
         public MenuPageModel()
@@ -38,6 +47,64 @@ namespace Makedox2019.PageModels
             NavigateToMakedoxPageCommand = new Command(NavigateToMakedoxPage);
             NavigateToMenuPageCommand = new Command(NavigateToMenuPage);
 
+            NavigateToInfoPageCommand = new Command(NavigateToInfoPage);
+            NavigateToGuestPageCommand = new Command(NavigateToGuestPage);
+            NavigateToVenuesPageCommand = new Command(NavigateToVenuesPage);
+            NavigateToTicketsPageCommand = new Command(NavigateToTicketsPage);
+            NavigateToSocialPageCommand = new Command(NavigateToSocialPage);
+            NavigateToMapsPageCommand = new Command(NavigateToMapsPageAsync);
+
+
+        }
+
+        private async void NavigateToMapsPageAsync(object obj)
+        {
+            //push a basic page Modally
+            var page = FreshPageModelResolver.ResolvePageModel<MapsPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+
+           // CoreMethods.PushPageModel<MapsPageModel>(true);
+        }
+
+        private async void NavigateToSocialPage(object obj)
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<SocialPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //CoreMethods.PushPageModel<SocialPageModel>(true);
+        }
+
+        private async void NavigateToTicketsPage(object obj)
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<TicketsPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //CoreMethods.PushPageModel<TicketsPageModel>(true);
+        }
+
+        private async void NavigateToVenuesPage(object obj)
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<VenuesPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //CoreMethods.PushPageModel<VenuesPageModel>(true);
+        }
+
+        private async void NavigateToInfoPage(object obj)
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<InfoPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //CoreMethods.PushPageModel<InfoPageModel>(true);
+        }
+
+        private async void NavigateToGuestPage(object obj)
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<GuestServicePageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //CoreMethods.PushPageModel<GuestServicePageModel>(true);
         }
 
         private void NavigateToMenuPage(object obj)

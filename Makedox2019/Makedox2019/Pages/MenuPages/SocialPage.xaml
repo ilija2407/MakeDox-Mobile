@@ -1,12 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Makedox2019.Pages.SocialPage">
+             x:Class="Makedox2019.Pages.SocialPage"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="0,30,0,0">
+            <Image Margin="20,0,0,0" Source="social.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" />
+            <Label Margin="20,10,0,0" Text="Follow us" FontSize="Small"/>
+          
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Image
+                    Margin="10"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Source="fb.png"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    Aspect="AspectFit" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToInfoPageCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image  
+                    Margin="10"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Source="tweet.png"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    Aspect="AspectFit" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToGuestPageCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image
+                    Margin="10"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Source="insta.png"
+                    HorizontalOptions="FillAndExpand" 
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    Aspect="AspectFit" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToVenuesPageCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image
+                    Margin="10"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Source="youtube.png" 
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="50" 
+                    WidthRequest="50"
+                    Aspect="AspectFit" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToTicketsPageCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image 
+                    Margin="10"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Source="snapchat.png"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    Aspect="AspectFit" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToSocialPageCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image 
+                    Margin="10"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Source="issue.png"
+                    HorizontalOptions="FillAndExpand" 
+                    HeightRequest="50" 
+                    WidthRequest="50"
+                    Aspect="AspectFit" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToMapsPageCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+
+            </Grid>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

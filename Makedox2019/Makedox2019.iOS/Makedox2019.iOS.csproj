@@ -204,4 +204,40 @@
   <ItemGroup>
     <BundleResource Include="Resources\makedox.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\maps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\social.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tickets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\guest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\venues.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\snapchat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tweet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\youtube.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\insta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\issue.png" />
+  </ItemGroup>
 </Project>
