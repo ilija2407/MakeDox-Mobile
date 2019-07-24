@@ -4,6 +4,11 @@
              x:Class="Makedox2019.Pages.MapsPage">
     <ContentPage.Content>
         <StackLayout>
+            <Image Source="bb.png"  HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Margin="20,0,0,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBack}" />
+                </Image.GestureRecognizers>
+            </Image>
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

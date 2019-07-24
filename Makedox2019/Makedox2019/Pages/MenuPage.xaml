@@ -9,6 +9,7 @@
         <StackLayout
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All" 
+            Margin="20"
             VerticalOptions="Start">
 
 

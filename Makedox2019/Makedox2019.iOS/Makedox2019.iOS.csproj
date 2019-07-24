@@ -240,4 +240,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\issue.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\workshop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\doctalks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\music.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\photo.png" />
+  </ItemGroup>
 </Project>

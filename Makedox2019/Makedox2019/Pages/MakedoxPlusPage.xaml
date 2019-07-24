@@ -9,10 +9,32 @@
         <StackLayout
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All" 
+            Margin="20"
             VerticalOptions="Start">
-            <Label Text="Welcome to MAKEDOX.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+
+            <Image Source="doctalks.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToDocPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="workshop.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToWorkshopPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="photo.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToPhotoPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="music.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToMusicPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            
+
         </StackLayout>
 
         <Grid  
