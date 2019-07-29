@@ -2,45 +2,37 @@
 using Realms;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Makedox2019.PageModels
 {
-    public class FavoriteMoviesPageModel : FreshMvvm.FreshBasePageModel
+    public class EventDetailsPageModel : FreshMvvm.FreshBasePageModel
     {
+
         #region Commands
         public ICommand NavigateToUpcomingEventsPageCommand { get; set; }
         public ICommand NavigateToTimeLinePageCommand { get; set; }
         public ICommand NavigateToMakedoxPageCommand { get; set; }
         public ICommand NavigateToMenuPageCommand { get; set; }
         public ICommand NavigateToFilmsPageCommand { get; set; }
-
-        public ICommand DetailsCommand => new Command<Movie>(async (movie) =>
-        {
-            await CoreMethods.PushPageModel<EventDetailsPageModel>(movie.ID);
-        });
         #endregion
-        public IRealmCollection<Movie> FavoriteMovies { get; set; }
 
-        public FavoriteMoviesPageModel()
+        public int ID { get; set; }
+        public Movie Model { get; set; }
+
+        public override void Init(object initData)
         {
+            ID = (int)initData;
 
-            try
-            {
-                var db = Realm.GetInstance();
-                FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
-            }
-            catch (Exception e)
-            {
+            var db = Realm.GetInstance();
+            var movie = db.Find<Movie>(ID);
+            if (movie == null)
+                return;
 
-                //throw;
-            }
+            Model = movie;
         }
-
-
 
         #region Methods
 

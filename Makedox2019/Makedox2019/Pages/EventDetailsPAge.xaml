@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImage="bgmoviedetails.png"
+             x:Class="Makedox2019.Pages.EventDetailsPage">
+    <AbsoluteLayout>
+        <StackLayout
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All" 
+            VerticalOptions="Start">
+            <ScrollView Padding="20, 0">
+                <StackLayout Spacing="10">
+                    <Image Source="{Binding Model.CoverImage}" Aspect="AspectFit" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="400" HeightRequest="400" />
+                    <Label Text="{Binding Model.Title}" TextColor="#640d20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ContentView BackgroundColor="#640d20" Grid.Column="0" />
+                        <StackLayout Grid.Column="1">
+                            <Label Text="{Binding Model.Subtitle}" FontAttributes="Bold" />
+                            <Label Text="{Binding Model.StartTime, StringFormat='{0:D}'}" />
+                            <Label Text="{Binding Model.StartTime, StringFormat='{0:t}'}" />
+                            <Label Text="{Binding Model.Location}" />
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"  />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0">
+                            <Label Text="Script:" FontAttributes="Bold" />
+                            <Label Text="Director:" FontAttributes="Bold" />
+                            <Label Text="Photography by:" FontAttributes="Bold" />
+                            <Label Text="Editing:" FontAttributes="Bold" />
+                            <Label Text="Sound:" FontAttributes="Bold" />
+                            <Label Text="Production:" FontAttributes="Bold" />
+                            <Label Text="Co-Production:" FontAttributes="Bold" />
+                            <Label Text="Rating:" FontAttributes="Bold" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="{Binding Model.Team.Script}" FontAttributes="Bold" />
+                            <Label Text="{Binding Model.Team.Director}" FontAttributes="Bold" />
+                            <Label Text="{Binding Model.Team.Photography}" FontAttributes="Bold" />
+                            <Label Text="{Binding Model.Team.Editing}" FontAttributes="Bold" />
+                            <Label Text="{Binding Model.Team.Sound}" FontAttributes="Bold" />
+                            <Label Text="{Binding Model.Team.Production}" FontAttributes="Bold" />
+                            <Label Text="{Binding Model.Team.Coproduction}" FontAttributes="Bold" />
+                            <Label Text="{Binding Model.Rating}" FontAttributes="Bold" />
+                        </StackLayout>
+                    </Grid>
+                    <Label Text="{Binding Model.Description}" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        <Grid  
+            IsVisible="False"
+            BackgroundColor="#f7b217"
+            HeightRequest="50"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All" 
+            VerticalOptions="EndAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0"
+                   Source="home1.png"
+               HeightRequest="50"
+               WidthRequest="50"
+                   />
+
+
+            <Image Grid.Column="1"
+                   Source="timeline.png"
+                    HeightRequest="50"
+               WidthRequest="50"
+                   >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToTimeLinePageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Grid.Column="2"
+                   Source="films.png"
+                    HeightRequest="50"
+               WidthRequest="50"
+                  >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToFilmsPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Grid.Column="3"
+                   Source="makedox.png"
+                    HeightRequest="50"
+               WidthRequest="50"
+                   >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToMakedoxPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Grid.Column="4"
+                   Source="menu.png"
+                    HeightRequest="50"
+               WidthRequest="50"
+                   >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToMenuPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>

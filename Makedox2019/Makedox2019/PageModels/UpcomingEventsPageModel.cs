@@ -34,6 +34,11 @@ namespace Makedox2019.PageModels
             });
         });
 
+        public ICommand DetailsCommand => new Command<Movie>(async (movie) =>
+        {
+            await CoreMethods.PushPageModel<EventDetailsPageModel>(movie.ID);
+        });
+
         private void Db_Error(object sender, ErrorEventArgs e)
         {
 

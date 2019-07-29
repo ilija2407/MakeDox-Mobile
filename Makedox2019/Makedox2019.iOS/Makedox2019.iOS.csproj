@@ -255,7 +255,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\photo.png" />
   </ItemGroup>
-      <ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\bb.png" />
   </ItemGroup>
   <ItemGroup>
@@ -263,5 +263,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bgmoviedetails.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bghome.png" />
   </ItemGroup>
 </Project>

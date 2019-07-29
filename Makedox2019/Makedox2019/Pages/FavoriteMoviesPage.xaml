@@ -11,8 +11,10 @@
         <StackLayout
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All" 
+            Spacing="0"
             VerticalOptions="Start">
-                <ListView 
+            <Label Text="   Your favorites" BackgroundColor="#fcf9d8" HorizontalOptions="FillAndExpand" />
+            <ListView 
                     x:Name="eventList"
                     SelectionMode="None"
                     BackgroundColor="#fef8de"
@@ -80,13 +82,15 @@
                                     </StackLayout>
 
 
-                                    <!--<StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                                Command="{Binding BindingContext.MainProductSelectedCommand,Source={x:Reference vendorProductsPage}}"
-                                                CommandParameter="{Binding .}"/>
-                                    </StackLayout.GestureRecognizers>-->
 
-                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                                Command="{Binding BindingContext.DetailsCommand,Source={x:Reference eventList}}"
+                                                CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+
+
+                            </StackLayout>
 
                             </ViewCell>
                         </DataTemplate>

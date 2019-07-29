@@ -11,23 +11,28 @@
         <StackLayout
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All" 
+            Spacing="0"
             VerticalOptions="Start">
             <Grid 
+                RowSpacing="0"
                 BackgroundColor="White" 
                 VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="30" />
+                    <RowDefinition Height="3.5*"/>
+                    <RowDefinition Height="50" />
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Image
                    Grid.Row="0"
-                   Source="testbackground.png"/>
-                <Label Text="See favorite movies">
-                    <Label.GestureRecognizers>
+                    Aspect="Fill"
+                   Source="bghome.png"/>
+                <StackLayout Grid.Row="1" BackgroundColor="#fcf9d8" Padding="10, 0">
+                    <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding FavoriteListCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="Welcome to MakeDox" FontAttributes="Bold" />
+                    <Label Text="Go to view your favorites" Grid.Row="1" />
+                </StackLayout>
                 <ListView 
                     x:Name="eventList"
                     Grid.Row="2"
@@ -41,6 +46,7 @@
                             <ViewCell>
                                 <StackLayout 
                                     Orientation="Vertical" 
+                                    Padding="10, 0"
                                     HorizontalOptions="FillAndExpand">
 
                                     <StackLayout 
@@ -100,14 +106,14 @@
                                     </StackLayout>
 
 
-                                    <!--<StackLayout.GestureRecognizers>
+                                    <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer 
-                                                Command="{Binding BindingContext.MainProductSelectedCommand,Source={x:Reference vendorProductsPage}}"
+                                                Command="{Binding BindingContext.DetailsCommand,Source={x:Reference upcomingEventsPage}}"
                                                 CommandParameter="{Binding .}"/>
-                                    </StackLayout.GestureRecognizers>-->
-                                    
+                                    </StackLayout.GestureRecognizers>
+
                                 </StackLayout>
-                                
+
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -135,7 +141,7 @@
                HeightRequest="50"
                WidthRequest="50"
                    />
-    
+
 
             <Image Grid.Column="1"
                    Source="timeline.png"
@@ -146,7 +152,7 @@
                     <TapGestureRecognizer Command="{Binding NavigateToTimeLinePageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            
+
             <Image Grid.Column="2"
                    Source="films.png"
                     HeightRequest="50"
@@ -156,7 +162,7 @@
                     <TapGestureRecognizer Command="{Binding NavigateToFilmsPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            
+
             <Image Grid.Column="3"
                    Source="makedox.png"
                     HeightRequest="50"
@@ -166,7 +172,7 @@
                     <TapGestureRecognizer Command="{Binding NavigateToMakedoxPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            
+
             <Image Grid.Column="4"
                    Source="menu.png"
                     HeightRequest="50"
@@ -176,7 +182,7 @@
                     <TapGestureRecognizer Command="{Binding NavigateToMenuPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            
+
         </Grid>
     </AbsoluteLayout>
 

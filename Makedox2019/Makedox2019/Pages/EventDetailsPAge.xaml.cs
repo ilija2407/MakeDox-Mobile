@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace Makedox2019.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EventDetails : ContentPage
+    public partial class EventDetailsPage : ContentPage
     {
-        public EventDetails()
+        public EventDetailsPage()
         {
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             InitializeComponent();
