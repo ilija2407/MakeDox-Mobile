@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Makedox2019.Pages.UpcomingEventsPage"
+             x:Name="upcomingEventsPage"
              NavigationPage.HasNavigationBar="False">
     <AbsoluteLayout>
 
@@ -16,15 +17,20 @@
                 VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="30" />
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Image
                    Grid.Row="0"
                    Source="testbackground.png"/>
-                
+                <Label Text="See favorite movies">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding FavoriteListCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
                 <ListView 
                     x:Name="eventList"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     BackgroundColor="White"
                     SelectionMode="None"
                     HasUnevenRows="True"
@@ -39,7 +45,7 @@
 
                                     <StackLayout 
                                         Orientation="Horizontal"
-                                        Margin="0,10,0,0">
+                                        Margin="0,10">
                                         <ff:CachedImage 
                                             Source="{Binding LogoImage}" 
                                             WidthRequest="70"
@@ -65,7 +71,7 @@
                                                     HorizontalOptions="Start"/>
 
                                                 <Label 
-                                                    Text="{Binding StartTime}"
+                                                    Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
                                                     FontSize="Medium"
                                                     FontAttributes="Bold"
                                                    />
@@ -84,8 +90,13 @@
                                                     FontAttributes="Bold"
                                                    />
                                             </StackLayout>
-                                            
+
                                         </StackLayout>
+                                        <Label Text="Favorite">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}" CommandParameter="{Binding .}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
                                     </StackLayout>
 
 
