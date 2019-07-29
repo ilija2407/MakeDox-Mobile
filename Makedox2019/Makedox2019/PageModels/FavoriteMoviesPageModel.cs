@@ -18,7 +18,7 @@ namespace Makedox2019.PageModels
         public ICommand NavigateToMenuPageCommand { get; set; }
         public ICommand NavigateToFilmsPageCommand { get; set; }
         #endregion
-        public List<Movie> FavoriteMovies { get; set; }
+        public IRealmCollection<Movie> FavoriteMovies { get; set; }
 
         public FavoriteMoviesPageModel()
         {
@@ -26,8 +26,7 @@ namespace Makedox2019.PageModels
             try
             {
                 var db = Realm.GetInstance();
-                // FavoriteMovies = db.All<Movie>().Where(x => !string.IsNullOrEmpty(x.IsFavorite) && x.IsFavorite.ToLowerInvariant() == "1").ToList();\
-                var myList = db.All<Movie>().Where(x => x.IsFavorite == "1").ToList();
+                FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
             }
             catch (Exception e)
             {

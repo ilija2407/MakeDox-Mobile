@@ -23,13 +23,14 @@ namespace Makedox2019.Models
         public string Type { get; set; }
         public string Category { get; set; }
         public double Rating { get; set; }
-        public string IsFavorite { get; set; }
-        public bool Favorite => !string.IsNullOrEmpty(IsFavorite) && (IsFavorite?.ToLowerInvariant() == "true" || IsFavorite?.ToLowerInvariant() == "1");
+        public bool IsFavorite { get; set; }
         public Team Team { get; set; }
     }
 
     public class Team : RealmObject
     {
+        [PrimaryKey]
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Director { get; set; }
         public string Script { get; set; }
         public string Photography { get; set; }

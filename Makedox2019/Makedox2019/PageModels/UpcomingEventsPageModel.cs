@@ -1,5 +1,6 @@
 ﻿using Makedox2019.Models;
 using Realms;
+using System;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -16,13 +17,28 @@ namespace Makedox2019.PageModels
         public ICommand NavigateToFilmsPageCommand { get; set; }
         public ICommand FavoriteMovieCommand => new Command<Movie>(movie =>
         {
+
             var db = Realm.GetInstance();
+            db.Error -= Db_Error;
+            db.Error += Db_Error;
             db.Write(() =>
             {
-                movie.IsFavorite = movie.Favorite ? "0" : "1";
-                db.Add(movie, true);
+                try
+                {
+                    movie.IsFavorite = movie.IsFavorite == false ? true : false;
+                }
+                catch (Exception ex)
+                {
+
+                }
             });
         });
+
+        private void Db_Error(object sender, ErrorEventArgs e)
+        {
+
+        }
+
         public ICommand FavoriteListCommand => new Command(() => CoreMethods.PushPageModel<FavoriteMoviesPageModel>(true));
 
         #endregion

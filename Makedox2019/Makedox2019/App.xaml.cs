@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
@@ -59,6 +60,41 @@ namespace Makedox2019
 
                 MainPage = bottomBarPage;
             }
+            Task.Run(async () =>
+            {
+
+                using (var client = new HttpClient())
+                {
+                    var res = await client.GetAsync("https://gist.githubusercontent.com/ice-j/2b60034d079a306182160cc1f9c1516f/raw/5650873d9cbe59fb16581d8e00645d0a74390816/movies.json#" + DateTime.Now.Ticks);
+                    if (!res.IsSuccessStatusCode)
+                    {
+                        await MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
+                        return;
+                    }
+
+                    var stringContent = await res.Content.ReadAsStringAsync();
+                    var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm" };
+                    var booleanConverter = new BooleanConverter();
+                    var moviesList = JsonConvert.DeserializeObject<List<Movie>>(stringContent, converters: dtConverter);
+                    if (moviesList?.Count > 0)
+                    {
+                        var db = Realm.GetInstance();
+
+                        var currentMovies = db.All<Movie>().ToList();
+                        db.Write(() =>
+                        {
+                            foreach (var movie in moviesList)
+                            {
+                                bool shouldUpdate = false;
+                                if (shouldUpdate = currentMovies.Any(x => x.ID == movie.ID))
+                                    movie.IsFavorite = currentMovies.FirstOrDefault(x => x.ID == movie.ID).IsFavorite;
+                                db.Add(movie, shouldUpdate);
+                            }
+                        });
+                    }
+                }
+            });
+
             //var page = FreshPageModelResolver.ResolvePageModel<UpcomingEventsPageModel>();
             //var basicNavContainer = new FreshNavigationContainer(page);
             //MainPage = basicNavContainer;
@@ -67,35 +103,7 @@ namespace Makedox2019
         protected override async void OnStart()
         {
             // Handle when your app starts
-            using (var client = new HttpClient())
-            {
-                var res = await client.GetAsync("https://gist.githubusercontent.com/ice-j/2b60034d079a306182160cc1f9c1516f/raw/ff03e015c774612190c90d109ce9c46c9dbbe21d/movies.json#" + DateTime.Now.Ticks);
-                if (!res.IsSuccessStatusCode)
-                {
-                    await MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
-                    return;
-                }
-
-                var stringContent = await res.Content.ReadAsStringAsync();
-                var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm" };
-                var booleanConverter = new BooleanConverter();
-                var moviesList = JsonConvert.DeserializeObject<List<Movie>>(stringContent, converters: dtConverter);
-                if (moviesList?.Count > 0)
-                {
-                    var db = Realm.GetInstance();
-                    var currentMovies = db.All<Movie>().ToList();
-                    db.Write(() =>
-                    {
-                        foreach (var movie in moviesList)
-                        {
-                            bool shouldUpdate = false;
-                            if (shouldUpdate = currentMovies.Any(x => x.ID == movie.ID))
-                                movie.IsFavorite = currentMovies.FirstOrDefault(x => x.ID == movie.ID).IsFavorite;
-                            db.Add(movie, shouldUpdate);
-                        }
-                    });
-                }
-            }
+            
         }
 
         protected override void OnSleep()
