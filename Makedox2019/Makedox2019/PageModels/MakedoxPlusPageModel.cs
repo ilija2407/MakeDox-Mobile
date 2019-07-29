@@ -21,6 +21,9 @@ namespace Makedox2019.PageModels
         public ICommand NavigateToWorkshopPageCommand { get; set; }
         public ICommand NavigateToPhotoPageCommand { get; set; }
         public ICommand NavigateToMusicPageCommand { get; set; }
+        public ICommand NavigateToCoProPageCommand { get; set; }
+
+        
 
         #endregion
 
@@ -50,7 +53,15 @@ namespace Makedox2019.PageModels
             NavigateToWorkshopPageCommand = new Command(NavigateToWorkshopPage);
             NavigateToPhotoPageCommand = new Command(NavigateToPhotoPage);
             NavigateToMusicPageCommand = new Command(NavigateToMusicPage);
+            NavigateToCoProPageCommand = new Command(NavigateToCoProPage);
+        }
 
+        private async void NavigateToCoProPage(object obj)
+        {
+            //push a basic page Modally
+            var page = FreshPageModelResolver.ResolvePageModel<CoProPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
         }
 
         private async void NavigateToMusicPage(object obj)

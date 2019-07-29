@@ -255,4 +255,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\photo.png" />
   </ItemGroup>
+      <ItemGroup>
+    <BundleResource Include="Resources\bb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\make_copro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\back.png" />
+  </ItemGroup>
 </Project>

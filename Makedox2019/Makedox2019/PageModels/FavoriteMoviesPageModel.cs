@@ -22,8 +22,18 @@ namespace Makedox2019.PageModels
 
         public FavoriteMoviesPageModel()
         {
-            var db = Realm.GetInstance();
-            FavoriteMovies = db.All<Movie>().Where(x => !string.IsNullOrEmpty(x.IsFavorite) && x.IsFavorite.ToLowerInvariant() == "1").ToList();
+
+            try
+            {
+                var db = Realm.GetInstance();
+                // FavoriteMovies = db.All<Movie>().Where(x => !string.IsNullOrEmpty(x.IsFavorite) && x.IsFavorite.ToLowerInvariant() == "1").ToList();\
+                var myList = db.All<Movie>().Where(x => x.IsFavorite == "1").ToList();
+            }
+            catch (Exception e)
+            {
+
+                //throw;
+            }
         }
 
 

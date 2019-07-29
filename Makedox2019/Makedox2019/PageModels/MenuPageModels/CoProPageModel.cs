@@ -6,16 +6,16 @@ using Xamarin.Forms;
 
 namespace Makedox2019.PageModels
 {
-    public class GuestServicePageModel : FreshMvvm.FreshBasePageModel
+    public class CoProPageModel : FreshMvvm.FreshBasePageModel
     {
+        public CoProPageModel()
+        {
+            SetCommands();
+        }
+
         public override void Init(object initData)
         {
             base.Init(initData);
-        }
-
-        public GuestServicePageModel()
-        {
-            SetCommands();
         }
 
         public ICommand GoBack { get; set; }
@@ -29,5 +29,6 @@ namespace Makedox2019.PageModels
         {
             CoreMethods.PopPageModel();
         }
+
     }
 }
