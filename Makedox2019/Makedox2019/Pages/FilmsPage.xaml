@@ -1,84 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Makedox2019.Pages.FilmsPage"
+             x:Name="filmsPage"
              NavigationPage.HasNavigationBar="False">
-   
-    <AbsoluteLayout>
-       
+    <AbsoluteLayout HeightRequest="1000" VerticalOptions="FillAndExpand">
+
         <StackLayout
+            Orientation="Vertical" 
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All" >
+            <SearchBar HeightRequest="42" 
+                       Placeholder="Search.."
+                       Text="{Binding SearchText}" 
+                       SearchCommand="{Binding SearchCommand}" />
+        </StackLayout>
+
+
+        <StackLayout
+            x:Name="myMoviesList"
+            Margin="0,45,0,0"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All" 
-            VerticalOptions="Start">
-            <Label Text="Welcome to FILMS.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-         </StackLayout>
-
-        <Grid  
-            IsVisible="False"
-            BackgroundColor="#f7b217"
-            HeightRequest="50"
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All" 
-            VerticalOptions="EndAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Image Grid.Column="0"
-                   Source="home.png"
-               HeightRequest="50"
-               WidthRequest="50"
-                          >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToUpcomingEventsPageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-
-
-            <Image Grid.Column="1"
-                   Source="timeline.png"
-                    HeightRequest="50"
-               WidthRequest="50">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToTimeLinePageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-
-
-            <Image Grid.Column="2"
-                   Source="films1.png"
-                    HeightRequest="50"
-               WidthRequest="50"
-                  />
+            IsVisible="{Binding ShowMoviesList}" 
+            BackgroundColor="Transparent">
+            <StackLayout BackgroundColor="White" HeightRequest="250">
+                <ListView 
+                    BackgroundColor="White"
+                    SelectedItem="{Binding MovieSelected}" 
+                    HeightRequest="250"  
+                    ItemsSource="{Binding FilteredList}" 
+                    HasUnevenRows="true" 
+                    SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <ff:CachedImage Source="{Binding LogoImage}" WidthRequest="35" HeightRequest="35" HorizontalOptions="Start" Margin="20,0,0,0"/>
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+                                        <Label Margin="5,0,0,0"  LineBreakMode="CharacterWrap" Text="{Binding Title}" TextColor="Black" VerticalTextAlignment="Center"/>
+                                    </StackLayout>
+                     
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Command="{Binding BindingContext.MovieSelectedCommand,Source={x:Reference filmsPage}}"
+                                    CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
 
 
 
-            <Image Grid.Column="3"
-                   Source="makedox.png"
-                    HeightRequest="50"
-               WidthRequest="50"
-                   >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToMakedoxPageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-
-            <Image Grid.Column="4"
-                   Source="menu.png"
-                    HeightRequest="50"
-               WidthRequest="50"
-                   >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToMenuPageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-
-        </Grid>
+       
     </AbsoluteLayout>
 </ContentPage>
