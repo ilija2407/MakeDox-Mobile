@@ -26,8 +26,6 @@ namespace Makedox2019.PageModels
         {
 
             var db = Realm.GetInstance();
-            db.Error -= Db_Error;
-            db.Error += Db_Error;
             db.Write(() =>
             {
                 try
@@ -45,11 +43,6 @@ namespace Makedox2019.PageModels
         {
             await CoreMethods.PushPageModel<EventDetailsPageModel>(movie.ID);
         });
-
-        private void Db_Error(object sender, ErrorEventArgs e)
-        {
-
-        }
 
         public ICommand FavoriteListCommand => new Command(() => CoreMethods.PushPageModel<FavoriteMoviesPageModel>(true));
 

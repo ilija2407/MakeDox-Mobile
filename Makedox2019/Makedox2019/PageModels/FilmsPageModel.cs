@@ -25,6 +25,17 @@ namespace Makedox2019.PageModels
             }
         }
 
+        private List<Category> categoriesList;
+        public List<Category> CategoriesList
+        {
+            get => categoriesList;
+            set
+            {
+                categoriesList = value;
+                RaisePropertyChanged(nameof(CategoriesList));
+            }
+        }
+
         private bool showMoviesList;
         public bool ShowMoviesList
         {
@@ -94,6 +105,11 @@ namespace Makedox2019.PageModels
         public ICommand NavigateToFilmsPageCommand { get; set; }
         public ICommand SearchCommand { get; private set; }
         public ICommand MovieSelectedCommand { get; private set; }
+        public ICommand CategorySelectedCommand => new Command<object>(obj =>
+        {
+            var category = obj as Category;
+            CoreMethods.PushPageModel<CategoryPageModel>(MoviesList.First(x => x.Category.ToUpperInvariant() == category.Title).Category);
+        });
 
         #endregion
 
@@ -114,6 +130,7 @@ namespace Makedox2019.PageModels
             base.ViewIsAppearing(sender, e);
             var db = Realm.GetInstance();
             MoviesList = db.All<Movie>().OrderBy(x => x.StartTime).ToList();
+            CategoriesList = MoviesList.GroupBy(x => x.Category).Select(x => new Category { Title = x.Key.ToUpperInvariant() }).ToList();
         }
 
 
@@ -143,7 +160,7 @@ namespace Makedox2019.PageModels
             if (item != null)
             {
                 ShowMoviesList = false;
-                //CoreMethods.PushPageModel<ProductPageModel>(item);
+                CoreMethods.PushPageModel<EventDetailsPageModel>(item.ID);
             }
 
         }
@@ -171,6 +188,11 @@ namespace Makedox2019.PageModels
         private void NavigateToFilmsPage(object obj)
         {
             CoreMethods.PushPageModel<FilmsPageModel>(true);
+        }
+
+        public class Category
+        {
+            public string Title { get; set; }
         }
 
 
