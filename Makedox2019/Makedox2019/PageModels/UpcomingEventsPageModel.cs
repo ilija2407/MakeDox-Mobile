@@ -1,7 +1,9 @@
 ﻿using Makedox2019.Models;
+using Plugin.LocalNotification;
 using Realms;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -53,8 +55,6 @@ namespace Makedox2019.PageModels
         public UpcomingEventsPageModel()
         {
             SetCommands();
-            var db = Realm.GetInstance();
-            UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
         }
 
 
@@ -62,6 +62,44 @@ namespace Makedox2019.PageModels
         public override void Init(object initData)
         {
             base.Init(initData);
+            try
+            {
+
+            var db = Realm.GetInstance();
+            UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
+                db.Write(() =>
+                {
+                    var evtList = db.All<Movie>().Where(x => x.StartTime > DateTimeOffset.Now).ToList();
+                    var q = evtList.Count();
+                    evtList.First().StartTime = DateTime.Now.AddMinutes(30).AddSeconds(30);
+                    db.RemoveAll<Notification>();
+                    NotificationCenter.Current.CancelAll();
+                    var i = 1;
+                    foreach (var evt in evtList)
+                    {
+                        var notif = new Notification(i++, new Random(305006489).Next(100000, 600000));
+
+                        db.Add(notif);
+                        var time = evt.StartTime.Value.AddMinutes(-30).DateTime;
+                        if (time < DateTime.Now)
+                            time = DateTime.Now.AddMinutes(1);
+
+                        var notification = new NotificationRequest
+                        {
+                            NotificationId = notif.Id,
+                            Title = evt.Title,
+                            Description = $"will be displayed at {evt.StartTime.Value.ToString("dd/MM/yyyy HH:mm")}",
+                            ReturningData = evt.ID.ToString(),// Returning data when tapped on notification.
+                        NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
+                    };
+                        NotificationCenter.Current.Show(notification);
+                    }
+                });
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         #endregion
