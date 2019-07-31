@@ -18,7 +18,8 @@ namespace Makedox2019.Models
 
         public Notification(int id, int notificationId)
         {
-            NotificationId = id;
+            NotificationId = notificationId;
+            Id = id;
         }
     }
 }

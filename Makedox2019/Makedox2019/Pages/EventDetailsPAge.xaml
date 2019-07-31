@@ -6,8 +6,14 @@
              mc:Ignorable="d"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              NavigationPage.HasNavigationBar="False"
+             xmlns:converters="clr-namespace:Makedox2019.Converters"
              BackgroundImage="bgmoviedetails.png"
              x:Class="Makedox2019.Pages.EventDetailsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:Base64Converter x:Key="Base64ToImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <AbsoluteLayout>
         <StackLayout
             AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -15,7 +21,7 @@
             VerticalOptions="Start">
             <ScrollView Padding="20, 0">
                 <StackLayout Spacing="10">
-                    <Image Source="{Binding Model.CoverImage}" Aspect="AspectFit" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="400" HeightRequest="400" />
+                    <Image Source="{Binding Model.CoverImage, Converter={StaticResource Base64ToImageConverter}}" Aspect="AspectFit" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="400" HeightRequest="400" />
                     <Label Text="{Binding Model.Title}" TextColor="#640d20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                     <Grid>
                         <Grid.ColumnDefinitions>
