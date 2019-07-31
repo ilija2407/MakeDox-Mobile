@@ -12,6 +12,8 @@ using Android.Support.V4.Content;
 using Android.Support.V4.App;
 using FFImageLoading.Forms.Platform;
 using FFImageLoading;
+using Plugin.LocalNotification;
+using Android.Content;
 
 namespace Makedox2019.Droid
 {
@@ -36,9 +38,17 @@ namespace Makedox2019.Droid
                 Logger = new CustomLogger(),
             };
             ImageService.Instance.Initialize(config);
-
+            NotificationCenter.CreateNotificationChannel();
             LoadApplication(new App());
+            NotificationCenter.NotifyNotificationTapped(Intent);
         }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            NotificationCenter.NotifyNotificationTapped(intent);
+            base.OnNewIntent(intent);
+        }
+
         protected override void OnStart()
         {
             base.OnStart();
