@@ -56,44 +56,53 @@ namespace Makedox2019.PageModels
             NavigateToCoProPageCommand = new Command(NavigateToCoProPage);
         }
 
-        private async void NavigateToCoProPage(object obj)
+        private void NavigateToCoProPage(object obj)
         {
-            //push a basic page Modally
-            var page = FreshPageModelResolver.ResolvePageModel<CoProPageModel>();
-            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
-            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            CoreMethods.PushPageModel<CoProPageModel>(true);
+            ////push a basic page Modally
+            //var page = FreshPageModelResolver.ResolvePageModel<CoProPageModel>();
+            //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
         }
 
-        private async void NavigateToMusicPage(object obj)
+        private void NavigateToMusicPage(object obj)
         {
+            CoreMethods.PushPageModel<MusicPageModel>(true);
+
             //push a basic page Modally
-            var page = FreshPageModelResolver.ResolvePageModel<MusicPageModel>();
-            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
-            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //var page = FreshPageModelResolver.ResolvePageModel<MusicPageModel>();
+            //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
         }
 
-        private async void NavigateToPhotoPage(object obj)
+        private void NavigateToPhotoPage(object obj)
         {
+            CoreMethods.PushPageModel<PhotoExebitionPageModel>(true);
+
             //push a basic page Modally
-            var page = FreshPageModelResolver.ResolvePageModel<PhotoExebitionPageModel>();
-            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
-            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //var page = FreshPageModelResolver.ResolvePageModel<PhotoExebitionPageModel>();
+            //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
         }
 
-        private async void NavigateToWorkshopPage(object obj)
+        private void NavigateToWorkshopPage(object obj)
         {
+            CoreMethods.PushPageModel<WorkshopsPageModel>(true);
+
             //push a basic page Modally
-            var page = FreshPageModelResolver.ResolvePageModel<WorkshopsPageModel>();
-            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
-            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //var page = FreshPageModelResolver.ResolvePageModel<WorkshopsPageModel>();
+            //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
         }
 
-        private async void NavigateToDocPage(object obj)
+        private void NavigateToDocPage(object obj)
         {
+            CoreMethods.PushPageModel<DocTalksPageModel>(true);
+
             //push a basic page Modally
-            var page = FreshPageModelResolver.ResolvePageModel<DocTalksPageModel>();
-            var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
-            await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+            //var page = FreshPageModelResolver.ResolvePageModel<DocTalksPageModel>();
+            //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
         }
 
 
