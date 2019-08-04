@@ -203,6 +203,8 @@
     <BundleResource Include="Resources\films_gray.png" />
     <BundleResource Include="Resources\menu_gray.png" />
     <BundleResource Include="Resources\timeline_gray.png" />
+    <BundleResource Include="Resources\star.png" />
+    <BundleResource Include="Resources\star_selected.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\timeline.png" />

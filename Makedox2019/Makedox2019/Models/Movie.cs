@@ -1,11 +1,12 @@
 ﻿using Realms;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Makedox2019.Models
 {
-    public class Movie : RealmObject
+    public class Movie : RealmObject, INotifyPropertyChanged
     {
         [PrimaryKey]
         public int ID { get; set; }
@@ -24,7 +25,16 @@ namespace Makedox2019.Models
         public string Category { get; set; }
         public double Rating { get; set; }
         public bool IsFavorite { get; set; }
+        [Ignored]
+        public bool IsNotFavorite => !IsFavorite;
         public Team Team { get; set; }
+
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == nameof(IsFavorite))
+                RaisePropertyChanged(nameof(IsNotFavorite));
+        }
     }
 
     public class Team : RealmObject

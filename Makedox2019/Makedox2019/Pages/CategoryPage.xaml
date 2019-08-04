@@ -7,83 +7,95 @@
              NavigationPage.HasNavigationBar="False"
              mc:Ignorable="d"
              x:Class="Makedox2019.Pages.CategoryPage">
-    <ListView 
-                    x:Name="eventList"
-                    Grid.Row="2"
-                    BackgroundColor="White"
-                    SelectionMode="None"
-                    HasUnevenRows="True"
-                    VerticalOptions="FillAndExpand"  
-                    ItemsSource="{Binding MoviesList}">
+    <ListView
+        x:Name="eventList"
+        Grid.Row="2"
+        BackgroundColor="White"
+        SelectionMode="None"
+        HasUnevenRows="True"
+        VerticalOptions="FillAndExpand"
+        ItemsSource="{Binding MoviesList}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout 
-                                    Orientation="Vertical" 
-                                    Padding="10, 0"
-                                    HorizontalOptions="FillAndExpand">
+                    <StackLayout
+                        Orientation="Vertical"
+                        Padding="10, 0"
+                        HorizontalOptions="FillAndExpand">
 
-                        <StackLayout 
-                                        Orientation="Horizontal"
-                                        Margin="0,10">
-                            <ff:CachedImage 
-                                            Source="{Binding LogoImage}" 
-                                            WidthRequest="70"
-                                            HeightRequest="70"
-                                            HorizontalOptions="Start"/>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="0,10">
+                            <ff:CachedImage
+                                Source="{Binding LogoImage}"
+                                WidthRequest="70"
+                                HeightRequest="70"
+                                HorizontalOptions="Start" />
 
                             <StackLayout
-                                            Orientation="Vertical" 
-                                            HorizontalOptions="FillAndExpand">
+                                Orientation="Vertical"
+                                HorizontalOptions="FillAndExpand">
 
-                                <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Label 
-                                                    Text="{Binding Title}" 
-                                                    FontSize="Large"
-                                                    TextColor="Black"/>
+                                <StackLayout Orientation="Horizontal"
+                                             Margin="0,0,0,10">
+                                    <Label
+                                        Text="{Binding Title}"
+                                        FontSize="Large"
+                                        TextColor="Black" />
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal">
-                                    <ff:CachedImage 
-                                                    Source="saat" 
-                                                    WidthRequest="25"
-                                                    HeightRequest="25"
-                                                    HorizontalOptions="Start"/>
+                                    <ff:CachedImage
+                                        Source="saat"
+                                        WidthRequest="25"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start" />
 
-                                    <Label 
-                                                    Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
-                                                    FontSize="Medium"
-                                                    FontAttributes="Bold"
-                                                   />
+                                    <Label
+                                        Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold" />
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal">
-                                    <ff:CachedImage 
-                                                    Source="loc" 
-                                                    WidthRequest="25"
-                                                    HeightRequest="25"
-                                                    HorizontalOptions="Start"/>
+                                    <ff:CachedImage
+                                        Source="loc"
+                                        WidthRequest="25"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start" />
 
-                                    <Label 
-                                                    Text="{Binding Location}"
-                                                    FontSize="Medium"
-                                                    FontAttributes="Bold"
-                                                   />
+                                    <Label
+                                        Text="{Binding Location}"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold" />
                                 </StackLayout>
 
                             </StackLayout>
-                            <Label Text="Favorite">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference eventList}}" CommandParameter="{Binding .}" />
-                                </Label.GestureRecognizers>
-                            </Label>
+                            <ff:CachedImage  Source="star.png"
+                                             IsVisible="{Binding IsNotFavorite}"
+                                             WidthRequest="50"
+                                             HeightRequest="50">
+                                <ff:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference eventList}}"
+                                                          CommandParameter="{Binding .}" />
+                                </ff:CachedImage.GestureRecognizers>
+                            </ff:CachedImage>
+                            <ff:CachedImage Source="star_selected.png"
+                                            IsVisible="{Binding IsFavorite}"
+                                            HeightRequest="50"
+                                            WidthRequest="50">
+                                <ff:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference eventList}}"
+                                                          CommandParameter="{Binding .}" />
+                                </ff:CachedImage.GestureRecognizers>
+                            </ff:CachedImage>
                         </StackLayout>
 
 
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                                Command="{Binding BindingContext.DetailsCommand,Source={x:Reference eventList}}"
-                                                CommandParameter="{Binding .}"/>
+                            <TapGestureRecognizer
+                                Command="{Binding BindingContext.DetailsCommand,Source={x:Reference eventList}}"
+                                CommandParameter="{Binding .}" />
                         </StackLayout.GestureRecognizers>
 
                     </StackLayout>
