@@ -44,10 +44,9 @@ namespace Makedox2019.PageModels
             await CoreMethods.PushPageModel<EventDetailsPageModel>(movie.ID);
         });
 
-        public ICommand FavoriteListCommand => new Command(() => CoreMethods.PushPageModel<FavoriteMoviesPageModel>(true));
-
         #endregion
         public IRealmCollection<Movie> UpComingEvents { get; set; }
+        public IRealmCollection<Movie> FavoriteMovies { get; set; }
 
         #region CTOR
         public UpcomingEventsPageModel()
@@ -119,7 +118,7 @@ namespace Makedox2019.PageModels
         {
             using (var client = new HttpClient())
             {
-                var res = await client.GetAsync("https://gist.githubusercontent.com/ice-j/2b60034d079a306182160cc1f9c1516f/raw/5650873d9cbe59fb16581d8e00645d0a74390816/movies.json#" + DateTime.Now.Ticks);
+                var res = await client.GetAsync("https://gist.githubusercontent.com/ice-j/2b60034d079a306182160cc1f9c1516f/raw/5ee90a511531c1d0a8a86a113cce612dac2cfa71/movies.json#" + DateTime.Now.Ticks);
                 if (!res.IsSuccessStatusCode)
                 {
                     await App.Current.MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
@@ -169,7 +168,10 @@ namespace Makedox2019.PageModels
                             NotificationCenter.Current.Show(notification);
                         }
                         UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
+                        FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
+
                         RaisePropertyChanged(nameof(UpComingEvents));
+                        RaisePropertyChanged(nameof(FavoriteMovies));
                     });
                 }
             }

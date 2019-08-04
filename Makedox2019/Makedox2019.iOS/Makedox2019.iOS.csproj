@@ -29,8 +29,9 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>MakeDox Dev</CodesignProvision>
-    <CodesignKey>iPhone Developer: Ilija Rushkovski (9P864D6Y2Y)</CodesignKey>
+    <CodesignProvision>
+    </CodesignProvision>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -98,6 +99,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\CustomScrollViewRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -281,4 +283,5 @@
   <ItemGroup>
     <BundleResource Include="Resources\bghome.png" />
   </ItemGroup>
+  <ItemGroup />
 </Project>
