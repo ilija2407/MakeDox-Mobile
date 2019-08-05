@@ -118,7 +118,7 @@ namespace Makedox2019.PageModels
         {
             using (var client = new HttpClient())
             {
-                var res = await client.GetAsync("https://gist.githubusercontent.com/ice-j/2b60034d079a306182160cc1f9c1516f/raw/5ee90a511531c1d0a8a86a113cce612dac2cfa71/movies.json#" + DateTime.Now.Ticks);
+                var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/f0a36cd62a14cb19978a9567b7900d7408128739/.json");
                 if (!res.IsSuccessStatusCode)
                 {
                     await App.Current.MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");

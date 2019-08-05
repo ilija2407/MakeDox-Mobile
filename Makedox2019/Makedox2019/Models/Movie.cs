@@ -23,7 +23,7 @@ namespace Makedox2019.Models
         public string LogoImage { get; set; }
         public string Type { get; set; }
         public string Category { get; set; }
-        public double Rating { get; set; }
+        public string Rating { get; set; }
         public bool IsFavorite { get; set; }
         [Ignored]
         public bool IsNotFavorite => !IsFavorite;

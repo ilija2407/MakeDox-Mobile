@@ -283,5 +283,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\bghome.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
 </Project>

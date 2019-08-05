@@ -3,6 +3,7 @@ using Makedox2019.Models;
 using Realms;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -26,7 +27,16 @@ namespace Makedox2019.PageModels
         {
             base.ViewIsAppearing(sender, e);
             var db = Realm.GetInstance();
-            GroupedMovies = db.All<Movie>().ToList().GroupBy(x => x.Location).ToDictionary(x => x.Key, x => x.Select(y => new TimelineItem(y.ID, y.Title, y.StartTime, y.EndTime)).ToList());
+
+            try
+            {
+                GroupedMovies = db.All<Movie>().ToList().GroupBy(x => x.Location).ToDictionary(x => x.Key, x => x.Select(y => new TimelineItem(y.ID, y.Title, y.StartTime, y.EndTime)).ToList());
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
             RaisePropertyChanged(nameof(GroupedMovies));
         }
 
