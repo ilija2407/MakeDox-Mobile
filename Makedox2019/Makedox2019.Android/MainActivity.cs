@@ -14,6 +14,7 @@ using FFImageLoading.Forms.Platform;
 using FFImageLoading;
 using Plugin.LocalNotification;
 using Android.Content;
+using Acr.UserDialogs;
 
 namespace Makedox2019.Droid
 {
@@ -38,6 +39,8 @@ namespace Makedox2019.Droid
                 Logger = new CustomLogger(),
             };
             ImageService.Instance.Initialize(config);
+            UserDialogs.Init(this);
+
             NotificationCenter.CreateNotificationChannel();
             LoadApplication(new App());
             NotificationCenter.NotifyNotificationTapped(Intent);

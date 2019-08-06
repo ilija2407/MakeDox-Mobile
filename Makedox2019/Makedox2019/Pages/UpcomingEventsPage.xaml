@@ -44,11 +44,18 @@
                                             <StackLayout
                                     Orientation="Horizontal"
                                     Margin="0,10">
-                                                <ff:CachedImage
-                                        Source="{Binding LogoImage}"
+                                      <ff:CachedImage
+                                            Source="{Binding LogoImage}" 
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Start" 
+                                            WidthRequest="70"
+                                            HeightRequest="70" />
+
+                                                <!--<ff:CachedImage
+                                        Source="{Binding CoverImage}"
                                         WidthRequest="70"
                                         HeightRequest="70"
-                                        HorizontalOptions="Start" />
+                                        HorizontalOptions="Start" />-->
                                                 <StackLayout
                                         Orientation="Vertical"
                                         HorizontalOptions="FillAndExpand">
@@ -82,13 +89,13 @@
                                                 FontAttributes="Bold" />
                                                     </StackLayout>
                                                 </StackLayout>
-                                                <ff:CachedImage  Source="star.png" IsVisible="{Binding IsNotFavorite}" WidthRequest="50" HeightRequest="50">
+                                                <ff:CachedImage  Source="star.png" IsVisible="{Binding IsNotFavorite}" WidthRequest="25" HeightRequest="25" Margin="0,0,20,0">
                                                     <ff:CachedImage.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}"
                                                                   CommandParameter="{Binding .}" />
                                                     </ff:CachedImage.GestureRecognizers>
                                                 </ff:CachedImage>
-                                                <ff:CachedImage Source="star_selected.png" IsVisible="{Binding IsFavorite}" HeightRequest="50" WidthRequest="50">
+                                                <ff:CachedImage Source="star_selected.png" IsVisible="{Binding IsFavorite}" HeightRequest="25" WidthRequest="25" Margin="0,0,20,0">
                                                     <ff:CachedImage.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}"
                                                                   CommandParameter="{Binding .}" />

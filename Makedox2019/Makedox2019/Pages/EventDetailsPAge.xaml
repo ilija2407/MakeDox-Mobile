@@ -21,7 +21,7 @@
             VerticalOptions="Start">
             <ScrollView Padding="20, 0">
                 <StackLayout Spacing="10">
-                    <Image Source="{Binding Model.CoverImage, Converter={StaticResource Base64ToImageConverter}}" Aspect="AspectFit" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="400" HeightRequest="400" />
+                    <ff:CachedImage  Source="{Binding Model.CoverImage}" Aspect="AspectFit" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="400" HeightRequest="400" />
                     <Label Text="{Binding Model.Title}" TextColor="#640d20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                     <Grid>
                         <Grid.ColumnDefinitions>

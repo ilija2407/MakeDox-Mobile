@@ -1,4 +1,5 @@
-﻿using BottomBar.XamarinForms;
+﻿using Acr.UserDialogs;
+using BottomBar.XamarinForms;
 using FreshMvvm;
 using Makedox2019.Controls;
 using Makedox2019.Models;
@@ -23,8 +24,13 @@ namespace Makedox2019
 {
     public partial class App : Xamarin.Forms.Application
     {
+        private static readonly Lazy<IUserDialogs> _userDialogs = new Lazy<IUserDialogs>(() => FreshIOC.Container.Resolve<IUserDialogs>());
+        private static TaskCompletionSource<bool> _tcs = new TaskCompletionSource<bool>();
+
         public App()
         {
+            FreshIOC.Container.Register<IUserDialogs>(UserDialogs.Instance);
+
             InitializeComponent();
             
             if (Device.RuntimePlatform == Device.iOS)
@@ -84,6 +90,27 @@ namespace Makedox2019
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public static async void ShowLoading(string title = "Се вчитува", MaskType? maskType = default(MaskType?))
+        {
+            await WaitInBackground();
+            _userDialogs.Value.ShowLoading(title, maskType);
+        }
+
+        public static void HideLoading()
+        {
+            _userDialogs.Value.HideLoading();
+        }
+
+        public static IDisposable Loading(string title = "Се вчитува", Action onCancel = default(Action), string cancelText = default(string), bool show = true, MaskType? maskType = default(MaskType?))
+        {
+            return _userDialogs.Value.Loading(title, onCancel, cancelText, show, maskType);
+        }
+
+        public static Task WaitInBackground()
+        {
+            return _tcs.Task;
         }
     }
 }

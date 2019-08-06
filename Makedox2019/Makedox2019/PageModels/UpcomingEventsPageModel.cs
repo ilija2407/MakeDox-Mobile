@@ -118,61 +118,65 @@ namespace Makedox2019.PageModels
         {
             using (var client = new HttpClient())
             {
-                var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/f0a36cd62a14cb19978a9567b7900d7408128739/.json");
-                if (!res.IsSuccessStatusCode)
+                using (App.Loading())
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
-                    return;
-                }
+                    var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/6e608ecbc76c966a6a1577baa2b90123318f3a5d/.json");
 
-                var stringContent = await res.Content.ReadAsStringAsync();
-                var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm" };
-                var booleanConverter = new BooleanConverter();
-                var moviesList = JsonConvert.DeserializeObject<List<Movie>>(stringContent, converters: dtConverter);
-                if (moviesList?.Count > 0)
-                {
-                    var db = Realm.GetInstance();
-
-                    var currentMovies = db.All<Movie>().ToList();
-                    db.Write(() =>
+                    if (!res.IsSuccessStatusCode)
                     {
-                        var i = 1;
-                        db.RemoveAll<Notification>();
-                        foreach (var movie in moviesList)
+                        await App.Current.MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
+                        return;
+                    }
+
+                    var stringContent = await res.Content.ReadAsStringAsync();
+                    var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm" };
+                    var booleanConverter = new BooleanConverter();
+                    var moviesList = JsonConvert.DeserializeObject<List<Movie>>(stringContent, converters: dtConverter);
+                    if (moviesList?.Count > 0)
+                    {
+                        var db = Realm.GetInstance();
+
+                        var currentMovies = db.All<Movie>().ToList();
+                        db.Write(() =>
                         {
-                            bool shouldUpdate = false;
-                            if (shouldUpdate = currentMovies.Any(x => x.ID == movie.ID))
-                                movie.IsFavorite = currentMovies.FirstOrDefault(x => x.ID == movie.ID).IsFavorite;
-                            if (movie.CoverImage?.Contains("data:image/jpeg;base64,") == true)
-                                movie.CoverImage = movie.CoverImage.Replace("data:image/jpeg;base64,", "");
-                            if (movie.LogoImage?.Contains("data:image/jpeg;base64,") == true)
-                                movie.LogoImage = movie.CoverImage.Replace("data:image/jpeg;base64,", "");
-
-                            db.Add(movie, shouldUpdate);
-
-                            var notif = new Notification(i++, new Random(305006489).Next(100000, 600000));
-
-                            db.Add(notif);
-                            var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
-                            if (time < DateTime.Now)
-                                time = DateTime.Now.AddMinutes(1);
-                            NotificationCenter.Current.CancelAll();
-                            var notification = new NotificationRequest
+                            var i = 1;
+                            db.RemoveAll<Notification>();
+                            foreach (var movie in moviesList)
                             {
-                                NotificationId = notif.Id,
-                                Title = movie.Title,
-                                Description = $"will be displayed at {movie.StartTime.Value.ToString("dd/MM/yyyy HH:mm")}",
-                                ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
+                                bool shouldUpdate = false;
+                                if (shouldUpdate = currentMovies.Any(x => x.ID == movie.ID))
+                                    movie.IsFavorite = currentMovies.FirstOrDefault(x => x.ID == movie.ID).IsFavorite;
+                                if (movie.CoverImage?.Contains("data:image/jpeg;base64,") == true)
+                                    movie.CoverImage = movie.CoverImage.Replace("data:image/jpeg;base64,", "");
+                                if (movie.LogoImage?.Contains("data:image/jpeg;base64,") == true)
+                                    movie.LogoImage = movie.CoverImage.Replace("data:image/jpeg;base64,", "");
+
+                                db.Add(movie, shouldUpdate);
+
+                                var notif = new Notification(i++, new Random(305006489).Next(100000, 600000));
+
+                                db.Add(notif);
+                                var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
+                                if (time < DateTime.Now)
+                                    time = DateTime.Now.AddMinutes(1);
+                                NotificationCenter.Current.CancelAll();
+                                var notification = new NotificationRequest
+                                {
+                                    NotificationId = notif.Id,
+                                    Title = movie.Title,
+                                    Description = $"will be displayed at {movie.StartTime.Value.ToString("dd/MM/yyyy HH:mm")}",
+                                    ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
                                 NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
                             };
-                            NotificationCenter.Current.Show(notification);
-                        }
-                        UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
-                        FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
+                                NotificationCenter.Current.Show(notification);
+                            }
+                            UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
+                            FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
 
-                        RaisePropertyChanged(nameof(UpComingEvents));
-                        RaisePropertyChanged(nameof(FavoriteMovies));
-                    });
+                            RaisePropertyChanged(nameof(UpComingEvents));
+                            RaisePropertyChanged(nameof(FavoriteMovies));
+                        });
+                    }
                 }
             }
         }
