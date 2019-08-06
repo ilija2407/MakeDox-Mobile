@@ -65,10 +65,10 @@ namespace Makedox2019.PageModels
 
 
 
-        public  override void Init(object initData)
+        public override void Init(object initData)
         {
             base.Init(initData);
-      
+
         }
 
         #endregion
@@ -128,7 +128,7 @@ namespace Makedox2019.PageModels
                     }
 
                     var stringContent = await res.Content.ReadAsStringAsync();
-                    var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm" };
+                    var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm", Culture = System.Globalization.CultureInfo.GetCultureInfo("MK"), DateTimeStyles = System.Globalization.DateTimeStyles.AssumeUniversal };
                     var booleanConverter = new BooleanConverter();
                     var moviesList = JsonConvert.DeserializeObject<List<Movie>>(stringContent, converters: dtConverter);
                     if (moviesList?.Count > 0)
@@ -140,6 +140,7 @@ namespace Makedox2019.PageModels
                         {
                             var i = 1;
                             db.RemoveAll<Notification>();
+                            NotificationCenter.Current.CancelAll();
                             foreach (var movie in moviesList)
                             {
                                 bool shouldUpdate = false;
@@ -158,12 +159,11 @@ namespace Makedox2019.PageModels
                                 var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
                                 if (time < DateTime.Now)
                                     time = DateTime.Now.AddMinutes(1);
-                                NotificationCenter.Current.CancelAll();
                                 var notification = new NotificationRequest
                                 {
-                                    NotificationId = notif.Id,
+                                    NotificationId = notif.NotificationId,
                                     Title = movie.Title,
-                                    Description = $"will be displayed at {movie.StartTime.Value.ToString("dd/MM/yyyy HH:mm")}",
+                                    Description = $"will be displayed at {movie.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
                                     ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
                                     NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
                                 };

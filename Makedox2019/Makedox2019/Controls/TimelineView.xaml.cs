@@ -49,28 +49,16 @@ namespace Makedox2019.Controls
 
 
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = 80 });
-            var maxColCount = 0;
-            DateTimeOffset? maxDate = DateTimeOffset.Now;
-            DateTimeOffset? minDate = DateTimeOffset.Now;
-            foreach (var item in ItemsSource)
-            {
-                maxColCount = maxColCount < item.Value.Count ? item.Value.Count : maxColCount;
+            DateTimeOffset? maxDate = ItemsSource.Max(x => x.Value.Max(y => y.EndTime));
+            DateTimeOffset? minDate = ItemsSource.Min(x => x.Value.Min(y => y.StartTime));
 
-                var maxCat = item.Value.Max(x => x.EndTime);
-                maxDate = maxCat.HasValue ? maxCat : maxDate;
+            while (minDate.Value.Minute % 15 != 0)
+                minDate = minDate.Value.AddMinutes(-1);
 
-
-                var minCat = item.Value.Min(x => x.StartTime);
-                minDate = minCat.HasValue ? minCat : minDate;
-
-                if (!maxCat.HasValue)
-                    maxDate = item.Value.Max(x => x.StartTime).Value.AddMinutes(15);
-            }
+            while (maxDate.Value.Minute % 15 != 0)
+                maxDate = maxDate.Value.AddMinutes(+1);
 
             PopulateDates(minDate, maxDate);
-
-            //for (var i = 0; i < maxColCount; i++)
-            //    grid.ColumnDefinitions.Add(new ColumnDefinition { Width = 40 });
 
             grid.RowDefinitions.Add(new RowDefinition { Height = 60 });
             grid.RowDefinitions.Add(new RowDefinition { Height = 20 });
@@ -114,28 +102,31 @@ namespace Makedox2019.Controls
                     {
                         Text = movie.Title,
                         ClassId = movie.Id.ToString(),
-                        HeightRequest = 40
+                        HeightRequest = 40,
+                        BackgroundColor = Color.Black,
+                        TextColor = Color.White
                     };
                     grid.Children.Add(movieLabel);
                     Grid.SetRow(movieLabel, movieRow);
                     Grid.SetColumn(movieLabel, column);
                     Grid.SetColumnSpan(movieLabel, columnSpan);
-                    Console.WriteLine("====================================================");
-                    Console.WriteLine($"Column: {column}, ColSpan: {columnSpan}");
-                    Console.WriteLine("====================================================");
                     if (maxColPlusSpan < column + columnSpan)
                         maxColPlusSpan = column + columnSpan;
                 }
                 movieRow++;
             }
-            Console.WriteLine("====================================================");
-            Console.WriteLine($"Column: {grid.ColumnDefinitions.Count}, Rows: {grid.RowDefinitions.Count}");
-            Console.WriteLine($"MaxCol&Span: {maxColPlusSpan}, Columns: {grid.ColumnDefinitions.Count}");
-            Console.WriteLine("====================================================");
         }
 
         int GetColumnForDate(DateTimeOffset? date)
-            => TimesWithColumns.FirstOrDefault(x => x.Key == date.Value).Value;
+        {
+            var time = TimesWithColumns.FirstOrDefault(x => x.Key == date.Value).Value;
+            if (time > 0)
+                return time;
+
+            var theDate = TimesWithColumns.FirstOrDefault(x => x.Key.AddMinutes(-14) < date && date < x.Key.AddMinutes(14));
+            return theDate.Value+1;
+        }
+
 
         int GetColumnSpanForMovie(TimelineItem movie)
         {
@@ -155,6 +146,11 @@ namespace Makedox2019.Controls
             TimesWithColumns.Clear();
             while (maxDate >= tempDate)
             {
+                if (tempDate > minDate && tempDate < maxDate && !HasMovieDisplayedAt(tempDate))
+                {
+                    tempDate = tempDate.Value.AddMinutes(15);
+                    continue;
+                }
                 var formattedDate = new FormattedString();
                 formattedDate.Spans.Add(new Span { Text = tempDate.Value.ToString("ddd") });
                 formattedDate.Spans.Add(new Span { Text = Environment.NewLine });
@@ -183,6 +179,20 @@ namespace Makedox2019.Controls
                 column++;
                 tempDate = tempDate.Value.AddMinutes(15);
             }
+        }
+
+        bool HasMovieDisplayedAt(DateTimeOffset? date)
+        {
+            foreach (var item in ItemsSource)
+                foreach (var movie in item.Value)
+                {
+                    var isAfterStart = movie.StartTime <= date;
+                    var isBeforeEnd = movie.EndTime >= date;
+                    if (isAfterStart && isBeforeEnd)
+                        return true;
+                }
+
+            return false;
         }
     }
 
