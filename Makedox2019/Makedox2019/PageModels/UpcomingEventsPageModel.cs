@@ -118,13 +118,13 @@ namespace Makedox2019.PageModels
         {
             using (var client = new HttpClient())
             {
-                using (App.Loading())
-                {
-                    var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/6e608ecbc76c966a6a1577baa2b90123318f3a5d/.json");
+                //using (App.Loading())
+                //{
+                    var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/b1f2eec3c5dbe5bff0f973fc6167e7bbc8cda318/.json");
 
                     if (!res.IsSuccessStatusCode)
                     {
-                        await App.Current.MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
                         return;
                     }
 
@@ -177,7 +177,7 @@ namespace Makedox2019.PageModels
                             RaisePropertyChanged(nameof(FavoriteMovies));
                         });
                     }
-                }
+               // }
             }
         }
 

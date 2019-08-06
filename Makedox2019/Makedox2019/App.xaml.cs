@@ -76,7 +76,7 @@ namespace Makedox2019
            
         }
 
-        protected async override void OnStart()
+        protected override void OnStart()
         {
             // Handle when your app starts
             
@@ -103,7 +103,7 @@ namespace Makedox2019
             _userDialogs.Value.HideLoading();
         }
 
-        public static IDisposable Loading(string title = "Се вчитува", Action onCancel = default(Action), string cancelText = default(string), bool show = true, MaskType? maskType = default(MaskType?))
+        public static IDisposable Loading(string title = "Се вчитува", Action onCancel = null, string cancelText = null, bool show = true, MaskType? maskType = MaskType.Black)
         {
             return _userDialogs.Value.Loading(title, onCancel, cancelText, show, maskType);
         }

@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="Makedox2019.Pages.UpcomingEventsPage"
              x:Name="upcomingEventsPage"
              NavigationPage.HasNavigationBar="False">
@@ -45,12 +46,15 @@
                                     Orientation="Horizontal"
                                     Margin="0,10">
                                       <ff:CachedImage
-                                            Source="{Binding LogoImage}" 
+                                            Source="{Binding CoverImage}" 
                                             Aspect="AspectFit"
                                             HorizontalOptions="Start" 
                                             WidthRequest="70"
-                                            HeightRequest="70" />
-
+                                            HeightRequest="70">
+                                                   <ff:CachedImage.Transformations>
+                                        <fftransformations:CircleTransformation/>
+                                    </ff:CachedImage.Transformations>
+                                </ff:CachedImage>
                                                 <!--<ff:CachedImage
                                         Source="{Binding CoverImage}"
                                         WidthRequest="70"
@@ -131,11 +135,16 @@
                                             <StackLayout 
                                             Orientation="Horizontal"
                                             Margin="0,10">
-                                                <ff:CachedImage 
-                                            Source="{Binding LogoImage}" 
+                                                       <ff:CachedImage
+                                            Source="{Binding CoverImage}" 
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Start" 
                                             WidthRequest="70"
-                                            HeightRequest="70"
-                                            HorizontalOptions="Start"/>
+                                            HeightRequest="70">
+                                                   <ff:CachedImage.Transformations>
+                                        <fftransformations:CircleTransformation/>
+                                    </ff:CachedImage.Transformations>
+                                </ff:CachedImage>
                                                 <StackLayout
                                             Orientation="Vertical" 
                                             HorizontalOptions="FillAndExpand">
@@ -172,13 +181,13 @@
                                                    />
                                                     </StackLayout>
                                                 </StackLayout>
-                                                <ff:CachedImage  Source="star.png" IsVisible="{Binding IsNotFavorite}" WidthRequest="50" HeightRequest="50">
+                                                <ff:CachedImage  Source="star.png" IsVisible="{Binding IsNotFavorite}" WidthRequest="25" HeightRequest="25" Margin="0,0,20,0">
                                                     <ff:CachedImage.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}"
                                                                   CommandParameter="{Binding .}" />
                                                     </ff:CachedImage.GestureRecognizers>
                                                 </ff:CachedImage>
-                                                <ff:CachedImage Source="star_selected.png" IsVisible="{Binding IsFavorite}" HeightRequest="50" WidthRequest="50">
+                                                <ff:CachedImage Source="star_selected.png" IsVisible="{Binding IsFavorite}" HeightRequest="25" WidthRequest="25" Margin="0,0,20,0">
                                                     <ff:CachedImage.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}"
                                                                   CommandParameter="{Binding .}" />

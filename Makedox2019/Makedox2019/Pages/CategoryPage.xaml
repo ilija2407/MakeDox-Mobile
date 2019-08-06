@@ -1,9 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              NavigationPage.HasNavigationBar="False"
              mc:Ignorable="d"
              x:Class="Makedox2019.Pages.CategoryPage">
@@ -26,11 +27,16 @@
                         <StackLayout
                             Orientation="Horizontal"
                             Margin="0,10">
-                            <ff:CachedImage
-                                Source="{Binding LogoImage}"
-                                WidthRequest="70"
-                                HeightRequest="70"
-                                HorizontalOptions="Start" />
+                                       <ff:CachedImage
+                                            Source="{Binding CoverImage}" 
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Start" 
+                                            WidthRequest="70"
+                                            HeightRequest="70">
+                                                   <ff:CachedImage.Transformations>
+                                        <fftransformations:CircleTransformation/>
+                                    </ff:CachedImage.Transformations>
+                                </ff:CachedImage>
 
                             <StackLayout
                                 Orientation="Vertical"
@@ -73,8 +79,9 @@
                             </StackLayout>
                             <ff:CachedImage  Source="star.png"
                                              IsVisible="{Binding IsNotFavorite}"
-                                             WidthRequest="50"
-                                             HeightRequest="50">
+                                             Margin="0,0,20,0"
+                                             WidthRequest="25"
+                                             HeightRequest="25">
                                 <ff:CachedImage.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference eventList}}"
                                                           CommandParameter="{Binding .}" />
@@ -82,8 +89,9 @@
                             </ff:CachedImage>
                             <ff:CachedImage Source="star_selected.png"
                                             IsVisible="{Binding IsFavorite}"
-                                            HeightRequest="50"
-                                            WidthRequest="50">
+                                            Margin="0,0,20,0"
+                                            HeightRequest="25"
+                                            WidthRequest="25">
                                 <ff:CachedImage.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference eventList}}"
                                                           CommandParameter="{Binding .}" />
