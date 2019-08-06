@@ -92,7 +92,7 @@ namespace Makedox2019
             // Handle when your app resumes
         }
 
-        public static async void ShowLoading(string title = "Се вчитува", MaskType? maskType = default(MaskType?))
+        public static async void ShowLoading(string title = "Loading..", MaskType? maskType = default(MaskType?))
         {
             await WaitInBackground();
             _userDialogs.Value.ShowLoading(title, maskType);
@@ -103,7 +103,7 @@ namespace Makedox2019
             _userDialogs.Value.HideLoading();
         }
 
-        public static IDisposable Loading(string title = "Се вчитува", Action onCancel = null, string cancelText = null, bool show = true, MaskType? maskType = MaskType.Black)
+        public static IDisposable Loading(string title = "Loadin...", Action onCancel = default(Action), string cancelText = "Cancel", bool show = true, MaskType? maskType = default(MaskType?))
         {
             return _userDialogs.Value.Loading(title, onCancel, cancelText, show, maskType);
         }
@@ -112,5 +112,6 @@ namespace Makedox2019
         {
             return _tcs.Task;
         }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using Makedox2019.Models;
+﻿using Acr.UserDialogs;
+using FreshMvvm;
+using Makedox2019.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Plugin.LocalNotification;
@@ -57,21 +59,16 @@ namespace Makedox2019.PageModels
         protected override void ViewIsAppearing(object sender, EventArgs e)
         {
             base.ViewIsAppearing(sender, e);
+            SyncData();
+
         }
 
 
 
-        public override void Init(object initData)
+        public  override void Init(object initData)
         {
             base.Init(initData);
-            try
-            {
-                SyncData();
-            }
-            catch(Exception e)
-            {
-
-            }
+      
         }
 
         #endregion
@@ -118,8 +115,10 @@ namespace Makedox2019.PageModels
         {
             using (var client = new HttpClient())
             {
-                //using (App.Loading())
-                //{
+
+                var xv = UserDialogs.Instance;
+                using (UserDialogs.Instance.Loading("Loading...", null, null, true, MaskType.Black))
+                {
                     var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/b1f2eec3c5dbe5bff0f973fc6167e7bbc8cda318/.json");
 
                     if (!res.IsSuccessStatusCode)
@@ -166,8 +165,8 @@ namespace Makedox2019.PageModels
                                     Title = movie.Title,
                                     Description = $"will be displayed at {movie.StartTime.Value.ToString("dd/MM/yyyy HH:mm")}",
                                     ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
-                                NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
-                            };
+                                    NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
+                                };
                                 NotificationCenter.Current.Show(notification);
                             }
                             UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
@@ -177,7 +176,7 @@ namespace Makedox2019.PageModels
                             RaisePropertyChanged(nameof(FavoriteMovies));
                         });
                     }
-               // }
+                }
             }
         }
 
