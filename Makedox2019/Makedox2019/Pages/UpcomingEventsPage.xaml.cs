@@ -20,6 +20,20 @@ namespace Makedox2019.Pages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
            // BottomBarPageExtensions.SetTabColor(this, Color.Yellow);
             InitializeComponent();
+            
 		}
+
+
 	}
+
+    public class MovieListTemplateSelector : DataTemplateSelector
+    {
+        public DataTemplate AllTemplate { get; set; }
+        public DataTemplate FavoritesTemplate { get; set; }
+
+        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+        {
+            return ((PageModels.UpcomingEventsPageModel.MovieLists)item).ShowAll ? AllTemplate : FavoritesTemplate;
+        }
+    }
 }

@@ -7,6 +7,7 @@ using Plugin.LocalNotification;
 using Realms;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
@@ -49,6 +50,15 @@ namespace Makedox2019.PageModels
         #endregion
         public IRealmCollection<Movie> UpComingEvents { get; set; }
         public IRealmCollection<Movie> FavoriteMovies { get; set; }
+        public ObservableCollection<MovieLists> MoviesModel { get; set; } = new ObservableCollection<MovieLists>();
+
+
+        public class MovieLists : INotifyPropertyChanged
+        {
+            public IRealmCollection<Movie> Movies { get; set; }
+            public bool ShowAll { get; set; }
+            public event PropertyChangedEventHandler PropertyChanged;
+        }
 
         #region CTOR
         public UpcomingEventsPageModel()
@@ -171,9 +181,14 @@ namespace Makedox2019.PageModels
                             }
                             UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
                             FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
+                            MoviesModel.Clear();
+                            MoviesModel.Add(new MovieLists { Movies = UpComingEvents, ShowAll = true });
+                            MoviesModel.Add(new MovieLists { Movies = FavoriteMovies });
+                            
 
                             RaisePropertyChanged(nameof(UpComingEvents));
                             RaisePropertyChanged(nameof(FavoriteMovies));
+                            RaisePropertyChanged(nameof(MoviesModel));
                         });
                     }
                 }

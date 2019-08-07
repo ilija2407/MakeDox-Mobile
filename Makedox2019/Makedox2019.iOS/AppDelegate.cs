@@ -24,6 +24,7 @@ namespace Makedox2019.iOS
         {
             CachedImageRenderer.Init();
 
+            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
