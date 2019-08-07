@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Makedox2019.Pages.MakedoxPlusPage"            
+             x:Class="Makedox2019.Pages.MakedoxPlusPage"       
+             IconImageSource="makedox_gray.png"
              NavigationPage.HasNavigationBar="False">
     <AbsoluteLayout>
 

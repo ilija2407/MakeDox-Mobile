@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Makedox2019.Controls"
              x:Class="Makedox2019.Pages.TimelinePage"             
+             IconImageSource="timeline_gray.png"
              NavigationPage.HasNavigationBar="False">
     <AbsoluteLayout>
         <StackLayout

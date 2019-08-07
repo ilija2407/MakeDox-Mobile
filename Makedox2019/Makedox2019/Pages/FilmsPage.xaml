@@ -5,6 +5,7 @@
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="Makedox2019.Pages.FilmsPage"
              x:Name="filmsPage"
+             IconImageSource="films_menu.png"
              NavigationPage.HasNavigationBar="False">
     <AbsoluteLayout HeightRequest="1000" VerticalOptions="FillAndExpand">
 

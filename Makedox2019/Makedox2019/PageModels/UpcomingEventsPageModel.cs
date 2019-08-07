@@ -50,7 +50,7 @@ namespace Makedox2019.PageModels
         #endregion
         public IRealmCollection<Movie> UpComingEvents { get; set; }
         public IRealmCollection<Movie> FavoriteMovies { get; set; }
-        public ObservableCollection<MovieLists> MoviesModel { get; set; } = new ObservableCollection<MovieLists>();
+        public List<MovieLists> MoviesModel { get; set; } = new List<MovieLists>();
 
 
         public class MovieLists : INotifyPropertyChanged
@@ -181,9 +181,11 @@ namespace Makedox2019.PageModels
                             }
                             UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
                             FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
-                            MoviesModel.Clear();
-                            MoviesModel.Add(new MovieLists { Movies = UpComingEvents, ShowAll = true });
-                            MoviesModel.Add(new MovieLists { Movies = FavoriteMovies });
+                            MoviesModel = new List<MovieLists>
+                            {
+                                new MovieLists { Movies = UpComingEvents, ShowAll = true },
+                                new MovieLists { Movies = FavoriteMovies }
+                            };
                             
 
                             RaisePropertyChanged(nameof(UpComingEvents));
