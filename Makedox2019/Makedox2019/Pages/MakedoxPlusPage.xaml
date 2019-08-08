@@ -3,17 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.MakedoxPlusPage"       
              IconImageSource="makedox_gray.png"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
-    <AbsoluteLayout>
-
-
         <StackLayout
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All" 
             Margin="20"
             VerticalOptions="Start">
-
-
             <Image Source="doctalks.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToDocPageCommand}" />
@@ -39,74 +34,5 @@
                     <TapGestureRecognizer Command="{Binding NavigateToMusicPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            
-
         </StackLayout>
-
-        <Grid  
-            IsVisible="False"
-            BackgroundColor="#f7b217"
-            HeightRequest="50"
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All" 
-            VerticalOptions="EndAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Image Grid.Column="0"
-                   Source="home.png"
-               HeightRequest="50"
-               WidthRequest="50"
-                          >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToUpcomingEventsPageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-
-
-            <Image Grid.Column="1"
-                   Source="timeline.png"
-                    HeightRequest="50"
-               WidthRequest="50">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToTimeLinePageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-
-
-            <Image Grid.Column="2"
-                   Source="films.png"
-                    HeightRequest="50"
-               WidthRequest="50"
-                  >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToFilmsPageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-
-            <Image Grid.Column="3"
-                   Source="makedox1.png"
-                    HeightRequest="50"
-               WidthRequest="50"
-                  />
-
-
-            <Image Grid.Column="4"
-                   Source="menu.png"
-                    HeightRequest="50"
-               WidthRequest="50"
-                   >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToMenuPageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-
-        </Grid>
-    </AbsoluteLayout>
-
 </ContentPage>

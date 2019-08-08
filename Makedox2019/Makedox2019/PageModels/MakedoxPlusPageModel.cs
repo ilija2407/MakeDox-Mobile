@@ -1,22 +1,14 @@
-﻿using FreshMvvm;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Makedox2019.Pages;
+using Prism.Mvvm;
+using Prism.Navigation;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Makedox2019.PageModels
 {
-    public class MakedoxPlusPageModel : FreshMvvm.FreshBasePageModel
+    public class MakedoxPlusPageModel : ViewModelBase
     {
         #region Commands
-        public ICommand NavigateToUpcomingEventsPageCommand { get; set; }
-        public ICommand NavigateToTimeLinePageCommand { get; set; }
-        public ICommand NavigateToMakedoxPageCommand { get; set; }
-        public ICommand NavigateToMenuPageCommand { get; set; }
-        public ICommand NavigateToFilmsPageCommand { get; set; }
-
-
         public ICommand NavigateToDocPageCommand { get; set; }
         public ICommand NavigateToWorkshopPageCommand { get; set; }
         public ICommand NavigateToPhotoPageCommand { get; set; }
@@ -27,28 +19,16 @@ namespace Makedox2019.PageModels
 
         #endregion
 
-        public MakedoxPlusPageModel()
+        public MakedoxPlusPageModel(INavigationService navigationService)
+            : base(navigationService)
         {
             SetCommands();
-
         }
-
-        public override void Init(object initData)
-        {
-            base.Init(initData);
-        }
-
 
         #region Methods
 
         private void SetCommands()
         {
-            NavigateToFilmsPageCommand = new Command(NavigateToFilmsPage);
-            NavigateToUpcomingEventsPageCommand = new Command(NavigateToUpcommingEventsPage);
-            NavigateToTimeLinePageCommand = new Command(NavigateToTimeLinePage);
-            NavigateToMakedoxPageCommand = new Command(NavigateToMakedoxPage);
-            NavigateToMenuPageCommand = new Command(NavigateToMenuPage);
-
             NavigateToDocPageCommand = new Command(NavigateToDocPage);
             NavigateToWorkshopPageCommand = new Command(NavigateToWorkshopPage);
             NavigateToPhotoPageCommand = new Command(NavigateToPhotoPage);
@@ -58,7 +38,7 @@ namespace Makedox2019.PageModels
 
         private void NavigateToCoProPage(object obj)
         {
-            CoreMethods.PushPageModel<CoProPageModel>(true);
+            _navigationService.NavigateAsync(nameof(CoProPage));
             ////push a basic page Modally
             //var page = FreshPageModelResolver.ResolvePageModel<CoProPageModel>();
             //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
@@ -67,7 +47,7 @@ namespace Makedox2019.PageModels
 
         private void NavigateToMusicPage(object obj)
         {
-            CoreMethods.PushPageModel<MusicPageModel>(true);
+            _navigationService.NavigateAsync(nameof(MusicPage));
 
             //push a basic page Modally
             //var page = FreshPageModelResolver.ResolvePageModel<MusicPageModel>();
@@ -77,7 +57,7 @@ namespace Makedox2019.PageModels
 
         private void NavigateToPhotoPage(object obj)
         {
-            CoreMethods.PushPageModel<PhotoExebitionPageModel>(true);
+            _navigationService.NavigateAsync(nameof(PhotoExebitionPage));
 
             //push a basic page Modally
             //var page = FreshPageModelResolver.ResolvePageModel<PhotoExebitionPageModel>();
@@ -87,7 +67,7 @@ namespace Makedox2019.PageModels
 
         private void NavigateToWorkshopPage(object obj)
         {
-            CoreMethods.PushPageModel<WorkshopsPageModel>(true);
+            _navigationService.NavigateAsync(nameof(WorkshopsPage));
 
             //push a basic page Modally
             //var page = FreshPageModelResolver.ResolvePageModel<WorkshopsPageModel>();
@@ -97,39 +77,12 @@ namespace Makedox2019.PageModels
 
         private void NavigateToDocPage(object obj)
         {
-            CoreMethods.PushPageModel<DocTalksPageModel>(true);
+            _navigationService.NavigateAsync(nameof(DocTalksPage));
 
             //push a basic page Modally
             //var page = FreshPageModelResolver.ResolvePageModel<DocTalksPageModel>();
             //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
             //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
-        }
-
-
-
-        private void NavigateToMenuPage(object obj)
-        {
-            CoreMethods.PushPageModel<MenuPageModel>(true);
-        }
-
-        private void NavigateToMakedoxPage(object obj)
-        {
-            CoreMethods.PushPageModel<MakedoxPlusPageModel>(true);
-        }
-
-        private void NavigateToTimeLinePage(object obj)
-        {
-            CoreMethods.PushPageModel<TimelinePageModel>(true);
-        }
-
-        private void NavigateToUpcommingEventsPage(object obj)
-        {
-            CoreMethods.PushPageModel<UpcomingEventsPageModel>(true);
-        }
-
-        private void NavigateToFilmsPage(object obj)
-        {
-            CoreMethods.PushPageModel<FilmsPageModel>(true);
         }
 
 

@@ -15,6 +15,8 @@ using FFImageLoading;
 using Plugin.LocalNotification;
 using Android.Content;
 using Acr.UserDialogs;
+using Prism;
+using Prism.Ioc;
 
 namespace Makedox2019.Droid
 {
@@ -43,7 +45,7 @@ namespace Makedox2019.Droid
             UserDialogs.Init(this);
 
             NotificationCenter.CreateNotificationChannel();
-            LoadApplication(new App());
+            LoadApplication(new App(new AndroidInitializer()));
             NotificationCenter.NotifyNotificationTapped(Intent);
         }
 
@@ -76,6 +78,15 @@ namespace Makedox2019.Droid
             }
         }
     }
+
+    public class AndroidInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            // Register any platform specific implementations
+        }
+    }
+
     public class CustomLogger : FFImageLoading.Helpers.IMiniLogger
     {
         public void Debug(string message)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -6,16 +8,12 @@ using Xamarin.Forms;
 
 namespace Makedox2019.PageModels
 {
-    public class VenuesPageModel : FreshMvvm.FreshBasePageModel
+    public class VenuesPageModel : ViewModelBase
     {
-        public VenuesPageModel()
+        public VenuesPageModel(INavigationService navigationService)
+            : base(navigationService)
         {
             SetCommands();
-        }
-
-        public override void Init(object initData)
-        {
-            base.Init(initData);
         }
 
         public ICommand GoBack { get; set; }
@@ -27,7 +25,7 @@ namespace Makedox2019.PageModels
 
         private void Back(object obj)
         {
-            CoreMethods.PopPageModel();
+            _navigationService.GoBackAsync();
         }
 
     }

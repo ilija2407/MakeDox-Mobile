@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.WorkshopsPage"
-             NavigationPage.HasNavigationBar="False">
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <StackLayout>
             <Image Source="back.png"  IsVisible="false" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Margin="20,0,0,0">

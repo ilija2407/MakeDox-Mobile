@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using FFImageLoading.Forms.Platform;
 using Foundation;
+using Prism;
+using Prism.Ioc;
 using UIKit;
 
 namespace Makedox2019.iOS
@@ -26,7 +28,7 @@ namespace Makedox2019.iOS
 
             Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
         }
@@ -34,6 +36,14 @@ namespace Makedox2019.iOS
         public override void WillEnterForeground(UIApplication uiApplication)
         {
             Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
+        }
+    }
+
+    public class iOSInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            // Register any platform specific implementations
         }
     }
 }

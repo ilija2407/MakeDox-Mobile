@@ -1,13 +1,15 @@
 ﻿using Acr.UserDialogs;
-using FreshMvvm;
 using Makedox2019.Models;
+using Makedox2019.Pages;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Plugin.LocalNotification;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Navigation;
 using Realms;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
@@ -17,37 +19,18 @@ using Xamarin.Forms;
 
 namespace Makedox2019.PageModels
 {
-    public class UpcomingEventsPageModel : FreshMvvm.FreshBasePageModel
+    public class UpcomingEventsPageModel : ViewModelBase
     {
-        #region Commands
-        public ICommand NavigateToUpcomingEventsPageCommand { get; set; }
-        public ICommand NavigateToTimeLinePageCommand { get; set; }
-        public ICommand NavigateToMakedoxPageCommand { get; set; }
-        public ICommand NavigateToMenuPageCommand { get; set; }
-        public ICommand NavigateToFilmsPageCommand { get; set; }
-        public ICommand FavoriteMovieCommand => new Command<Movie>(movie =>
+
+        public ICommand FavoriteMovieCommand => new Command<Movie>(movie => Realm.GetInstance().Write(() => movie.IsFavorite = movie.IsFavorite == false ? true : false));
+
+        public ICommand DetailsCommand => new DelegateCommand<Movie>(async (movie) =>
         {
-
-            var db = Realm.GetInstance();
-            db.Write(() =>
-            {
-                try
-                {
-                    movie.IsFavorite = movie.IsFavorite == false ? true : false;
-                }
-                catch (Exception ex)
-                {
-
-                }
-            });
+            var id = movie.ID;
+            var q = await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", id } });
         });
 
-        public ICommand DetailsCommand => new Command<Movie>(async (movie) =>
-        {
-            await CoreMethods.PushPageModel<EventDetailsPageModel>(movie.ID);
-        });
 
-        #endregion
         public IRealmCollection<Movie> UpComingEvents { get; set; }
         public IRealmCollection<Movie> FavoriteMovies { get; set; }
         public List<MovieLists> MoviesModel { get; set; } = new List<MovieLists>();
@@ -60,144 +43,93 @@ namespace Makedox2019.PageModels
             public event PropertyChangedEventHandler PropertyChanged;
         }
 
-        #region CTOR
-        public UpcomingEventsPageModel()
+        public UpcomingEventsPageModel(INavigationService navigationService)
+            : base(navigationService)
         {
-            SetCommands();
         }
 
-        protected override void ViewIsAppearing(object sender, EventArgs e)
+        void SyncData()
         {
-            base.ViewIsAppearing(sender, e);
-            SyncData();
-
-        }
-
-
-
-        public override void Init(object initData)
-        {
-            base.Init(initData);
-
-        }
-
-        #endregion
-
-
-        #region Methods
-
-        private void SetCommands()
-        {
-            NavigateToFilmsPageCommand = new Command(NavigateToFilmsPage);
-            NavigateToUpcomingEventsPageCommand = new Command(NavigateToUpcommingEventsPage);
-            NavigateToTimeLinePageCommand = new Command(NavigateToTimeLinePage);
-            NavigateToMakedoxPageCommand = new Command(NavigateToMakedoxPage);
-            NavigateToMenuPageCommand = new Command(NavigateToMenuPage);
-
-        }
-
-        private void NavigateToMenuPage(object obj)
-        {
-            CoreMethods.PushPageModel<MenuPageModel>(true);
-        }
-
-        private void NavigateToMakedoxPage(object obj)
-        {
-            CoreMethods.PushPageModel<MakedoxPlusPageModel>(true);
-        }
-
-        private void NavigateToTimeLinePage(object obj)
-        {
-            CoreMethods.PushPageModel<TimelinePageModel>(true);
-        }
-
-        private void NavigateToUpcommingEventsPage(object obj)
-        {
-            CoreMethods.PushPageModel<UpcomingEventsPageModel>(true);
-        }
-
-        private void NavigateToFilmsPage(object obj)
-        {
-            CoreMethods.PushPageModel<FilmsPageModel>(true);
-        }
-
-        public async void SyncData()
-        {
-            using (var client = new HttpClient())
+            Device.BeginInvokeOnMainThread(async () =>
             {
-
-                var xv = UserDialogs.Instance;
-                using (UserDialogs.Instance.Loading("Loading...", null, null, true, MaskType.Black))
+                using (var client = new HttpClient())
                 {
-                    var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/.json");
-
-                    if (!res.IsSuccessStatusCode)
+                    var xv = UserDialogs.Instance;
+                    using (xv.Loading("Loading...", null, null, true, MaskType.Black))
                     {
-                        await Application.Current.MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
-                        return;
-                    }
+                        var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/.json");
 
-                    var stringContent = await res.Content.ReadAsStringAsync();
-                    var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm", Culture = System.Globalization.CultureInfo.GetCultureInfo("MK"), DateTimeStyles = System.Globalization.DateTimeStyles.AssumeUniversal };
-                    var booleanConverter = new BooleanConverter();
-                    var moviesList = JsonConvert.DeserializeObject<List<Movie>>(stringContent, converters: dtConverter);
-                    if (moviesList?.Count > 0)
-                    {
-                        var db = Realm.GetInstance();
-
-                        var currentMovies = db.All<Movie>().ToList();
-                        db.Write(() =>
+                        if (!res.IsSuccessStatusCode)
                         {
-                            var i = 1;
-                            db.RemoveAll<Notification>();
-                            NotificationCenter.Current.CancelAll();
-                            foreach (var movie in moviesList)
+                            await Application.Current.MainPage.DisplayAlert("Error", "Cannot retrieve movies data at this time. Please make sure you're connected to the internet and try again", "OK");
+                            return;
+                        }
+
+                        var stringContent = await res.Content.ReadAsStringAsync();
+                        var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm", Culture = System.Globalization.CultureInfo.GetCultureInfo("MK"), DateTimeStyles = System.Globalization.DateTimeStyles.AssumeUniversal };
+                        var booleanConverter = new BooleanConverter();
+                        var moviesList = JsonConvert.DeserializeObject<List<Movie>>(stringContent, converters: dtConverter);
+                        if (moviesList?.Count > 0)
+                        {
+                            var db = Realm.GetInstance();
+
+                            var currentMovies = db.All<Movie>().ToList();
+                            db.Write(() =>
                             {
-                                bool shouldUpdate = false;
-                                if (shouldUpdate = currentMovies.Any(x => x.ID == movie.ID))
-                                    movie.IsFavorite = currentMovies.FirstOrDefault(x => x.ID == movie.ID).IsFavorite;
-                                if (movie.CoverImage?.Contains("data:image/jpeg;base64,") == true)
-                                    movie.CoverImage = movie.CoverImage.Replace("data:image/jpeg;base64,", "");
-                                if (movie.LogoImage?.Contains("data:image/jpeg;base64,") == true)
-                                    movie.LogoImage = movie.CoverImage.Replace("data:image/jpeg;base64,", "");
-
-                                db.Add(movie, shouldUpdate);
-
-                                var notif = new Notification(i++, new Random(305006489).Next(100000, 600000));
-
-                                db.Add(notif);
-                                var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
-                                if (time < DateTime.Now)
-                                    time = DateTime.Now.AddMinutes(1);
-                                var notification = new NotificationRequest
+                                var i = 1;
+                                db.RemoveAll<Notification>();
+                                NotificationCenter.Current.CancelAll();
+                                foreach (var movie in moviesList)
                                 {
-                                    NotificationId = notif.NotificationId,
-                                    Title = movie.Title,
-                                    Description = $"will be displayed at {movie.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
-                                    ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
-                                    NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
-                                };
-                                NotificationCenter.Current.Show(notification);
-                            }
-                            UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
-                            FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
-                            MoviesModel = new List<MovieLists>
-                            {
+                                    bool shouldUpdate = false;
+                                    if (shouldUpdate = currentMovies.Any(x => x.ID == movie.ID))
+                                        movie.IsFavorite = currentMovies.FirstOrDefault(x => x.ID == movie.ID).IsFavorite;
+                                    if (movie.CoverImage?.Contains("data:image/jpeg;base64,") == true)
+                                        movie.CoverImage = movie.CoverImage.Replace("data:image/jpeg;base64,", "");
+                                    if (movie.LogoImage?.Contains("data:image/jpeg;base64,") == true)
+                                        movie.LogoImage = movie.CoverImage.Replace("data:image/jpeg;base64,", "");
+
+                                    db.Add(movie, shouldUpdate);
+
+                                    var notif = new Notification(i++, new Random(305006489).Next(100000, 600000));
+
+                                    db.Add(notif);
+                                    var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
+                                    if (time < DateTime.Now)
+                                        time = DateTime.Now.AddMinutes(1);
+                                    var notification = new NotificationRequest
+                                    {
+                                        NotificationId = notif.NotificationId,
+                                        Title = movie.Title,
+                                        Description = $"will be displayed at {movie.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
+                                        ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
+                                        NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
+                                    };
+                                    NotificationCenter.Current.Show(notification);
+                                }
+                                UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
+                                FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
+                                MoviesModel = new List<MovieLists>
+                                {
                                 new MovieLists { Movies = UpComingEvents, ShowAll = true },
                                 new MovieLists { Movies = FavoriteMovies }
-                            };
-                            
+                                };
 
-                            RaisePropertyChanged(nameof(UpComingEvents));
-                            RaisePropertyChanged(nameof(FavoriteMovies));
-                            RaisePropertyChanged(nameof(MoviesModel));
-                        });
+
+                                RaisePropertyChanged(nameof(UpComingEvents));
+                                RaisePropertyChanged(nameof(FavoriteMovies));
+                                RaisePropertyChanged(nameof(MoviesModel));
+                            });
+                            res.Dispose();
+                        }
                     }
                 }
-            }
+            });
         }
 
-        #endregion
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            SyncData();
+        }
     }
-
 }

@@ -18,13 +18,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FreshMvvm" Version="2.2.4" />
+    <PackageReference Include="Fody" Version="5.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Plugin.LocalNotification" Version="4.0.4" />
-    <PackageReference Include="Realm" Version="3.3.0" />
+    <PackageReference Include="Plugin.LocalNotification" Version="4.0.5" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1367" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.0.1" />
+    <PackageReference Include="Realm" Version="4.1.0" />
+    <PackageReference Include="Realm.Fody" Version="4.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.673156" />
     <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
@@ -88,15 +97,5 @@
 	<EmbeddedResource Update="Pages\MakedoxPlusPages\CoProPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Pages\EventDetailsPAge.xaml.cs">
-      <DependentUpon>EventDetailsPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 </Project>

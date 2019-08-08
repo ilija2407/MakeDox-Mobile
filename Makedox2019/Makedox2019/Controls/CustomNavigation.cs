@@ -2,13 +2,12 @@
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Threading.Tasks;
-//using BottomBar.XamarinForms;
 //using FreshMvvm;
 //using Xamarin.Forms;
 
 //namespace Makedox2019.Controls
 //{
-//    public class CustomNavigation : BottomBarPage, IFreshNavigationService
+//    public class CustomNavigation : TabbedPage, IFreshNavigationService
 //    {
 //        List<Page> _tabs = new List<Page>();
 //        public IEnumerable<Page> TabbedPages { get { return _tabs; } }
@@ -36,11 +35,11 @@
 //            var navigationContainer = CreateContainerPageSafe(page);
 //            navigationContainer.Title = title;
 //            if (!string.IsNullOrWhiteSpace(icon))
-//                navigationContainer.Icon = icon;
+//                navigationContainer.IconImageSource = icon;
 //            Children.Add(navigationContainer);
 
-//            BottomBarPageExtensions.SetTabColor(navigationContainer, Color.FromHex("#f7b217"));
-            
+//            //BottomBarPageExtensions.SetTabColor(navigationContainer, Color.FromHex("#f7b217"));
+
 
 //            return navigationContainer;
 //        }
