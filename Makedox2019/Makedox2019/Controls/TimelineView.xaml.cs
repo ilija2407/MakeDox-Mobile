@@ -196,7 +196,7 @@ namespace Makedox2019.Controls
         }
     }
 
-    public class TimelineItem : INotifyPropertyChanged
+    public class TimelineItem
     {
         public TimelineItem()
         {
@@ -214,7 +214,5 @@ namespace Makedox2019.Controls
         public int Id { get; set; }
         public DateTimeOffset? StartTime { get; set; }
         public DateTimeOffset? EndTime { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

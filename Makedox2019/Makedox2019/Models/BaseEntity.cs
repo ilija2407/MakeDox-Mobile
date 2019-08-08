@@ -1,10 +1,12 @@
-﻿using Realms;
+﻿using PropertyChanged;
+using Realms;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Makedox2019.Models
 {
+    [DoNotNotify]
     public class BaseEntity : RealmObject
     {
         [PrimaryKey]

@@ -1,4 +1,5 @@
-﻿using Realms;
+﻿using PropertyChanged;
+using Realms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +7,8 @@ using System.Text;
 
 namespace Makedox2019.Models
 {
-    public class Movie : RealmObject, INotifyPropertyChanged
+    [DoNotNotify]
+    public class Movie : RealmObject
     {
         [PrimaryKey]
         public int ID { get; set; }
@@ -37,6 +39,7 @@ namespace Makedox2019.Models
         }
     }
 
+    [DoNotNotify]
     public class Team : RealmObject
     {
         [PrimaryKey]

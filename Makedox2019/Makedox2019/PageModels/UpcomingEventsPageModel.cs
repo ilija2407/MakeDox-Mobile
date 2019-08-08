@@ -36,11 +36,10 @@ namespace Makedox2019.PageModels
         public List<MovieLists> MoviesModel { get; set; } = new List<MovieLists>();
 
 
-        public class MovieLists : INotifyPropertyChanged
+        public class MovieLists
         {
             public IRealmCollection<Movie> Movies { get; set; }
             public bool ShowAll { get; set; }
-            public event PropertyChangedEventHandler PropertyChanged;
         }
 
         public UpcomingEventsPageModel(INavigationService navigationService)
@@ -48,10 +47,8 @@ namespace Makedox2019.PageModels
         {
         }
 
-        void SyncData()
+        async Task SyncData()
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
                 using (var client = new HttpClient())
                 {
                     var xv = UserDialogs.Instance;
@@ -124,12 +121,14 @@ namespace Makedox2019.PageModels
                         }
                     }
                 }
-            });
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            SyncData();
+            if (Device.RuntimePlatform == Device.iOS)
+                Device.BeginInvokeOnMainThread(async () => await SyncData());
+            else
+                await SyncData();
         }
     }
 }
