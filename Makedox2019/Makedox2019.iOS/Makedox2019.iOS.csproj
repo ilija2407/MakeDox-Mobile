@@ -305,5 +305,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+    <BundleResource Include="Resources\timeline_msu.png" />
+    <BundleResource Include="Resources\timeline_kurshumliout.png" />
+    <BundleResource Include="Resources\timeline_kurshumli.png" />
+    <BundleResource Include="Resources\kinomilenium.png" />
   </ItemGroup>
 </Project>

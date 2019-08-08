@@ -6,14 +6,15 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"       
              IconImageSource="timeline_gray.png"
+             BackgroundImage="bgmoviedetails.png"
              NavigationPage.HasNavigationBar="False">
         <StackLayout
+            BackgroundColor="Transparent"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All" 
             VerticalOptions="FillAndExpand">
             <controls:TimelineView
                 x:Name="eventList"
-                BackgroundColor="White"
                 ItemsSource="{Binding GroupedMovies}"
                 VerticalOptions="FillAndExpand" />
         </StackLayout>

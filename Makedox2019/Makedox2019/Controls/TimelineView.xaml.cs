@@ -32,12 +32,9 @@ namespace Makedox2019.Controls
             base.OnPropertyChanged(propertyName);
             if (propertyName == ItemsSourceProperty.PropertyName)
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
                     grid.BatchBegin();
                     GenerateChildren();
                     grid.BatchCommit();
-                });
             }
         }
 
@@ -48,7 +45,7 @@ namespace Makedox2019.Controls
             grid.RowDefinitions.Clear();
 
 
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = 80 });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = 120 });
             DateTimeOffset? maxDate = ItemsSource.Max(x => x.Value.Max(y => y.EndTime));
             DateTimeOffset? minDate = ItemsSource.Min(x => x.Value.Min(y => y.StartTime));
 
@@ -66,7 +63,7 @@ namespace Makedox2019.Controls
             for (var i = 0; i < ItemsSource.Count; i++)
                 grid.RowDefinitions.Add(new RowDefinition());
 
-            var datesLabel = new Label { Text = "Dates" };
+            var datesLabel = new Label { Text = "Dates", VerticalTextAlignment = TextAlignment.End };
             var timesLabel = new Label { Text = "Times" };
             grid.Children.Add(datesLabel);
             grid.Children.Add(timesLabel);
@@ -79,15 +76,10 @@ namespace Makedox2019.Controls
             var maxColPlusSpan = 0;
             foreach (var item in ItemsSource)
             {
-                var locationLabel = new Label()
-                {
-                    Text = item.Key,
-                    WidthRequest = 70,
-                    HeightRequest = 50
-                };
-                grid.Children.Add(locationLabel);
-                Grid.SetRow(locationLabel, movieRow);
-                Grid.SetColumn(locationLabel, 0);
+                var titleLayout = GetVenueTitleForCategory(item.Key);
+                grid.Children.Add(titleLayout);
+                Grid.SetRow(titleLayout, movieRow);
+                Grid.SetColumn(titleLayout, 0);
 
                 foreach (var movie in item.Value)
                 {
@@ -103,8 +95,9 @@ namespace Makedox2019.Controls
                         Text = movie.Title,
                         ClassId = movie.Id.ToString(),
                         HeightRequest = 40,
-                        BackgroundColor = Color.Black,
-                        TextColor = Color.White
+                        BackgroundColor = Color.FromRgba(0, 0, 0, .5),
+                        TextColor = Color.White,
+                        VerticalTextAlignment = TextAlignment.End
                     };
                     grid.Children.Add(movieLabel);
                     Grid.SetRow(movieLabel, movieRow);
@@ -115,6 +108,44 @@ namespace Makedox2019.Controls
                 }
                 movieRow++;
             }
+        }
+
+        FFImageLoading.Forms.CachedImage GetVenueTitleForCategory(string category)
+        {
+            var layout = new StackLayout
+            {
+                BackgroundColor = Color.FromHex("#fcdc6b"),
+                WidthRequest = 70,
+                HeightRequest = 70
+            };
+            var locationLabel = new Label()
+            {
+                Text = category
+            };
+            var icon = new FFImageLoading.Forms.CachedImage
+            {
+                HeightRequest = 80,
+                WidthRequest = 100,
+                Margin = new Thickness(10, 0)
+            };
+            switch(category.ToLowerInvariant())
+            {
+                case "kurshumli an":
+                    icon.Source = "timeline_kurshumli.png";
+                    break;
+                case "kurshumli out":
+                    icon.Source = "timeline_kurshumliout.png";
+                    break;
+                case "кино милениум":
+                    icon.Source = "kinomilenium.png";
+                    break;
+                case "mkc":
+                    icon.Source = "timeline_msu.png";
+                    break;
+            }
+            layout.Children.Add(locationLabel);
+            layout.Children.Add(icon);
+            return icon;
         }
 
         int GetColumnForDate(DateTimeOffset? date)
@@ -160,13 +191,15 @@ namespace Makedox2019.Controls
                 var dateLabel = new Label()
                 {
                     FormattedText = formattedDate,
-                    WidthRequest = 40
+                    WidthRequest = 40,
+                    BackgroundColor = Color.FromRgba(252, 245, 106, .5)
                 };
                 var timeLabel = new Label()
                 {
                     Text = tempDate.Value.ToString("HH:mm"),
                     WidthRequest = 70,
-                    HeightRequest = 50
+                    HeightRequest = 50,
+                    BackgroundColor = Color.FromRgba(255, 255, 255, .5)
                 };
                 TimesWithColumns.Add(new KeyValuePair<DateTimeOffset, int>(tempDate.Value, column));
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = 50 });
