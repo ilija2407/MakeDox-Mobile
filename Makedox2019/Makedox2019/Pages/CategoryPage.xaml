@@ -30,7 +30,7 @@
                             Orientation="Horizontal"
                             Margin="0,10">
                                        <ff:CachedImage
-                                            Source="{Binding CoverImage}" 
+                                            Source="{Binding LogoImage}" 
                                             Aspect="AspectFit"
                                             HorizontalOptions="Start" 
                                             WidthRequest="70"
