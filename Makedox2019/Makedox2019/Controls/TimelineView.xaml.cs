@@ -1,4 +1,5 @@
 ﻿using Makedox2019.Models;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,14 +7,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Makedox2019.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TimelineView : ScrollView
+    public partial class TimelineView : StackLayout
     {
         public static BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(Dictionary<string, List<TimelineItem>>), typeof(TimelineView));
         public Dictionary<string, List<TimelineItem>> ItemsSource
@@ -32,22 +33,23 @@ namespace Makedox2019.Controls
             base.OnPropertyChanged(propertyName);
             if (propertyName == ItemsSourceProperty.PropertyName)
             {
-                    grid.BatchBegin();
-                    GenerateChildren();
-                    grid.BatchCommit();
+                grid.BatchBegin();
+                GenerateDateLabels();
+                GenerateChildren(ItemsSource.Min(x => x.Value.Min(y => y.StartTime)));
+                grid.BatchCommit();
             }
         }
 
-        void GenerateChildren()
+        void GenerateChildren(DateTimeOffset? date)
         {
+            SelectDateLabel(date.Value.Date);
             grid.Children.Clear();
             grid.ColumnDefinitions.Clear();
             grid.RowDefinitions.Clear();
 
-
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = 120 });
-            DateTimeOffset? maxDate = ItemsSource.Max(x => x.Value.Max(y => y.EndTime));
-            DateTimeOffset? minDate = ItemsSource.Min(x => x.Value.Min(y => y.StartTime));
+            DateTimeOffset? maxDate = ItemsSource.Max(x => x.Value.Where(y => y.StartTime.Value.Date == date.Value.Date).Max(y => y.EndTime));
+            DateTimeOffset? minDate = ItemsSource.Min(x => x.Value.Where(y => y.StartTime.Value.Date == date.Value.Date).Min(y => y.StartTime));
 
             while (minDate.Value.Minute % 15 != 0)
                 minDate = minDate.Value.AddMinutes(-1);
@@ -57,18 +59,13 @@ namespace Makedox2019.Controls
 
             PopulateDates(minDate, maxDate);
 
-            grid.RowDefinitions.Add(new RowDefinition { Height = 60 });
             grid.RowDefinitions.Add(new RowDefinition { Height = 20 });
 
             for (var i = 0; i < ItemsSource.Count; i++)
                 grid.RowDefinitions.Add(new RowDefinition());
 
-            var datesLabel = new Label { Text = "Dates", VerticalTextAlignment = TextAlignment.End };
             var timesLabel = new Label { Text = "Times" };
-            grid.Children.Add(datesLabel);
             grid.Children.Add(timesLabel);
-            Grid.SetColumn(datesLabel, 0);
-            Grid.SetRow(datesLabel, 0);
             Grid.SetColumn(timesLabel, 0);
             Grid.SetRow(timesLabel, 1);
 
@@ -128,7 +125,7 @@ namespace Makedox2019.Controls
                 WidthRequest = 100,
                 Margin = new Thickness(10, 0)
             };
-            switch(category.ToLowerInvariant())
+            switch (category.ToLowerInvariant())
             {
                 case "kurshumli an":
                     icon.Source = "timeline_kurshumli.png";
@@ -155,7 +152,7 @@ namespace Makedox2019.Controls
                 return time;
 
             var theDate = TimesWithColumns.FirstOrDefault(x => x.Key.AddMinutes(-14) < date && date < x.Key.AddMinutes(14));
-            return theDate.Value+1;
+            return theDate.Value + 1;
         }
 
 
@@ -168,6 +165,60 @@ namespace Makedox2019.Controls
             var endColumn = GetColumnForDate(movie.EndTime);
             return Math.Abs(startcolumn - endColumn);
         }
+
+        void SelectDateLabel(DateTime date)
+        {
+            foreach (Label label in daysGrid.Children)
+                label.TextColor = label.ClassId == date.ToShortDateString() ? Color.Orange : Color.Default;
+        }
+
+        void GenerateDateLabels()
+        {
+            daysGrid.Children.Clear();
+            daysGrid.ColumnDefinitions.Clear();
+
+
+            daysGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = 120 });
+            var datesLabel = new Label { Text = "Dates", VerticalTextAlignment = TextAlignment.End };
+            daysGrid.Children.Add(datesLabel);
+            Grid.SetColumn(datesLabel, 0);
+            Grid.SetRow(datesLabel, 0);
+
+            var daysList = new List<DateTime>();
+            foreach (var item in ItemsSource)
+                foreach (var movie in item.Value)
+                    if (daysList.Any(x => x.Date == movie.StartTime.Value.Date) == false)
+                        daysList.Add(movie.StartTime.Value.Date);
+
+            daysList.OrderBy(x => x.Date).ToList().ForEach(x =>
+            {
+                daysGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = 50 });
+                var formattedDate = new FormattedString();
+                formattedDate.Spans.Add(new Span { Text = x.ToString("ddd") });
+                formattedDate.Spans.Add(new Span { Text = Environment.NewLine });
+                formattedDate.Spans.Add(new Span { Text = x.ToString("dd") });
+                formattedDate.Spans.Add(new Span { Text = Environment.NewLine });
+                formattedDate.Spans.Add(new Span { Text = x.ToString("MMM") });
+                var dateLabel = new Label()
+                {
+                    FormattedText = formattedDate,
+                    WidthRequest = 40,
+                    BackgroundColor = Color.FromRgba(252, 245, 106, .5),
+                    ClassId = x.Date.ToShortDateString()
+                };
+                dateLabel.GestureRecognizers.Add(new TapGestureRecognizer
+                {
+                    Command = SelectDateCommand,
+                    CommandParameter = new DateTimeOffset(x)
+                });
+                daysGrid.Children.Add(dateLabel);
+                Grid.SetRow(dateLabel, 0);
+                Grid.SetColumn(dateLabel, daysGrid.Children.Count - 1);
+            });
+
+        }
+
+        public ICommand SelectDateCommand => new DelegateCommand<DateTimeOffset?>(date => GenerateChildren(date));
 
         public List<KeyValuePair<DateTimeOffset, int>> TimesWithColumns { get; set; } = new List<KeyValuePair<DateTimeOffset, int>>();
         private void PopulateDates(DateTimeOffset? minDate, DateTimeOffset? maxDate)
@@ -182,18 +233,7 @@ namespace Makedox2019.Controls
                     tempDate = tempDate.Value.AddMinutes(15);
                     continue;
                 }
-                var formattedDate = new FormattedString();
-                formattedDate.Spans.Add(new Span { Text = tempDate.Value.ToString("ddd") });
-                formattedDate.Spans.Add(new Span { Text = Environment.NewLine });
-                formattedDate.Spans.Add(new Span { Text = tempDate.Value.ToString("dd") });
-                formattedDate.Spans.Add(new Span { Text = Environment.NewLine });
-                formattedDate.Spans.Add(new Span { Text = tempDate.Value.ToString("MMM") });
-                var dateLabel = new Label()
-                {
-                    FormattedText = formattedDate,
-                    WidthRequest = 40,
-                    BackgroundColor = Color.FromRgba(252, 245, 106, .5)
-                };
+
                 var timeLabel = new Label()
                 {
                     Text = tempDate.Value.ToString("HH:mm"),
@@ -203,10 +243,7 @@ namespace Makedox2019.Controls
                 };
                 TimesWithColumns.Add(new KeyValuePair<DateTimeOffset, int>(tempDate.Value, column));
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = 50 });
-                grid.Children.Add(dateLabel);
                 grid.Children.Add(timeLabel);
-                Grid.SetRow(dateLabel, 0);
-                Grid.SetColumn(dateLabel, column);
                 Grid.SetRow(timeLabel, 1);
                 Grid.SetColumn(timeLabel, column);
                 column++;
