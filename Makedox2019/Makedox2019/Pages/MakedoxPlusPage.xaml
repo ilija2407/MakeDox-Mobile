@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.MakedoxPlusPage"       
              IconImageSource="makedox_gray.png"
+             BackgroundColor="White"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        
         <StackLayout
             Margin="20"
             VerticalOptions="Start">
@@ -14,14 +17,14 @@
                     <TapGestureRecognizer Command="{Binding NavigateToDocPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="make_copro.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToCoProPageCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
             <Image Source="workshop.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToWorkshopPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="make_copro.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToCoProPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
             <Image Source="photo.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
@@ -29,10 +32,22 @@
                     <TapGestureRecognizer Command="{Binding NavigateToPhotoPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="music.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="out_ofcom.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToOutOfCompetitionCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="nightstories.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToMusicPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
+            <Image Source="collab.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToColaborationPageCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
         </StackLayout>
+    </ContentPage.Content>
+
 </ContentPage>

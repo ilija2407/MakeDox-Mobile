@@ -23,7 +23,8 @@
                     <ListView.Header>
                         <StackLayout Spacing="0">
                             <ff:CachedImage
-                            Aspect="AspectFit"
+                            Aspect="AspectFill"
+                                HorizontalOptions="FillAndExpand"
                             Source="bghome.png" />
                             <StackLayout BackgroundColor="#fcf9d8"
                                      Padding="10, 0">

@@ -15,6 +15,10 @@ namespace Makedox2019.PageModels
         public int ID { get; set; }
         public Movie Model { get; set; }
 
+        public bool ItemVisibility { get; set; }
+
+        public bool OneLinerVisibility { get; set; }
+        
         public EventDetailsPageModel(INavigationService navigationService)
             : base(navigationService)
         {
@@ -24,11 +28,19 @@ namespace Makedox2019.PageModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             ID = (int)parameters["Id"];
+            ItemVisibility = true;
+            OneLinerVisibility = false;
 
             var db = Realm.GetInstance();
             var movie = db.Find<Movie>(ID);
             if (movie == null)
                 return;
+
+            if(movie.Type!= "Movies")
+            {
+                ItemVisibility = false;
+                OneLinerVisibility = true;
+            }
 
             Model = movie;
         }

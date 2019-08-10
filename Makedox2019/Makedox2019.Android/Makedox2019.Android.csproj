@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidSupportedAbis />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -285,6 +292,10 @@
     <AndroidResource Include="Resources\drawable\timeline_kurshumliout.png" />
     <AndroidResource Include="Resources\drawable\timeline_kurshumli.png" />
     <AndroidResource Include="Resources\drawable\timeline_msu.png" />
+    <AndroidResource Include="Resources\drawable\nightstories.jpg" />
+    <AndroidResource Include="Resources\drawable\out_ofcom.jpg" />
+    <AndroidResource Include="Resources\drawable\collab.jpg" />
+    <AndroidResource Include="Resources\drawable\copro.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="FixGuava" AfterTargets="_AddAndroidCustomMetaData">

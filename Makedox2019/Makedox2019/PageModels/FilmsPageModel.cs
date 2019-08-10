@@ -148,7 +148,7 @@ namespace Makedox2019.PageModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             var db = Realm.GetInstance();
-            MoviesList = db.All<Movie>().OrderBy(x => x.StartTime).ToList();
+            MoviesList = db.All<Movie>().Where(x => x.Type == "Movies").OrderBy(x => x.StartTime).ToList();
             CategoriesList = MoviesList.GroupBy(x => x.Category).Select(x => new Category { Title = x.Key.ToUpperInvariant() }).ToList();
         }
 

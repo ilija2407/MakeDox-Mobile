@@ -5,6 +5,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              IconImageSource="menu_gray.png"
+             BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
         <StackLayout
             Margin="20"

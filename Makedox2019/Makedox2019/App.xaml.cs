@@ -60,6 +60,9 @@ namespace Makedox2019
             containerRegistry.RegisterForNavigation<MusicPage, MusicPageModel>();
             containerRegistry.RegisterForNavigation<DocTalksPage, DocTalksPageModel>();
             containerRegistry.RegisterForNavigation<CoProPage, CoProPageModel>();
+            containerRegistry.RegisterForNavigation<CollaborationPage, ColaborationPageModel>();
+            containerRegistry.RegisterForNavigation<OutOfCompetitionPage, OutOfCompetitionPageModel>();
+
         }
 
         protected override void OnStart()

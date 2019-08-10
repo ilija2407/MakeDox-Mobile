@@ -33,7 +33,7 @@
                         <Label Text="{Binding Model.Location}" />
                     </StackLayout>
                 </Grid>
-                <Grid>
+            <Grid IsVisible="{Binding ItemVisibility}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"  />
                         <ColumnDefinition Width="2*" />
@@ -60,6 +60,7 @@
                     </StackLayout>
                 </Grid>
                 <Label Text="{Binding Model.Description}" />
-            </StackLayout>
+            <Label Text="{Binding Model.OneLiner}" IsVisible="{Binding OneLinerVisibility}"/>
+        </StackLayout>
         </ScrollView>
 </ContentPage>

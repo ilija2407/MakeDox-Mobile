@@ -14,8 +14,10 @@ namespace Makedox2019.PageModels
         public ICommand NavigateToPhotoPageCommand { get; set; }
         public ICommand NavigateToMusicPageCommand { get; set; }
         public ICommand NavigateToCoProPageCommand { get; set; }
+        public ICommand NavigateToColaborationPageCommand { get; set; }
+        public ICommand NavigateToOutOfCompetitionCommand { get; set; }
 
-        
+
 
         #endregion
 
@@ -34,6 +36,27 @@ namespace Makedox2019.PageModels
             NavigateToPhotoPageCommand = new Command(NavigateToPhotoPage);
             NavigateToMusicPageCommand = new Command(NavigateToMusicPage);
             NavigateToCoProPageCommand = new Command(NavigateToCoProPage);
+
+            NavigateToColaborationPageCommand = new Command(NavigateTNavigateToColaborationPage);
+            NavigateToOutOfCompetitionCommand = new Command(NavigateToCNavigateToOutOfCompetition);
+        }
+
+        private void NavigateTNavigateToColaborationPage(object obj)
+        {
+            _navigationService.NavigateAsync(nameof(CollaborationPage));
+            ////push a basic page Modally
+            //var page = FreshPageModelResolver.ResolvePageModel<CoProPageModel>();
+            //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
+        }
+        private async void NavigateToCNavigateToOutOfCompetition(object obj)
+        {
+            await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=OUT OF COMPETITION");
+            // _navigationService.NavigateAsync(nameof(OutOfCompetitionPage));
+            ////push a basic page Modally
+            //var page = FreshPageModelResolver.ResolvePageModel<CoProPageModel>();
+            //var basicNavContainer = new FreshNavigationContainer(page, "secondNavPage");
+            //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
         }
 
         private void NavigateToCoProPage(object obj)
@@ -65,9 +88,10 @@ namespace Makedox2019.PageModels
             //await CoreMethods.PushNewNavigationServiceModal(basicNavContainer, new FreshBasePageModel[] { page.GetModel() });
         }
 
-        private void NavigateToWorkshopPage(object obj)
+        private async void NavigateToWorkshopPage(object obj)
         {
-            _navigationService.NavigateAsync(nameof(WorkshopsPage));
+            var q = await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=Workshops");
+           // _navigationService.NavigateAsync(nameof(WorkshopsPage));
 
             //push a basic page Modally
             //var page = FreshPageModelResolver.ResolvePageModel<WorkshopsPageModel>();

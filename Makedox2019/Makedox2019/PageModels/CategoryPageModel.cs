@@ -34,6 +34,10 @@ namespace Makedox2019.PageModels
             Title = (string)parameters["Category"];
             var db = Realm.GetInstance();
             MoviesList = db.All<Movie>().Where(x => x.Category == Title).OrderBy(x => x.StartTime).ToList();
+            if (Title == "Workshops")
+            {
+                MoviesList.Distinct().ToList();
+            }
             RaisePropertyChanged(nameof(MoviesList));
         }
     }
