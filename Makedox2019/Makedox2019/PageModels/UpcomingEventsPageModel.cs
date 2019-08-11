@@ -54,7 +54,7 @@ namespace Makedox2019.PageModels
                     var xv = UserDialogs.Instance;
                     using (xv.Loading("Loading...", null, null, true, MaskType.Black))
                     {
-                        var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/.json");
+                        var res = await client.GetAsync("https://gist.githubusercontent.com/ice-j/2b60034d079a306182160cc1f9c1516f/raw/movies.json#" + DateTime.Now.Ticks.ToString());
 
                         if (!res.IsSuccessStatusCode)
                         {

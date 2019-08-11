@@ -46,8 +46,11 @@ namespace Makedox2019.Controls
             grid.Children.Clear();
             grid.ColumnDefinitions.Clear();
             grid.RowDefinitions.Clear();
+            locations.Children.Clear();
+            locations.RowDefinitions.Clear();
+            locations.ColumnDefinitions.Clear();
+            locations.ColumnDefinitions.Add(new ColumnDefinition { Width = 120 });
 
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = 120 });
             DateTimeOffset? maxDate = ItemsSource.Max(x => x.Value.Where(y => y.StartTime.Value.Date == date.Value.Date).Max(y => y.EndTime));
             DateTimeOffset? minDate = ItemsSource.Min(x => x.Value.Where(y => y.StartTime.Value.Date == date.Value.Date).Min(y => y.StartTime));
 
@@ -60,23 +63,21 @@ namespace Makedox2019.Controls
             PopulateDates(minDate, maxDate);
 
             grid.RowDefinitions.Add(new RowDefinition { Height = 20 });
+            locations.RowDefinitions.Add(new RowDefinition { Height = 20 });
 
             for (var i = 0; i < ItemsSource.Count; i++)
                 grid.RowDefinitions.Add(new RowDefinition());
 
             var timesLabel = new Label { Text = "Times" };
-            grid.Children.Add(timesLabel);
-            Grid.SetColumn(timesLabel, 0);
-            Grid.SetRow(timesLabel, 1);
+            locations.Children.Add(timesLabel);
 
-            var movieRow = 2;
-            var maxColPlusSpan = 0;
+            var movieRow = 1;
             foreach (var item in ItemsSource)
             {
                 var titleLayout = GetVenueTitleForCategory(item.Key);
-                grid.Children.Add(titleLayout);
-                Grid.SetRow(titleLayout, movieRow);
-                Grid.SetColumn(titleLayout, 0);
+                locations.RowDefinitions.Add(new RowDefinition());
+                locations.Children.Add(titleLayout);
+                Grid.SetRow(titleLayout, locations.Children.Count - 1);
 
                 foreach (var movie in item.Value)
                 {
@@ -100,8 +101,6 @@ namespace Makedox2019.Controls
                     Grid.SetRow(movieLabel, movieRow);
                     Grid.SetColumn(movieLabel, column);
                     Grid.SetColumnSpan(movieLabel, columnSpan);
-                    if (maxColPlusSpan < column + columnSpan)
-                        maxColPlusSpan = column + columnSpan;
                 }
                 movieRow++;
             }
@@ -109,16 +108,6 @@ namespace Makedox2019.Controls
 
         FFImageLoading.Forms.CachedImage GetVenueTitleForCategory(string category)
         {
-            var layout = new StackLayout
-            {
-                BackgroundColor = Color.FromHex("#fcdc6b"),
-                WidthRequest = 70,
-                HeightRequest = 70
-            };
-            var locationLabel = new Label()
-            {
-                Text = category
-            };
             var icon = new FFImageLoading.Forms.CachedImage
             {
                 HeightRequest = 80,
@@ -140,8 +129,6 @@ namespace Makedox2019.Controls
                     icon.Source = "timeline_msu.png";
                     break;
             }
-            layout.Children.Add(locationLabel);
-            layout.Children.Add(icon);
             return icon;
         }
 
@@ -152,7 +139,7 @@ namespace Makedox2019.Controls
                 return time;
 
             var theDate = TimesWithColumns.FirstOrDefault(x => x.Key.AddMinutes(-14) < date && date < x.Key.AddMinutes(14));
-            return theDate.Value + 1;
+            return theDate.Value;
         }
 
 
@@ -176,7 +163,6 @@ namespace Makedox2019.Controls
         {
             daysGrid.Children.Clear();
             daysGrid.ColumnDefinitions.Clear();
-
 
             daysGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = 120 });
             var datesLabel = new Label { Text = "Dates", VerticalTextAlignment = TextAlignment.End };
@@ -224,7 +210,7 @@ namespace Makedox2019.Controls
         private void PopulateDates(DateTimeOffset? minDate, DateTimeOffset? maxDate)
         {
             var tempDate = minDate;
-            var column = 1;
+            var column = 0;
             TimesWithColumns.Clear();
             while (maxDate >= tempDate)
             {
@@ -244,7 +230,7 @@ namespace Makedox2019.Controls
                 TimesWithColumns.Add(new KeyValuePair<DateTimeOffset, int>(tempDate.Value, column));
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = 50 });
                 grid.Children.Add(timeLabel);
-                Grid.SetRow(timeLabel, 1);
+                Grid.SetRow(timeLabel, 0);
                 Grid.SetColumn(timeLabel, column);
                 column++;
                 tempDate = tempDate.Value.AddMinutes(15);

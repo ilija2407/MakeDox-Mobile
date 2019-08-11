@@ -9,7 +9,10 @@
     <ScrollView Orientation="Horizontal">
         <Grid x:Name="daysGrid" />
     </ScrollView>
-    <ScrollView Orientation="Horizontal" VerticalOptions="FillAndExpand">
-        <Grid x:Name="grid" />
-    </ScrollView>
+    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="0">
+        <Grid x:Name="locations" VerticalOptions="FillAndExpand" />
+        <ScrollView Orientation="Horizontal" VerticalOptions="FillAndExpand">
+            <Grid x:Name="grid" />
+        </ScrollView>
+    </StackLayout>
 </StackLayout>
