@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.TicketsPage"
@@ -7,28 +7,12 @@
              NavigationPage.HasNavigationBar="False"             
              BackgroundColor="White">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Orientation="Vertical" Margin="20,0,20,0">
-            <Image Source="collab.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" Margin="0,20,0,0"/>
+            <Image Source="tickets.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" Margin="0,20,0,0"/>
             <Label Margin="0,20,0,0" 
-                   Text="Tickets can be purchased online at https://www.kupikartizase.com/category/makedoks and in front of Kurshumli An.
-
-Festival ticket:
-
-You can purchase the festival ticket for all screenings and events for a discount price of 1.600 MKD online through https://www.kupikartizase.com/category/makedoks or in front of Kurshumli An.
-
-Tickets for screenings:
-
-Opening night evening ticket (screening + concert of John Parish and Marta Collica with special guest Giorgia Poli) - 400 MKD
-Opening night concert - 300 MKD
-Evening ticket for 2 screenings at Kurshumli An - 200 MKD
-Single ticket for the 2nd screening at Kurshumli An - 150 MKD
-Single ticket for screenings at Kurshumli Out - 100 MKD
-Single ticket for screening in Cinema Millennium - 100 MKD
-Single ticket for screenings in MKC - 50 MKD
-Single ticket for screening of &quot;Honeyland&quot; in MKC - 100 MKD
-
-*The entrance for the screenings in MKC is free for kids until the age of 12
-"/>
+                   Text="Tickets can be purchased online at &#x0a;https://www.kupikartizase.com/category/makedoks &#x0a;and in front of Kurshumli An.&#x0a;&#x0a;Festival ticket:&#x0a;You can purchase the festival ticket for all screenings and events for a discount price of 1.600 MKD online through&#x0a; https://www.kupikartizase.com/category/makedoks &#x0a;or in front of Kurshumli An.&#x0a;&#x0a;Tickets for screenings:&#x0a;Opening night evening ticket (screening + concert of John Parish and Marta Collica with special guest Giorgia Poli) - 400 MKD&#x0a;&#x0a;Opening night concert - 300 MKD&#x0a;&#x0a;Evening ticket for 2 screenings at Kurshumli An - 200 MKD&#x0a;&#x0a;Single ticket for the 2nd screening at Kurshumli An - 150 MKD&#x0a;&#x0a;Single ticket for screenings at Kurshumli Out - 100 MKD&#x0a;&#x0a;Single ticket for screening in Cinema Millennium - 100 MKD&#x0a;&#x0a;Single ticket for screenings in MKC - 50 MKD&#x0a;&#x0a;Single ticket for screening of &quot;Honeyland&quot; in MKC - 100 MKD&#x0a;&#x0a;*The entrance for the screenings in MKC is free for kids until the age of 12"/>
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

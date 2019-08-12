@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.CoProPage"
@@ -14,18 +14,7 @@
 
             <StackLayout Orientation="Vertical" Margin="20,0,20,0">
 
-                <Label Text="Coproduction is the motto of the 10th edition of the Festival for Creative Documentary Film MakeDox, a leading trendsetter of creativity in its region and further. So, right before the dawn of our new festival edition, we believe that it's our duty to initiate a meeting that would effectively draw the attention to the necessary changes that could prompt documentary coproductions in the region.
-                        Why?
-                        Namely, most of the countries in the Western Balkans rely on a rather old-fashioned regulative implemented in film funds, 
-                       which was tailored to the professional experiences realized in the realm of fiction film. These practices, however, have
-                       proven to be counterproductive regarding the possibilities of creating high-quality documentary coproductions in the region.
-                        Our idea is to provide space for research and studying of documentary forms, leading to the creation of documentary films 
-                       - a space for high-quality production and post-production that would finally offer promotion and sale of documentary films.
-                        Therefore, all of you ( creative producers, authors and documentary film producers) who dedicate most of your time to creating 
-                       documentary forms in the Western Balkans, are invited to join us!
-                        You are welcomed to share and exchange your experiences, so we could create a fertile ground for collaboration that would provide
-                       a brighter future for the creative documentary forms in the region.
-                        The team of MakeDox is looking forward to your attendance!" 
+                <Label Text="Coproduction is the motto of the 10th edition of the Festival for Creative Documentary Film MakeDox, a leading trendsetter of creativity in its region and further. So, right before the dawn of our new festival edition, we believe that it's our duty to initiate a meeting that would effectively draw the attention to the necessary changes that could prompt documentary coproductions in the region. Why?&#x0a;Namely, most of the countries in the Western Balkans rely on a rather old-fashioned regulative implemented in film funds, which was tailored to the professional experiences realized in the realm of fiction film. These practices, however, have proven to be counterproductive regarding the possibilities of creating high-quality documentary coproductions in the region.&#x0a;Our idea is to provide space for research and studying of documentary forms, leading to the creation of documentary films - a space for high-quality production and post-production that would finally offer promotion and sale of documentary films. Therefore, all of you ( creative producers, authors and documentary film producers) who dedicate most of your time to creating documentary forms in the Western Balkans, are invited to join us! You are welcomed to share and exchange your experiences, so we could create a fertile ground for collaboration that would provide a brighter future for the creative documentary forms in the region. The team of MakeDox is looking forward to your attendance!" 
                        FontSize="Small"/>
 
 
