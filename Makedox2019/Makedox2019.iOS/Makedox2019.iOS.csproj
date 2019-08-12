@@ -322,8 +322,7 @@
     <BundleResource Include="Resources\out_ofcom.jpg" />
     <BundleResource Include="Resources\collab.jpg" />
     <BundleResource Include="Resources\copro.jpg" />
+    <BundleResource Include="Resources\background.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets.xcassets\MyNewLaunch.launchimage\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
