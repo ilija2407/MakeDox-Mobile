@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.MakedoxPlusPage"       
@@ -32,17 +32,17 @@
                     <TapGestureRecognizer Command="{Binding NavigateToPhotoPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="out_ofcom.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="out_ofcom.jpg" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToOutOfCompetitionCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="nightstories.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="nightstories.jpg" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToMusicPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="collab.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="collab.jpg" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToColaborationPageCommand}" />
                 </Image.GestureRecognizers>
