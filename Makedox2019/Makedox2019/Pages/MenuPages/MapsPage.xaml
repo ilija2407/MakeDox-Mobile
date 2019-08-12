@@ -1,20 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.MapsPage"
+                 xmlns:circleBtn="clr-namespace:ButtonCircle.FormsPlugin.Abstractions;assembly=ButtonCircle.FormsPlugin.Abstractions"
+                 xmlns:gMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="back.png"  IsVisible="false" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Margin="20,0,0,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoBack}" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <gMaps:Map
+                MapClicked="googleMap_MapClicked"
+                PinClicked="googleMap_PinClicked"
+                x:Name="googleMap"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                MapType="Street"/>
+            <circleBtn:CircleButton
+                x:Name="goBtn"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.05,0.95,50,50"
+                Clicked="goBtn_Clicked"
+                FontSize="18" 
+                TextColor="White"
+                Text="GO"
+                BackgroundColor="#4286F5"
+                IsVisible="False" 
+                BorderRadius="25"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                >
+                <circleBtn:CircleButton.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                </circleBtn:CircleButton.FontFamily>
+            </circleBtn:CircleButton>
+            
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

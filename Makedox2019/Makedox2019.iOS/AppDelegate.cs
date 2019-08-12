@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ButtonCircle.FormsPlugin.iOS;
 using FFImageLoading.Forms.Platform;
 using Foundation;
 using Prism;
@@ -29,7 +30,8 @@ namespace Makedox2019.iOS
             Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
-
+            Xamarin.FormsGoogleMaps.Init("AIzaSyCAXlNUOyvZuI9F4kus3dZSK_dkK4yV9ZU");
+            ButtonCircleRenderer.Init();
             return base.FinishedLaunching(app, options);
         }
 
