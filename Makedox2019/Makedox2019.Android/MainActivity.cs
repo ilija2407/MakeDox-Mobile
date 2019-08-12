@@ -25,7 +25,7 @@ namespace Makedox2019.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Window.SetBackgroundDrawable(null);
+            Window.SetBackgroundDrawable(new Android.Graphics.Drawables.ColorDrawable() { Color = Android.Graphics.Color.White });
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");

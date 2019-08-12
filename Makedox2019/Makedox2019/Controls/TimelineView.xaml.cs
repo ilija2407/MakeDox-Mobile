@@ -1,5 +1,6 @@
 ﻿using Makedox2019.Models;
 using Prism.Commands;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,13 @@ namespace Makedox2019.Controls
             }
         }
 
+        public static BindableProperty MovieTappedCommandProperty = BindableProperty.Create(nameof(MovieTappedCommand), typeof(ICommand), typeof(TimelineView));
+        public ICommand MovieTappedCommand
+        {
+            get => (ICommand)GetValue(MovieTappedCommandProperty);
+            set => SetValue(MovieTappedCommandProperty, value);
+        }
+
         void GenerateChildren(DateTimeOffset? date)
         {
             SelectDateLabel(date.Value.Date);
@@ -65,8 +73,6 @@ namespace Makedox2019.Controls
             grid.RowDefinitions.Add(new RowDefinition { Height = 20 });
             locations.RowDefinitions.Add(new RowDefinition { Height = 20 });
 
-            for (var i = 0; i < ItemsSource.Count; i++)
-                grid.RowDefinitions.Add(new RowDefinition());
 
             var timesLabel = new Label { Text = "Times" };
             locations.Children.Add(timesLabel);
@@ -74,6 +80,9 @@ namespace Makedox2019.Controls
             var movieRow = 1;
             foreach (var item in ItemsSource)
             {
+                if (string.IsNullOrEmpty(item.Key) || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant())
+                    continue;
+                grid.RowDefinitions.Add(new RowDefinition());
                 var titleLayout = GetVenueTitleForCategory(item.Key);
                 locations.RowDefinitions.Add(new RowDefinition());
                 locations.Children.Add(titleLayout);
@@ -81,12 +90,12 @@ namespace Makedox2019.Controls
 
                 foreach (var movie in item.Value)
                 {
-                    if (!movie.StartTime.HasValue)
+                    if (!movie.StartTime.HasValue || movie.StartTime.Value.Date != date.Value.Date)
                         continue;
 
                     var column = GetColumnForDate(movie.StartTime);
                     var columnSpan = GetColumnSpanForMovie(movie);
-                    if (column < 1 || columnSpan < 1 || (column + columnSpan > grid.ColumnDefinitions.Count))
+                    if (columnSpan < 1 || (column + columnSpan > grid.ColumnDefinitions.Count) || column + columnSpan < 1)
                         continue;
                     var movieLabel = new Label
                     {
@@ -97,6 +106,10 @@ namespace Makedox2019.Controls
                         TextColor = Color.White,
                         VerticalTextAlignment = TextAlignment.End
                     };
+                    movieLabel.GestureRecognizers.Add(new TapGestureRecognizer
+                    {
+                        Command = new DelegateCommand(() => movieTapped(movie.Id))
+                    });
                     grid.Children.Add(movieLabel);
                     Grid.SetRow(movieLabel, movieRow);
                     Grid.SetColumn(movieLabel, column);
@@ -104,6 +117,11 @@ namespace Makedox2019.Controls
                 }
                 movieRow++;
             }
+        }
+
+        void movieTapped(int id)
+        {
+            MovieTappedCommand?.Execute(id);
         }
 
         FFImageLoading.Forms.CachedImage GetVenueTitleForCategory(string category)
@@ -172,9 +190,13 @@ namespace Makedox2019.Controls
 
             var daysList = new List<DateTime>();
             foreach (var item in ItemsSource)
+            {
+                if (string.IsNullOrEmpty(item.Key) || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant())
+                    continue;
                 foreach (var movie in item.Value)
                     if (daysList.Any(x => x.Date == movie.StartTime.Value.Date) == false)
                         daysList.Add(movie.StartTime.Value.Date);
+            }
 
             daysList.OrderBy(x => x.Date).ToList().ForEach(x =>
             {
@@ -240,6 +262,10 @@ namespace Makedox2019.Controls
         bool HasMovieDisplayedAt(DateTimeOffset? date)
         {
             foreach (var item in ItemsSource)
+            {
+                if (string.IsNullOrEmpty(item.Key) || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant())
+                    continue;
+
                 foreach (var movie in item.Value)
                 {
                     var isAfterStart = movie.StartTime <= date;
@@ -247,6 +273,7 @@ namespace Makedox2019.Controls
                     if (isAfterStart && isBeforeEnd)
                         return true;
                 }
+            }
 
             return false;
         }

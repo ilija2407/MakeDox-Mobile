@@ -1,5 +1,7 @@
 ﻿using Makedox2019.Controls;
 using Makedox2019.Models;
+using Makedox2019.Pages;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Realms;
@@ -30,5 +32,6 @@ namespace Makedox2019.PageModels
         {
         }
 
+        public ICommand SelectMovieCommand => new DelegateCommand<int?>(async id => await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", id } }));
     }
 }

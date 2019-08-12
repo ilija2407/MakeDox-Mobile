@@ -14,6 +14,7 @@
             AbsoluteLayout.LayoutFlags="All" 
             VerticalOptions="FillAndExpand">
             <controls:TimelineView
+                MovieTappedCommand="{Binding SelectMovieCommand}"
                 x:Name="eventList"
                 ItemsSource="{Binding GroupedMovies}"
                 VerticalOptions="FillAndExpand" />
