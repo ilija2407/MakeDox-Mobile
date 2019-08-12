@@ -9,6 +9,7 @@
              NavigationPage.HasNavigationBar="False">
         <StackLayout
             Margin="20"
+            Orientation="Vertical"
             VerticalOptions="Start">
             <Image Source="info.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
                 <Image.GestureRecognizers>
