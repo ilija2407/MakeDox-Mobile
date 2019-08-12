@@ -239,6 +239,10 @@
     <BundleResource Include="Resources\timeline_gray.png" />
     <BundleResource Include="Resources\star.png" />
     <BundleResource Include="Resources\star_selected.png" />
+    <BundleResource Include="Resources\msu.png" />
+    <BundleResource Include="Resources\kurshumli_out.png" />
+    <BundleResource Include="Resources\kurshumli.png" />
+    <BundleResource Include="Resources\timeline_mkc.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\timeline.png" />

@@ -144,7 +144,7 @@ namespace Makedox2019.Controls
                     icon.Source = "kinomilenium.png";
                     break;
                 case "mkc":
-                    icon.Source = "timeline_msu.png";
+                    icon.Source = "timeline_mkc.png";
                     break;
             }
             return icon;

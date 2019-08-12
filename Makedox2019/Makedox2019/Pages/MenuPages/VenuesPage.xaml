@@ -1,21 +1,79 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Makedox2019.Pages.VenuesPage"
+                 xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="back.png"  IsVisible="false" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Margin="20,0,0,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoBack}" />
-                </Image.GestureRecognizers>
-            </Image>
-            
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             <StackLayout Orientation="Vertical" Margin="20,0,20,0">
+            <Image Source="venues.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" Margin="0,20,0,0"/>
+            <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
+                
+                        <ff:CachedImage  
+                                            Source="kurshumli.png" 
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Start" 
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            Margin="20,0,0,0">
+                                            <ff:CachedImage.Transformations>
+                                                <fftransformations:CircleTransformation/>
+                                            </ff:CachedImage.Transformations>
+                                        </ff:CachedImage>
+                
+                <Label Text="Kurshumli An" VerticalOptions="Center" Margin="10,0,0,0"/>
+                </StackLayout>
+                
+                        <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
+                        <ff:CachedImage  
+                                            Source="kurshumli_out.png" 
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Start" 
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            Margin="20,0,0,0">
+                                            <ff:CachedImage.Transformations>
+                                                <fftransformations:CircleTransformation/>
+                                            </ff:CachedImage.Transformations>
+                                        </ff:CachedImage>
+                
+                <Label Text="Kurshumli Out" VerticalOptions="Center" Margin="10,0,0,0" />
+            </StackLayout>
+                
+                        <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
+                        <ff:CachedImage  
+                                            Source="msu.png" 
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Start" 
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            Margin="20,0,0,0">
+                                            <ff:CachedImage.Transformations>
+                                                <fftransformations:CircleTransformation/>
+                                            </ff:CachedImage.Transformations>
+                                        </ff:CachedImage>
+                
+                <Label Text="MKC " VerticalOptions="Center" Margin="10,0,0,0" />
+            </StackLayout>
+                
+                        <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
+                        <ff:CachedImage  
+                                            Source="kinomilenium.png" 
+                                            Aspect="AspectFit"
+                                            HorizontalOptions="Start" 
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            Margin="20,0,0,0">
+                                            <ff:CachedImage.Transformations>
+                                                <fftransformations:CircleTransformation/>
+                                            </ff:CachedImage.Transformations>
+                                        </ff:CachedImage>
+                
+                <Label Text="Kino Milenium" VerticalOptions="Center" Margin="10,0,0,0"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
