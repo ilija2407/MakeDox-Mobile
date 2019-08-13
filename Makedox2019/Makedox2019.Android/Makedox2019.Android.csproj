@@ -298,6 +298,7 @@
     <AndroidResource Include="Resources\drawable\collab.jpg" />
     <AndroidResource Include="Resources\drawable\copro.jpg" />
     <AndroidResource Include="Resources\drawable\background.png" />
+    <AndroidResource Include="Resources\drawable\ic_makedox_stamp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="FixGuava" AfterTargets="_AddAndroidCustomMetaData">

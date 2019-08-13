@@ -43,6 +43,7 @@ namespace Makedox2019.Droid
             };
             ImageService.Instance.Initialize(config);
             UserDialogs.Init(this);
+            Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
 
             NotificationCenter.CreateNotificationChannel();
             LoadApplication(new App(new AndroidInitializer()));
