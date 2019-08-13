@@ -54,6 +54,9 @@ namespace Makedox2019.PageModels
             string url = string.Empty;
             switch(title.ToLowerInvariant())
             {
+                case "main selection":
+                    url = "https://user-images.githubusercontent.com/20807086/62822618-81842680-bb75-11e9-9286-818af5b6433a.png";
+                    break;
                 case "newcomers":
                     url = "https://user-images.githubusercontent.com/20807086/62822616-80eb9000-bb75-11e9-90cb-e841c9971e4f.png";
                     break;

@@ -149,12 +149,79 @@ namespace Makedox2019.PageModels
         {
             var db = Realm.GetInstance();
             MoviesList = db.All<Movie>().Where(x => x.Type == "Movies").OrderBy(x => x.StartTime).ToList();
-            CategoriesList = MoviesList.GroupBy(x => x.Category).Select(x => new Category { Title = x.Key.ToUpperInvariant() }).ToList();
+            CategoriesList = MoviesList.GroupBy(x => x.Category).Select(x => new Category
+            {
+                Title = x.Key.ToUpperInvariant()                
+            }).OrderBy(x => x.CategoryOrder).ToList();
         }
 
         public class Category
         {
             public string Title { get; set; }
+
+
+            public int CategoryOrder
+            {
+                get
+                {
+                    switch (Title.ToLowerInvariant())
+                    {
+                        case "main selection":
+                            return 1;
+                        case "newcomers":
+                            return 2;
+                        case "short dox":
+                            return 3;
+                        case "student dox":
+                            return 4;
+                        case "country in focus: germany":
+                            return 5;
+                    }
+                    return 6;
+                }
+            }
+
+            public Color CategoryColor
+            {
+                get
+                {
+                    switch (Title.ToLowerInvariant())
+                    {
+                        case "main selection":
+                            return Color.FromHex("#6e0722");
+                        case "newcomers":
+                            return Color.FromHex("#fa8f25");
+                        case "short dox":
+                            return Color.FromHex("#b21c4a");
+                        case "student dox":
+                            return Color.FromHex("#2e7533");
+                        case "country in focus: germany":
+                            return Color.FromHex("#018db1");
+                    }
+                    return Color.PaleVioletRed;
+                }
+            }
+
+            public ImageSource CategoryImage
+            {
+                get
+                {
+                    switch (Title.ToLowerInvariant())
+                    {
+                        case "main selection":
+                            return "https://user-images.githubusercontent.com/20807086/62822618-81842680-bb75-11e9-9286-818af5b6433a.png";
+                        case "newcomers":
+                            return "https://user-images.githubusercontent.com/20807086/62822616-80eb9000-bb75-11e9-90cb-e841c9971e4f.png";
+                        case "country in focus: germany":
+                            return "https://user-images.githubusercontent.com/20807086/62822617-81842680-bb75-11e9-86f1-1e5c421d025d.png";
+                        case "short dox":
+                            return "https://user-images.githubusercontent.com/20807086/62822619-81842680-bb75-11e9-9d35-028e789df1d2.png";
+                        case "student dox":
+                            return "https://user-images.githubusercontent.com/20807086/62822620-81842680-bb75-11e9-9204-ff03c6222c76.png";
+                    }
+                    return null;
+                }
+            }
         }
 
 

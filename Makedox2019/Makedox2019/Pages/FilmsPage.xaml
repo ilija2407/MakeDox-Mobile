@@ -40,18 +40,28 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10, 5" MinimumHeightRequest="80" BackgroundColor="GhostWhite" HeightRequest="80">
-                            <ContentView WidthRequest="2" BackgroundColor="Red"></ContentView>
-                            <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
-                                <Label Margin="5,0,0,0"  LineBreakMode="CharacterWrap" Text="{Binding Title}" TextColor="Black" FontSize="Large" VerticalTextAlignment="Center"/>
+                        <Grid Margin="10, 5" BackgroundColor="GhostWhite" HeightRequest="80">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinitionCollection>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </ColumnDefinitionCollection>
+                            </Grid.ColumnDefinitions>
+                            <ff:CachedImage Margin="15, 0, 0, 0" Grid.Column="0" Aspect="AspectFit" HeightRequest="50" VerticalOptions="Center" Source="{Binding CategoryImage}" />
+                            <StackLayout Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalOptions="FillAndExpand" MinimumHeightRequest="80">
+                                <ContentView WidthRequest="5" BackgroundColor="{Binding CategoryColor}"></ContentView>
+                                <StackLayout Margin="80, 0 ,0, 0" VerticalOptions="Center" HorizontalOptions="Fill">
+                                    <Label Margin="5,0,0,0"  LineBreakMode="CharacterWrap" Text="{Binding Title}" TextColor="{Binding CategoryColor}" FontSize="Large" VerticalTextAlignment="Center"/>
+                                </StackLayout>
                             </StackLayout>
-
-                            <StackLayout.GestureRecognizers>
+                            <Grid.GestureRecognizers>
                                 <TapGestureRecognizer 
                                     Command="{Binding BindingContext.CategorySelectedCommand,Source={x:Reference filmsPage}}"
                                     CommandParameter="{Binding .}"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
+                            </Grid.GestureRecognizers>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
