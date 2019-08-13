@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace Makedox2019.Pages
@@ -14,6 +15,8 @@ namespace Makedox2019.Pages
     {
         public CollaborationPage()
         {
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
             InitializeComponent();
         }
     }

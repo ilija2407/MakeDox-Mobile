@@ -38,10 +38,21 @@ namespace Makedox2019.PageModels
             if (string.IsNullOrEmpty(Title))
             {
                 Title = (string)parameters["Category"];
-                SetupCoverImage(Title);
+                if (Title != null)
+                {
+                    SetupCoverImage(Title);
+                    var db = Realm.GetInstance();
+                    MoviesList = db.All<Movie>().Where(x => x.Category == Title).OrderBy(x => x.StartTime).ToList();
+                }
+
+                Title = (string)parameters["Location"];
+                if (Title != null) 
+                {
+                    var db = Realm.GetInstance();
+                    MoviesList = db.All<Movie>().Where(x => x.Location == Title).OrderBy(x => x.StartTime).ToList();
+                }
             }
-            var db = Realm.GetInstance();
-            MoviesList = db.All<Movie>().Where(x => x.Category == Title).OrderBy(x => x.StartTime).ToList();
+
             if (Title == "Workshops")
             {
                 MoviesList.Distinct().ToList();

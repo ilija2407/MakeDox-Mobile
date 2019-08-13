@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace Makedox2019.Pages
 {
@@ -16,6 +17,8 @@ namespace Makedox2019.Pages
         Pin currentPin;
         public MapsPage()
         {
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
             InitializeComponent();
             InitializeMakedoxPins();
             InitRecommendedPins();
