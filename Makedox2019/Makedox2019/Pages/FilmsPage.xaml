@@ -14,8 +14,9 @@
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 AbsoluteLayout.LayoutFlags="All"
                 Orientation="Vertical"  >
-            <Frame Margin="5, 3" CornerRadius="20" HeightRequest="42" Padding="0" BorderColor="Transparent" BackgroundColor="#f7b217">
+            <Frame Margin="5, 3" CornerRadius="20" HeightRequest="42" Padding="0" BorderColor="Transparent" BackgroundColor="#f7b217" HasShadow="False">
                 <SearchBar HeightRequest="40" 
+                           BackgroundColor="Transparent"
                            CancelButtonColor="White"
                            PlaceholderColor="White"
                            TextColor="White"

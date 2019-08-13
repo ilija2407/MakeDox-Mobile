@@ -101,6 +101,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomPageRenderer.cs" />
     <Compile Include="Renderers\CustomScrollViewRenderer.cs" />
+    <Compile Include="Renderers\CustomSerachBarRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
