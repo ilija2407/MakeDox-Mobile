@@ -27,12 +27,19 @@ namespace Makedox2019.PageModels
         public CategoryPageModel(INavigationService navigationService)
             : base(navigationService)
         {
+
         }
+
+        public bool HasCoverImage { get; set; }
+        public ImageSource CoverImageSource { get; set; }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (string.IsNullOrEmpty(Title))
+            {
                 Title = (string)parameters["Category"];
+                SetupCoverImage(Title);
+            }
             var db = Realm.GetInstance();
             MoviesList = db.All<Movie>().Where(x => x.Category == Title).OrderBy(x => x.StartTime).ToList();
             if (Title == "Workshops")
@@ -40,6 +47,31 @@ namespace Makedox2019.PageModels
                 MoviesList.Distinct().ToList();
             }
             RaisePropertyChanged(nameof(MoviesList));
+        }
+
+        private void SetupCoverImage(string title)
+        {
+            string url = string.Empty;
+            switch(title.ToLowerInvariant())
+            {
+                case "newcomers":
+                    url = "https://user-images.githubusercontent.com/20807086/62822616-80eb9000-bb75-11e9-90cb-e841c9971e4f.png";
+                    break;
+                case "country in focus: germany":
+                    url = "https://user-images.githubusercontent.com/20807086/62822617-81842680-bb75-11e9-86f1-1e5c421d025d.png";
+                    break;
+                case "short dox":
+                    url = "https://user-images.githubusercontent.com/20807086/62822619-81842680-bb75-11e9-9d35-028e789df1d2.png";
+                    break;
+                case "student dox":
+                    url = "https://user-images.githubusercontent.com/20807086/62822620-81842680-bb75-11e9-9204-ff03c6222c76.png";
+                    break;
+            }
+            if (string.IsNullOrEmpty(url))
+                return;
+
+            CoverImageSource = url;
+            HasCoverImage = true;
         }
     }
 }

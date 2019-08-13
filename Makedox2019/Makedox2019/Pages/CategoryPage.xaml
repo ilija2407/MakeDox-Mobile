@@ -18,6 +18,14 @@
         HasUnevenRows="True"
         VerticalOptions="FillAndExpand"
         ItemsSource="{Binding MoviesList}">
+        <ListView.Header>
+            <ff:CachedImage
+                Margin="10"
+                IsVisible="{Binding HasCoverImage}"
+                Source="{Binding CoverImageSource}"
+                Aspect="AspectFit"
+                HorizontalOptions="FillAndExpand" />
+        </ListView.Header>
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -29,16 +37,16 @@
                         <StackLayout
                             Orientation="Horizontal"
                             Margin="0,10">
-                                       <ff:CachedImage
+                            <ff:CachedImage
                                             Source="{Binding LogoImage}" 
                                             Aspect="AspectFit"
                                             HorizontalOptions="Start" 
                                             WidthRequest="70"
                                             HeightRequest="70">
-                                                   <ff:CachedImage.Transformations>
-                                        <fftransformations:CircleTransformation/>
-                                    </ff:CachedImage.Transformations>
-                                </ff:CachedImage>
+                                <ff:CachedImage.Transformations>
+                                    <fftransformations:CircleTransformation/>
+                                </ff:CachedImage.Transformations>
+                            </ff:CachedImage>
 
                             <StackLayout
                                 Orientation="Vertical"
