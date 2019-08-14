@@ -45,6 +45,7 @@
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -306,6 +307,7 @@
     <AndroidResource Include="Resources\drawable\doc_talks.png" />
     <AndroidResource Include="Resources\drawable\workshops.png" />
     <AndroidResource Include="Resources\drawable\bghome_25.png" />
+    <AndroidResource Include="Resources\drawable\coverimg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="FixGuava" AfterTargets="_AddAndroidCustomMetaData">

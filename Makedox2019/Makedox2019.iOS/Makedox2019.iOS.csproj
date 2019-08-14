@@ -334,6 +334,7 @@
     <BundleResource Include="Resources\make_copro.png" />
     <BundleResource Include="Resources\nightstories.png" />
     <BundleResource Include="Resources\doc_talks.png" />
+    <BundleResource Include="Resources\coverimg.png" />
   </ItemGroup>
   <ItemGroup />
 </Project>
