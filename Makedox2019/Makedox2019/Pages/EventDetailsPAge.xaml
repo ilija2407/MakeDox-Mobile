@@ -35,8 +35,8 @@
                 </Grid>
             <Grid IsVisible="{Binding ItemVisibility}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"  />
-                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="4*"  />
+                        <ColumnDefinition Width="6*" />
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0">
                         <Label Text="Script:" FontAttributes="Bold" FontSize="Small"/>
@@ -46,7 +46,7 @@
                     <Label Text="Sound:" FontAttributes="Bold" FontSize="Small"/>
                     <Label Text="Production:" FontAttributes="Bold" FontSize="Small" />
                     <Label Text="Co-Production:" FontAttributes="Bold" FontSize="Small"/>
-                    <Label Text="Rating:" FontAttributes="Bold" FontSize="Small" />
+                    <Label Text="Animation:" FontAttributes="Bold" FontSize="Small" />
                     </StackLayout>
                     <StackLayout Grid.Column="1">
                     <Label Text="{Binding Model.Team.Script}" FontAttributes="Bold" FontSize="Small"/>
@@ -56,7 +56,7 @@
                     <Label Text="{Binding Model.Team.Sound}" FontAttributes="Bold" FontSize="Small" />
                     <Label Text="{Binding Model.Team.Production}" FontAttributes="Bold" FontSize="Small"/>
                     <Label Text="{Binding Model.Team.Coproduction}" FontAttributes="Bold" FontSize="Small"/>
-                    <Label Text="{Binding Model.Rating}" FontAttributes="Bold" FontSize="Small" />
+                    <Label Text="{Binding Model.Team.Animation}" FontAttributes="Bold" FontSize="Small" />
                     </StackLayout>
                 </Grid>
                 <Label Text="{Binding Model.Description}" />

@@ -1,40 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          android:versionCode="28" 
-          android:versionName="1" 
-          package="com.ilija.makedox2" android:installLocation="auto">
-  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-  <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-  <uses-permission android:name="android.permission.INTERNET" />
-  <!-- Google Maps for Android v2 requires OpenGL ES v2 -->
-  <uses-feature android:glEsVersion="0x00020000" android:required="true" />
-
-  <!-- Necessary for apps that target Android 9.0 or higher -->
-  <uses-library android:name="org.apache.http.legacy" android:required="false" />
-
-
-  <!-- Permission to receive remote notifications from Google Play Services -->
-  <!-- Notice here that we have the package name of our application as a prefix on the permissions. -->
-  <uses-permission android:name="com.ilija.makedox2.permission.MAPS_RECEIVE" />
-    <permission android:name="com.ilija.makedox2.permission.MAPS_RECEIVE" android:protectionLevel="signature" />
-
-      <!-- These are optional, but recommended. They will allow Maps to use the My Location provider. -->
-      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <!--<application android:label="Makedox.Android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="28" android:versionName="1" package="com.ilija.makedox2" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- Google Maps for Android v2 requires OpenGL ES v2 -->
+	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
+	<!-- Necessary for apps that target Android 9.0 or higher -->
+	<uses-library android:name="org.apache.http.legacy" android:required="false" />
+	<!-- Permission to receive remote notifications from Google Play Services -->
+	<!-- Notice here that we have the package name of our application as a prefix on the permissions. -->
+	<uses-permission android:name="com.ilija.makedox2.permission.MAPS_RECEIVE" />
+	<permission android:name="com.ilija.makedox2.permission.MAPS_RECEIVE" android:protectionLevel="signature" />
+	<!-- These are optional, but recommended. They will allow Maps to use the My Location provider. -->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<!--<application android:label="Makedox.Android">
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAa34-i5mq51g2NfjnYtHd_ijVAYvk-iJQ" />
   </application>-->
-
-  <application android:label="Makedox">
-    <!-- Put your Google Maps V2 API Key here. -->
-    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAa34-i5mq51g2NfjnYtHd_ijVAYvk-iJQ" />
-    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-    <!-- Necessary for apps that target Android 9.0 or higher -->
-    <uses-library android:name="org.apache.http.legacy" android:required="false" />
-  </application>
+	<application android:label="Makedox">
+		<!-- Put your Google Maps V2 API Key here. -->
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDEVgXs9YJz-vp0tChIPRJMEMW7VwwjOZw" />
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		<!-- Necessary for apps that target Android 9.0 or higher -->
+		<uses-library android:name="org.apache.http.legacy" android:required="false" />
+	</application>
 </manifest>

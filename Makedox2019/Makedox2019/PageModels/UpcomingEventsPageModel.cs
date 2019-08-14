@@ -35,23 +35,27 @@ namespace Makedox2019.PageModels
                     
                 if (movie.IsFavorite)
                 {
-                    db.Remove(currentNotif);
-                    var notif = new Notification(notifications.Count(), new Random(305006489).Next(100000, 600000), movie.ID);
-
-                    db.Add(notif);
-                    var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
-                    if (time < DateTime.Now)
-                        time = DateTime.Now.AddMinutes(1);
-
-                    var notification = new NotificationRequest
+                    if (currentNotif != null)
                     {
-                        NotificationId = notif.NotificationId,
-                        Title = movie.Title,
-                        Description = $"will be displayed at {movie.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
-                        ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
-                        NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
-                    };
-                    NotificationCenter.Current.Show(notification);
+                        db.Remove(currentNotif);
+                        var notif = new Notification(notifications.Count(), new Random(305006489).Next(100000, 600000), movie.ID);
+
+                        db.Add(notif);
+                        var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
+                        if (time < DateTime.Now)
+                            time = DateTime.Now.AddMinutes(1);
+
+                        var notification = new NotificationRequest
+                        {
+                            NotificationId = notif.NotificationId,
+                            Title = movie.Title,
+                            Description = $"will be displayed at {movie.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
+                            ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
+                            NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
+                        };
+                        NotificationCenter.Current.Show(notification);
+                    }
+              
                 }
             });
         });

@@ -41,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -301,6 +305,7 @@
     <AndroidResource Include="Resources\drawable\out_ofcom.png" />
     <AndroidResource Include="Resources\drawable\doc_talks.png" />
     <AndroidResource Include="Resources\drawable\workshops.png" />
+    <AndroidResource Include="Resources\drawable\bghome_25.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="FixGuava" AfterTargets="_AddAndroidCustomMetaData">

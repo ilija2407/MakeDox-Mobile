@@ -52,5 +52,6 @@ namespace Makedox2019.Models
         public string Sound { get; set; }
         public string Production { get; set; }
         public string Coproduction { get; set; }
+        public string Animation { get; set; }
     }
 }

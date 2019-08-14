@@ -8,6 +8,7 @@ using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Realms;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -34,7 +35,8 @@ namespace Makedox2019
         {
 
             InitializeComponent();
-
+            var con = RealmConfiguration.DefaultConfiguration;
+            con.SchemaVersion = 1;  // set explicit, ascending number to auo-migrate
             await NavigationService.NavigateAsync($"NavigationPage/{nameof(MainPage)}");
         }
 
