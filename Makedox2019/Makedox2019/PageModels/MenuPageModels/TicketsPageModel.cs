@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace Makedox2019.PageModels
         {
             _navigationService.GoBackAsync();
         }
+
+        public ICommand NavigateToUriCommand => new DelegateCommand<string>(uri => Device.OpenUri(new Uri(uri)));
 
     }
 }
