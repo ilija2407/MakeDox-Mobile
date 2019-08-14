@@ -12,16 +12,18 @@ namespace Makedox2019.Models
         [PrimaryKey]
         public int Id { get; set; }
         public int NotificationId { get; set; }
+        public int MovieId { get; set; }
 
         public Notification()
         {
 
         }
 
-        public Notification(int id, int notificationId)
+        public Notification(int id, int notificationId, int movieId)
         {
             NotificationId = notificationId;
             Id = id;
+            MovieId = movieId;
         }
     }
 }
