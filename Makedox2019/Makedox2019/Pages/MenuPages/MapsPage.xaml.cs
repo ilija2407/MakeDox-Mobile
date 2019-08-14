@@ -39,32 +39,24 @@ namespace Makedox2019.Pages
 
         void InitializeMakedoxPins()
         {
-            var icon = BitmapDescriptorFactory.FromView(new Image
-            {
-                Source = "ic_makedox_stamp.png",
-                HeightRequest = 35,
-                WidthRequest = 35
-            });
+     
             var pin1 = new Pin()
             {
                 Type = PinType.Place,
                 Position = new Xamarin.Forms.GoogleMaps.Position(42.003073, 21.437015),
                 Label = "Kurshumli An",
-                Icon = icon
             };
             var pin2 = new Pin()
             {
                 Type = PinType.Place,
                 Position = new Xamarin.Forms.GoogleMaps.Position(42.002386, 21.436201),
                 Label = "Kurshumli Out",
-                Icon = icon
             };
             var pin3 = new Pin()
             {
                 Type = PinType.Place,
                 Position = new Xamarin.Forms.GoogleMaps.Position(42.003961, 21.432711),
                 Label = "Museum of Contemporary Art Skopje (MOCA)",
-                Icon = icon
             };
 
 
@@ -107,21 +99,21 @@ namespace Makedox2019.Pages
             googleMap.Pins.Add(pin3);
             googleMap.Pins.Add(pin4);
         }
-        ContentView CreateMakedoxIcon()
-        {
-            ContentView contentView = new ContentView();
-            contentView.HeightRequest = 30;
-            contentView.WidthRequest = 30;
-            contentView.IsClippedToBounds = false;
-            contentView.Content = new Image
-            {
-                Source = "ic_makedox_stamp.png",
-                HeightRequest = 30,
-                WidthRequest = 30
-            };
+        //ContentView CreateMakedoxIcon()
+        //{
+        //    ContentView contentView = new ContentView();
+        //    contentView.HeightRequest = 30;
+        //    contentView.WidthRequest = 30;
+        //    contentView.IsClippedToBounds = false;
+        //    contentView.Content = new Image
+        //    {
+        //        Source = "ic_makedox_stamp.png",
+        //        HeightRequest = 30,
+        //        WidthRequest = 30
+        //    };
 
-            return contentView;
-        }
+        //    return contentView;
+        //}
 
 
         void GoogleMap_InfoWindowClicked(object sender, InfoWindowClickedEventArgs e)
@@ -156,14 +148,14 @@ namespace Makedox2019.Pages
         private void googleMap_PinClicked(object sender, PinClickedEventArgs e)
         {
             currentPin = e.Pin;
-            goBtn.IsVisible = true;
+          //  goBtn.IsVisible = true;
 
         }
 
         private void googleMap_MapClicked(object sender, MapClickedEventArgs e)
         {
             currentPin = null;
-            goBtn.IsVisible = false;
+            //goBtn.IsVisible = false;
 
         }
         //async Task StartListening()

@@ -39,24 +39,24 @@
                         <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0">
-                        <Label Text="Script:" FontAttributes="Bold" />
-                        <Label Text="Director:" FontAttributes="Bold" />
-                        <Label Text="Photography by:" FontAttributes="Bold" />
-                        <Label Text="Editing:" FontAttributes="Bold" />
-                        <Label Text="Sound:" FontAttributes="Bold" />
-                        <Label Text="Production:" FontAttributes="Bold" />
-                        <Label Text="Co-Production:" FontAttributes="Bold" />
-                        <Label Text="Rating:" FontAttributes="Bold" />
+                        <Label Text="Script:" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="Director:" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="Photography by:" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="Editing:" FontAttributes="Bold" FontSize="Small" />
+                    <Label Text="Sound:" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="Production:" FontAttributes="Bold" FontSize="Small" />
+                    <Label Text="Co-Production:" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="Rating:" FontAttributes="Bold" FontSize="Small" />
                     </StackLayout>
                     <StackLayout Grid.Column="1">
-                        <Label Text="{Binding Model.Team.Script}" FontAttributes="Bold" />
-                        <Label Text="{Binding Model.Team.Director}" FontAttributes="Bold" />
-                        <Label Text="{Binding Model.Team.Photography}" FontAttributes="Bold" />
-                        <Label Text="{Binding Model.Team.Editing}" FontAttributes="Bold" />
-                        <Label Text="{Binding Model.Team.Sound}" FontAttributes="Bold" />
-                        <Label Text="{Binding Model.Team.Production}" FontAttributes="Bold" />
-                        <Label Text="{Binding Model.Team.Coproduction}" FontAttributes="Bold" />
-                        <Label Text="{Binding Model.Rating}" FontAttributes="Bold" />
+                    <Label Text="{Binding Model.Team.Script}" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{Binding Model.Team.Director}" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{Binding Model.Team.Photography}" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{Binding Model.Team.Editing}" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{Binding Model.Team.Sound}" FontAttributes="Bold" FontSize="Small" />
+                    <Label Text="{Binding Model.Team.Production}" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{Binding Model.Team.Coproduction}" FontAttributes="Bold" FontSize="Small"/>
+                    <Label Text="{Binding Model.Rating}" FontAttributes="Bold" FontSize="Small" />
                     </StackLayout>
                 </Grid>
                 <Label Text="{Binding Model.Description}" />

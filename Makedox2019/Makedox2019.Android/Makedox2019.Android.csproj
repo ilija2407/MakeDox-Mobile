@@ -293,12 +293,14 @@
     <AndroidResource Include="Resources\drawable\timeline_kurshumliout.png" />
     <AndroidResource Include="Resources\drawable\timeline_kurshumli.png" />
     <AndroidResource Include="Resources\drawable\timeline_msu.png" />
-    <AndroidResource Include="Resources\drawable\nightstories.jpg" />
-    <AndroidResource Include="Resources\drawable\out_ofcom.jpg" />
-    <AndroidResource Include="Resources\drawable\collab.jpg" />
     <AndroidResource Include="Resources\drawable\copro.jpg" />
     <AndroidResource Include="Resources\drawable\background.png" />
     <AndroidResource Include="Resources\drawable\ic_makedox_stamp.png" />
+    <AndroidResource Include="Resources\drawable\nightstories.png" />
+    <AndroidResource Include="Resources\drawable\collab.png" />
+    <AndroidResource Include="Resources\drawable\out_ofcom.png" />
+    <AndroidResource Include="Resources\drawable\doc_talks.png" />
+    <AndroidResource Include="Resources\drawable\workshops.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="FixGuava" AfterTargets="_AddAndroidCustomMetaData">

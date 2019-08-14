@@ -27,24 +27,28 @@ namespace Makedox2019.PageModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.Count > 0)
+            if (parameters!= null)
             {
-                ID = (int)parameters["Id"];
-                ItemVisibility = true;
-                OneLinerVisibility = false;
-
-                var db = Realm.GetInstance();
-                var movie = db.Find<Movie>(ID);
-                if (movie == null)
-                    return;
-
-                if (movie.Type != "Movies")
+                if (parameters.Count > 0)
                 {
-                    ItemVisibility = false;
-                    OneLinerVisibility = true;
+                    ID = (int)parameters["Id"];
+                    ItemVisibility = true;
+                    OneLinerVisibility = false;
+
+                    var db = Realm.GetInstance();
+                    var movie = db.Find<Movie>(ID);
+                    if (movie == null)
+                        return;
+
+                    if (movie.Type != "Movies")
+                    {
+                        ItemVisibility = false;
+                        OneLinerVisibility = true;
+                    }
+
+                    Model = movie;
                 }
 
-                Model = movie;
             }
 
         }

@@ -309,9 +309,6 @@
     <BundleResource Include="Resources\bb.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\make_copro.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
@@ -329,12 +326,14 @@
     <BundleResource Include="Resources\timeline_kurshumliout.png" />
     <BundleResource Include="Resources\timeline_kurshumli.png" />
     <BundleResource Include="Resources\kinomilenium.png" />
-    <BundleResource Include="Resources\nightstories.jpg" />
-    <BundleResource Include="Resources\out_ofcom.jpg" />
-    <BundleResource Include="Resources\collab.jpg" />
     <BundleResource Include="Resources\copro.jpg" />
     <BundleResource Include="Resources\background.png" />
     <BundleResource Include="Resources\ic_makedox_stamp.png" />
+    <BundleResource Include="Resources\collab.png" />
+    <BundleResource Include="Resources\out_ofcom.png" />
+    <BundleResource Include="Resources\make_copro.png" />
+    <BundleResource Include="Resources\nightstories.png" />
+    <BundleResource Include="Resources\doc_talks.png" />
   </ItemGroup>
   <ItemGroup />
 </Project>

@@ -12,37 +12,37 @@
         <StackLayout
             Margin="20"
             VerticalOptions="Start">
-            <Image Source="doctalks.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="doc_talks.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToDocPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="workshop.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="workshops.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToWorkshopPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="make_copro.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="make_copro.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToCoProPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="photo.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="photo.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToPhotoPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="out_ofcom.jpg" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="out_ofcom.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToOutOfCompetitionCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="nightstories.jpg" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="nightstories.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToMusicPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="collab.jpg" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+            <Image Source="collab.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToColaborationPageCommand}" />
                 </Image.GestureRecognizers>

@@ -68,29 +68,33 @@ namespace Makedox2019.PageModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (string.IsNullOrEmpty(Title))
+            if (parameters!=null)
             {
-                Title = (string)parameters["Category"];
-                if (Title != null)
+                if (string.IsNullOrEmpty(Title))
                 {
-                    SetupCoverImage(Title);
-                    var db = Realm.GetInstance();
-                    MoviesList = db.All<Movie>().Where(x => x.Category == Title).OrderBy(x => x.StartTime).ToList();
+                    Title = (string)parameters["Category"];
+                    if (Title != null)
+                    {
+                        SetupCoverImage(Title);
+                        var db = Realm.GetInstance();
+                        MoviesList = db.All<Movie>().Where(x => x.Category == Title).OrderBy(x => x.StartTime).ToList();
+                    }
+
+                    Title = (string)parameters["Location"];
+                    if (Title != null)
+                    {
+                        var db = Realm.GetInstance();
+                        MoviesList = db.All<Movie>().Where(x => x.Location == Title).OrderBy(x => x.StartTime).ToList();
+                    }
                 }
 
-                Title = (string)parameters["Location"];
-                if (Title != null)
+                if (Title == "Workshops")
                 {
-                    var db = Realm.GetInstance();
-                    MoviesList = db.All<Movie>().Where(x => x.Location == Title).OrderBy(x => x.StartTime).ToList();
+                    MoviesList.Distinct().ToList();
                 }
+                RaisePropertyChanged(nameof(MoviesList));
             }
-
-            if (Title == "Workshops")
-            {
-                MoviesList.Distinct().ToList();
-            }
-            RaisePropertyChanged(nameof(MoviesList));
+           
         }
 
         private void SetupCoverImage(string title)
