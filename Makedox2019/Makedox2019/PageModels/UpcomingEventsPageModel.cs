@@ -144,7 +144,7 @@ namespace Makedox2019.PageModels
                                     NotificationCenter.Current.Show(notification);
                                 }
                             }
-                            UpComingEvents = db.All<Movie>().OrderBy(x => x.StartTime).AsRealmCollection();
+                            UpComingEvents = db.All<Movie>().Where(x => x.StartTime > DateTimeOffset.Now).OrderBy(x => x.StartTime).AsRealmCollection();
                             FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
                             MoviesModel = new List<MovieLists>
                             {

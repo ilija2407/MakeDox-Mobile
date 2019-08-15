@@ -191,7 +191,9 @@ namespace Makedox2019.Controls
             var daysList = new List<DateTime>();
             foreach (var item in ItemsSource)
             {
-                if (string.IsNullOrEmpty(item.Key) || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant())
+                if (string.IsNullOrEmpty(item.Key) 
+                    || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant()
+                    || item.Key.ToLowerInvariant() == "Chifte Hammam".ToLowerInvariant())
                     continue;
                 foreach (var movie in item.Value)
                     if (daysList.Any(x => x.Date == movie.StartTime.Value.Date) == false)
