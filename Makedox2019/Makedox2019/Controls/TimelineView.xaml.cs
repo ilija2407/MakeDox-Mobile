@@ -80,7 +80,9 @@ namespace Makedox2019.Controls
             var movieRow = 1;
             foreach (var item in ItemsSource)
             {
-                if (string.IsNullOrEmpty(item.Key) || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant())
+                if (string.IsNullOrEmpty(item.Key)
+                    || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant()
+                    || item.Key.ToLowerInvariant() == "Chifte Hammam".ToLowerInvariant())
                     continue;
                 grid.RowDefinitions.Add(new RowDefinition());
                 var titleLayout = GetVenueTitleForCategory(item.Key);
@@ -265,7 +267,9 @@ namespace Makedox2019.Controls
         {
             foreach (var item in ItemsSource)
             {
-                if (string.IsNullOrEmpty(item.Key) || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant())
+                if (string.IsNullOrEmpty(item.Key)
+                    || item.Key.ToLowerInvariant() == "Daut Pasha Hammam".ToLowerInvariant()
+                    || item.Key.ToLowerInvariant() == "Chifte Hammam".ToLowerInvariant())
                     continue;
 
                 foreach (var movie in item.Value)
