@@ -23,10 +23,10 @@
                     <ListView.Header>
                         <StackLayout Spacing="0">
                             <ff:CachedImage
-                            Aspect="AspectFit"
-                                HeightRequest="250"
+                            Aspect="AspectFill"
+                                HeightRequest="200"
                                 HorizontalOptions="FillAndExpand"
-                            Source="bghome_25.png" />
+                            Source="coverimg.png" />
                             <StackLayout BackgroundColor="#fcf9d8"
                                      Padding="10, 0">
                                 <Label Text="Welcome to MakeDox"

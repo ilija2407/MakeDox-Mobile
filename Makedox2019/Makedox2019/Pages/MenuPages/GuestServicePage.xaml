@@ -8,7 +8,7 @@
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="20,0,20,0">
-            <Image Source="guest.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" Margin="0,20,0,0"/>
+            <Image Source="guest_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="0,20,0,0"/>
             <Label Margin="0,20,0,0" 
                    Text="Here are some useful information about your stay in Skopje.&#x0a;Guest service is located in Kurshumli An.&#x0a;&#x0a;Contact person: Kirijana A. Nikoloska&#x0a;E-mail address: kirijana.nikoloska@makedox.mk&#x0a;Phone: +38970566789&#x0a;MakeDox recommends:&#x0a;&#x0a;Galerija 7 Restaurant - Old Bazaar&#x0a;Film &amp; Cafe Kotur - City Center&#x0a;Café bar Vinyl - bul. Kliment Ohridski&#x0a;Barik Restaurant - Debar Maalo&#x0a;MKC Club Restaurant (Youth Cultural Center)&#x0a;Global taxi &#x0a;&#x0a;Phone: +389215180
                     "  />

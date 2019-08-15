@@ -13,7 +13,7 @@
                 </Image.GestureRecognizers>
             </Image>
             <!--<Button Text="Back" Command="{Binding GoBack}"/>-->
-            <Image Margin="20,10,0,0" Source="social.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" />
+            <Image Margin="20,10,0,0" Source="social_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" />
             <Label Margin="20,10,0,0" Text="Follow us" FontSize="Small"/>
           
             <Grid>

@@ -11,32 +11,32 @@
             Margin="20"
             Orientation="Vertical"
             VerticalOptions="Start">
-            <Image Source="info.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+        <Image Source="info_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToInfoPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="guest.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+        <Image Source="guest_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToGuestPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="venues.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+        <Image Source="venues_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToVenuesPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="tickets.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+        <Image Source="tickets_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToTicketsPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="social.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+        <Image Source="social_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToSocialPageCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="maps.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFill" >
+        <Image Source="maps_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToMapsPageCommand}" />
                 </Image.GestureRecognizers>
