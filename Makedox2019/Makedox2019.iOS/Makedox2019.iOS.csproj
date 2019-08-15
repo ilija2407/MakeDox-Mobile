@@ -65,8 +65,10 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Ilija Rushkovski (39QDHMLBGE)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>MakeDox Distribution</CodesignProvision>
+    <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -244,6 +246,7 @@
     <BundleResource Include="Resources\kurshumli_out.png" />
     <BundleResource Include="Resources\kurshumli.png" />
     <BundleResource Include="Resources\timeline_mkc.png" />
+    <BundleResource Include="Resources\workshops.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\timeline.png" />
