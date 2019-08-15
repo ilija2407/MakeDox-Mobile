@@ -247,6 +247,20 @@
     <BundleResource Include="Resources\kurshumli.png" />
     <BundleResource Include="Resources\timeline_mkc.png" />
     <BundleResource Include="Resources\workshops.png" />
+    <BundleResource Include="Resources\maps_2.png" />
+    <BundleResource Include="Resources\collab_2.png" />
+    <BundleResource Include="Resources\guest_2.png" />
+    <BundleResource Include="Resources\info_2.png" />
+    <BundleResource Include="Resources\make_copro_2.png" />
+    <BundleResource Include="Resources\music_2.png" />
+    <BundleResource Include="Resources\out_ofcom_2.png" />
+    <BundleResource Include="Resources\photo_2.png" />
+    <BundleResource Include="Resources\social_2.png" />
+    <BundleResource Include="Resources\tickets_2.png" />
+    <BundleResource Include="Resources\workshops_2.png" />
+    <BundleResource Include="Resources\doctalks_2.png" />
+    <BundleResource Include="Resources\nightstories_2.png" />
+    <BundleResource Include="Resources\venues_2.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\timeline.png" />
