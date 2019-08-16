@@ -107,6 +107,10 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\Fonts\Intro-Black.otf" />
+    <BundleResource Include="Resources\Fonts\Intro-Bold.otf" />
+    <BundleResource Include="Resources\Fonts\Intro-Regular-Italic.otf" />
+    <BundleResource Include="Resources\Fonts\Intro-Regular.otf" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

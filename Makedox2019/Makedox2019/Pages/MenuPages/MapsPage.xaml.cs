@@ -55,14 +55,35 @@ namespace Makedox2019.Pages
             var pin3 = new Pin()
             {
                 Type = PinType.Place,
-                Position = new Xamarin.Forms.GoogleMaps.Position(42.003961, 21.432711),
-                Label = "Museum of Contemporary Art Skopje (MOCA)",
+                Position = new Xamarin.Forms.GoogleMaps.Position(41.996685, 21.442775),
+                Label = "MKC",
+            };
+            var pin4 = new Pin()
+            {
+                Type = PinType.Place,
+                Position = new Xamarin.Forms.GoogleMaps.Position(42.001303, 21.437313),
+                Label = "Chifte Hamam",
+            };
+            var pin5 = new Pin()
+            {
+                Type = PinType.Place,
+                Position = new Xamarin.Forms.GoogleMaps.Position(41.998786, 21.435748),
+                Label = "Daut Pasha Hamam",
             };
 
+            var pin6 = new Pin()
+            {
+                Type = PinType.Place,
+                Position = new Xamarin.Forms.GoogleMaps.Position(41.995381, 21.424612),
+                Label = "Cinema Milenium",
+            };
 
             googleMap.Pins.Add(pin1);
             googleMap.Pins.Add(pin2);
             googleMap.Pins.Add(pin3);
+            googleMap.Pins.Add(pin4);
+            googleMap.Pins.Add(pin5);
+            googleMap.Pins.Add(pin6);
         }
         void InitRecommendedPins()
         {
@@ -76,9 +97,9 @@ namespace Makedox2019.Pages
             var pin2 = new Pin()
             {
                 Type = PinType.Place,
-                Position = new Xamarin.Forms.GoogleMaps.Position(42.001252, 21.423275),
+                Position = new Xamarin.Forms.GoogleMaps.Position(41.994546, 21.429463),
                 Label = "MakeDox recommends:",
-                Address = "Fourplay Cafe"
+                Address = "Kotur"
             };
             var pin3 = new Pin()
             {
@@ -90,14 +111,23 @@ namespace Makedox2019.Pages
             var pin4 = new Pin()
             {
                 Type = PinType.Place,
-                Position = new Xamarin.Forms.GoogleMaps.Position(41.999423, 21.435810),
+                Position = new Xamarin.Forms.GoogleMaps.Position(42.002445, 21.421920),
                 Label = "MakeDox recommends:",
-                Address = "Menada"
+                Address = "Barik"
+            };
+            var pin5 = new Pin()
+            {
+                Type = PinType.Place,
+                Position = new Xamarin.Forms.GoogleMaps.Position(41.996685, 21.442775),
+                Label = "MakeDox recommends:",
+                Address = "MKC Club Restaurant"
             };
             googleMap.Pins.Add(pin1);
             googleMap.Pins.Add(pin2);
             googleMap.Pins.Add(pin3);
             googleMap.Pins.Add(pin4);
+            googleMap.Pins.Add(pin5);
+
         }
         //ContentView CreateMakedoxIcon()
         //{
@@ -148,14 +178,14 @@ namespace Makedox2019.Pages
         private void googleMap_PinClicked(object sender, PinClickedEventArgs e)
         {
             currentPin = e.Pin;
-          //  goBtn.IsVisible = true;
+            goBtn.IsVisible = true;
 
         }
 
         private void googleMap_MapClicked(object sender, MapClickedEventArgs e)
         {
             currentPin = null;
-            //goBtn.IsVisible = false;
+            goBtn.IsVisible = false;
 
         }
         //async Task StartListening()

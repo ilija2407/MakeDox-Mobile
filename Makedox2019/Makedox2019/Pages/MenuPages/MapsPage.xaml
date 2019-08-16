@@ -33,9 +33,15 @@
                 BorderRadius="25"
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
-                >
+                        >
+                <circleBtn:CircleButton.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Intro-Regular" />
+                        <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                    </OnPlatform>
+                </circleBtn:CircleButton.FontFamily>
             </circleBtn:CircleButton>
-            
+
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

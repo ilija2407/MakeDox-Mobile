@@ -116,6 +116,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\Intro-Black.otf" />
+    <AndroidAsset Include="Assets\Intro-Bold.otf" />
+    <AndroidAsset Include="Assets\Intro-Regular.otf" />
+    <AndroidAsset Include="Assets\Intro-Regular-Italic.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
