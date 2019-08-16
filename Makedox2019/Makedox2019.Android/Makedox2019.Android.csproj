@@ -308,6 +308,7 @@
     <AndroidResource Include="Resources\drawable\tickets_2.png" />
     <AndroidResource Include="Resources\drawable\venues_2.png" />
     <AndroidResource Include="Resources\drawable\workshops_2.png" />
+    <AndroidResource Include="Resources\drawable\logo1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="FixGuava" AfterTargets="_AddAndroidCustomMetaData">

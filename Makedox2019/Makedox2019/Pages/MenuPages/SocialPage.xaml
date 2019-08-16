@@ -40,7 +40,7 @@
                     WidthRequest="50"
                     Aspect="AspectFit" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToInfoPageCommand}" />
+                        <TapGestureRecognizer Command="{Binding OpenLink}"  CommandParameter="https://www.facebook.com/makedox.mk/" />
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -54,7 +54,7 @@
                     WidthRequest="50"
                     Aspect="AspectFit" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToGuestPageCommand}" />
+                        <TapGestureRecognizer Command="{Binding OpenLink}" CommandParameter="https://twitter.com/makedox"/>
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -68,7 +68,7 @@
                     WidthRequest="50"
                     Aspect="AspectFit" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToVenuesPageCommand}" />
+                        <TapGestureRecognizer Command="{Binding OpenLink}" CommandParameter="https://www.instagram.com/makedox/"/>
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -82,7 +82,7 @@
                     WidthRequest="50"
                     Aspect="AspectFit" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToTicketsPageCommand}" />
+                        <TapGestureRecognizer Command="{Binding OpenLink}" CommandParameter="https://www.youtube.com/user/makedox1"/>
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -96,7 +96,7 @@
                     WidthRequest="50"
                     Aspect="AspectFit" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToSocialPageCommand}" />
+                        <TapGestureRecognizer Command="{Binding OpenLink}" CommandParameter="https://www.facebook.com/makedox.mk/"/>
                     </Image.GestureRecognizers>
                 </Image>
 
@@ -110,7 +110,7 @@
                     WidthRequest="50"
                     Aspect="AspectFit" >
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToMapsPageCommand}" />
+                        <TapGestureRecognizer Command="{Binding OpenLink}" CommandParameter="https://issuu.com/makedox"/>
                     </Image.GestureRecognizers>
                 </Image>
 

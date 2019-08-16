@@ -11,7 +11,22 @@ namespace Makedox2019.PageModels
     public class SocialPageModel : ViewModelBase
     {
         public ICommand GoBack { get; set; }
-        public SocialPageModel(INavigationService navigationService)
+        public ICommand OpenLink => new Command(async (link) =>
+        {
+            try
+            {
+                //string youtubeUrl = (Device.RuntimePlatform == Device.Android) ? link : 
+                Device.OpenUri(new Uri((string)link));
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        });
+    
+    public SocialPageModel(INavigationService navigationService)
             : base(navigationService)
         {
             SetCommands();
