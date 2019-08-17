@@ -188,15 +188,19 @@ namespace Makedox2019.PageModels
                     switch (Title.ToLowerInvariant())
                     {
                         case "main selection":
-                            return Color.FromHex("#6e0722");
+                            return Color.FromHex("#780011");
                         case "newcomers":
-                            return Color.FromHex("#fa8f25");
+                            return Color.FromHex("#ff8900");
                         case "short dox":
-                            return Color.FromHex("#b21c4a");
+                            return Color.FromHex("#c00044");
                         case "student dox":
-                            return Color.FromHex("#2e7533");
+                            return Color.FromHex("#007637");
                         case "country in focus: germany":
-                            return Color.FromHex("#018db1");
+                            return Color.FromHex("#008db4");
+                        case "out of competition":
+                            return Color.FromHex("#3542a3");
+                        case "kids and youth program":
+                            return Color.FromHex("#f9db31");
                     }
                     return Color.PaleVioletRed;
                 }

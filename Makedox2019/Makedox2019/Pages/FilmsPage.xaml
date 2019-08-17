@@ -49,11 +49,10 @@
                                     <ColumnDefinition />
                                 </ColumnDefinitionCollection>
                             </Grid.ColumnDefinitions>
-                            <ff:CachedImage Margin="15, 0, 0, 0" Grid.Column="0" Aspect="AspectFit" HeightRequest="50" VerticalOptions="Center" Source="{Binding CategoryImage}" />
                             <StackLayout Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalOptions="FillAndExpand" MinimumHeightRequest="80">
                                 <ContentView WidthRequest="5" BackgroundColor="{Binding CategoryColor}"></ContentView>
-                                <StackLayout Margin="80, 0 ,0, 0" VerticalOptions="Center" HorizontalOptions="Fill">
-                                    <Label Margin="5,0,0,0"  LineBreakMode="CharacterWrap" Text="{Binding Title}" TextColor="{Binding CategoryColor}" FontSize="Large" VerticalTextAlignment="Center"/>
+                                <StackLayout Margin="5, 0 ,0, 0" VerticalOptions="Center" HorizontalOptions="Fill">
+                                    <Label Margin="5,0,0,0"  LineBreakMode="CharacterWrap" Text="{Binding Title}" TextColor="{Binding CategoryColor}" FontAttributes="Bold" FontSize="Large" VerticalTextAlignment="Center"/>
                                 </StackLayout>
                             </StackLayout>
                             <Grid.GestureRecognizers>
