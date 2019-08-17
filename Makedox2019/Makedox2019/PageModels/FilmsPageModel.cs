@@ -176,8 +176,10 @@ namespace Makedox2019.PageModels
                             return 4;
                         case "country in focus: germany":
                             return 5;
+                        case "kids and youth program":
+                            return 6;
                     }
-                    return 6;
+                    return 7;
                 }
             }
 
