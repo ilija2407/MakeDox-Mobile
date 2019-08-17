@@ -28,6 +28,8 @@ namespace Makedox2019.Models
         public string Category { get; set; }
         public string Rating { get; set; }
         public bool IsFavorite { get; set; }
+        public int displayOrder { get; set; }
+
         [Ignored]
         public bool IsNotFavorite => !IsFavorite;
         public Team Team { get; set; }

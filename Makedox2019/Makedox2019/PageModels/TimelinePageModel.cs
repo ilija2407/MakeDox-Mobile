@@ -23,7 +23,50 @@ namespace Makedox2019.PageModels
         {
             var db = Realm.GetInstance();
 
-            GroupedMovies = db.All<Movie>().ToList().GroupBy(x => x.Location).ToDictionary(x => x.Key, x => x.Select(y => new TimelineItem(y.ID, y.Title, y.StartTime, y.EndTime)).ToList());
+            var movies = db.All<Movie>().ToList();
+            foreach (var item in movies)
+            {
+                db.Write(() =>
+                {
+                    if (item.Location == "MKC")
+                    {
+                        item.displayOrder = 3;
+                    }
+
+                    if (item.Location == "Kurshumli An")
+                    {
+                        item.displayOrder = 1;
+
+                    }
+
+                    if (item.Location == "Кино Милениум")
+                    {
+                        item.displayOrder = 4;
+
+                    }
+
+                    if (item.Location == "Kurshumli Out")
+                    {
+                        item.displayOrder = 2;
+
+                    }
+
+                    if (item.Location == "Daut Pasha Hammam")
+                    {
+                        item.displayOrder = 5;
+
+                    }
+
+                    if (item.Location == "Chifte Hammam")
+                    {
+                        item.displayOrder = 6;
+
+                    }
+
+                    db.Add(item, true);
+                });
+            }
+            GroupedMovies = db.All<Movie>().ToList().OrderBy(i => i.displayOrder).GroupBy(x => x.Location).ToDictionary(x => x.Key, x => x.Select(y => new TimelineItem(y.ID, y.Title, y.StartTime, y.EndTime)).ToList());
             RaisePropertyChanged(nameof(GroupedMovies));
         }
 
