@@ -20,6 +20,7 @@
         ItemsSource="{Binding MoviesList}">
         <ListView.Header>
             <ff:CachedImage
+                BindingContextChanged="Handle_BindingContextChanged"
                 Margin="10"
                 IsVisible="{Binding HasCoverImage}"
                 Source="{Binding CoverImageSource}"
@@ -48,65 +49,15 @@
                                 </ff:CachedImage.Transformations>
                             </ff:CachedImage>
 
-                            <StackLayout
-                                Orientation="Vertical"
-                                HorizontalOptions="FillAndExpand">
 
-                                <StackLayout Orientation="Horizontal"
-                                             Margin="0,0,0,10">
+
                                     <Label
                                         Text="{Binding Title}"
-                                        FontSize="Medium"
-                                        TextColor="Black" />
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                    <ff:CachedImage
-                                        Source="saat"
-                                        WidthRequest="25"
-                                        HeightRequest="25"
-                                        HorizontalOptions="Start" />
-
-                                    <Label
-                                        Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
-                                        FontSize="Medium"
-                                        FontAttributes="Bold" />
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                    <ff:CachedImage
-                                        Source="loc"
-                                        WidthRequest="25"
-                                        HeightRequest="25"
-                                        HorizontalOptions="Start" />
-
-                                    <Label
-                                        Text="{Binding Location}"
-                                        FontSize="Medium"
-                                        FontAttributes="Bold" />
-                                </StackLayout>
-
-                            </StackLayout>
-                            <ff:CachedImage  Source="star.png"
-                                             IsVisible="{Binding IsNotFavorite}"
-                                             Margin="0,0,20,0"
-                                             WidthRequest="25"
-                                             HeightRequest="25">
-                                <ff:CachedImage.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference eventList}}"
-                                                          CommandParameter="{Binding .}" />
-                                </ff:CachedImage.GestureRecognizers>
-                            </ff:CachedImage>
-                            <ff:CachedImage Source="star_selected.png"
-                                            IsVisible="{Binding IsFavorite}"
-                                            Margin="0,0,20,0"
-                                            HeightRequest="25"
-                                            WidthRequest="25">
-                                <ff:CachedImage.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference eventList}}"
-                                                          CommandParameter="{Binding .}" />
-                                </ff:CachedImage.GestureRecognizers>
-                            </ff:CachedImage>
+                                        FontSize="Small"
+                                VerticalOptions="Center"
+                                        TextColor="Black"  
+                            Margin="10,0,0,0"/>
+                        
                         </StackLayout>
 
 

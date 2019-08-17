@@ -158,6 +158,7 @@
     <AndroidResource Include="Resources\drawable\header.png" />
     <AndroidResource Include="Resources\drawable\header_50.png" />
     <AndroidResource Include="Resources\drawable\header_75.png" />
+    <AndroidResource Include="Resources\drawable\backround_fig.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

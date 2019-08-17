@@ -7,6 +7,7 @@
              NavigationPage.HasNavigationBar="False"
                           xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             BackgroundImage="backround_fig.png"
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Margin="20,0,20,0">
@@ -36,8 +37,9 @@
 
             <ListView
         x:Name="eventList"
+                
         Grid.Row="2"
-        BackgroundColor="White"
+        BackgroundColor="Transparent"
         SelectionMode="None"
         HasUnevenRows="True"
         VerticalOptions="FillAndExpand"
