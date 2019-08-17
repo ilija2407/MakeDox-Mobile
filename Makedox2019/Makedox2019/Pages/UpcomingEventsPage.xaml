@@ -21,12 +21,15 @@
                 VerticalOptions="FillAndExpand"
                 ItemsSource="{Binding Movies}">
                     <ListView.Header>
+                        
                         <StackLayout Spacing="0">
                             <ff:CachedImage
-                            Aspect="AspectFill"
-                                HeightRequest="200"
+                                BindingContextChanged="Handle_BindingContextChanged"
+                            Aspect="Fill"
+                                x:Name="headerimg"
+                               
                                 HorizontalOptions="FillAndExpand"
-                            Source="coverimg.png" />
+                            Source="header.png" />
                             <StackLayout BackgroundColor="#fcf9d8"
                                      Padding="10, 0">
                                 <Label Text="Welcome to MakeDox"
@@ -66,46 +69,46 @@
                                         Orientation="Vertical"
                                         HorizontalOptions="FillAndExpand">
                                             <StackLayout Orientation="Horizontal"
-                                                     Margin="0,0,0,10">
+                                                     Margin="0,0,0,0">
                                                 <Label
                                                 Text="{Binding Title}"
-                                                FontSize="Medium"
+                                                FontSize="Small"
                                                 TextColor="Black" />
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <ff:CachedImage
                                                 Source="saat"
-                                        DownsampleWidth="20"
-                                                WidthRequest="20"
+                                        DownsampleWidth="10"
+                                                WidthRequest="10"
                                             DownsampleToViewSize="True"
-                                                HeightRequest="20"
+                                                HeightRequest="10"
                                                 HorizontalOptions="Start" />
                                                 <Label
                                                 Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
                                                 FontSize="Small"
-                                                FontAttributes="Bold" />
+                                                />
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <ff:CachedImage
                                                 Source="loc"
-                                                WidthRequest="20"
-                                        DownsampleWidth="20"
+                                                WidthRequest="10"
+                                        DownsampleWidth="10"
                                             DownsampleToViewSize="True"
-                                                HeightRequest="20"
+                                                HeightRequest="10"
                                                 HorizontalOptions="Start" />
                                                 <Label
                                                 Text="{Binding Location}"
                                                 FontSize="Small"
-                                                FontAttributes="Bold" />
+                                                />
                                             </StackLayout>
                                         </StackLayout>
-                                        <ff:CachedImage  Source="star.png" DownsampleWidth="25" DownsampleToViewSize="True"  IsVisible="{Binding IsNotFavorite}" WidthRequest="25" HeightRequest="25" Margin="0,0,20,0">
+                                        <ff:CachedImage  Source="calendar_gray.png" DownsampleWidth="25" DownsampleToViewSize="True"  IsVisible="{Binding IsNotFavorite}" WidthRequest="25" HeightRequest="25" Margin="0,0,20,0">
                                             <ff:CachedImage.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}"
                                                                   CommandParameter="{Binding .}" />
                                             </ff:CachedImage.GestureRecognizers>
                                         </ff:CachedImage>
-                                        <ff:CachedImage Source="star_selected.png" DownsampleWidth="25" DownsampleToViewSize="True" IsVisible="{Binding IsFavorite}" HeightRequest="25" WidthRequest="25" Margin="0,0,20,0">
+                                        <ff:CachedImage Source="calendar.png" DownsampleWidth="25" DownsampleToViewSize="True" IsVisible="{Binding IsFavorite}" HeightRequest="25" WidthRequest="25" Margin="0,0,20,0">
                                             <ff:CachedImage.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}"
                                                                   CommandParameter="{Binding .}" />
@@ -162,46 +165,46 @@
                                         Orientation="Vertical"
                                         HorizontalOptions="FillAndExpand">
                                             <StackLayout Orientation="Horizontal"
-                                                     Margin="0,0,0,10">
+                                                     Margin="0,0,0,0">
                                                 <Label
                                                 Text="{Binding Title}"
-                                                FontSize="Medium"
+                                                FontSize="Small"
                                                 TextColor="Black" />
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <ff:CachedImage
                                                 Source="saat"
-                                        DownsampleWidth="20"
-                                                WidthRequest="20"
+                                        DownsampleWidth="10"
+                                                WidthRequest="10"
                                             DownsampleToViewSize="True"
-                                                HeightRequest="20"
+                                                HeightRequest="10"
                                                 HorizontalOptions="Start" />
                                                 <Label
                                                 Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
                                                 FontSize="Small"
-                                                FontAttributes="Bold" />
+                                                 />
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <ff:CachedImage
                                                 Source="loc"
-                                                WidthRequest="20"
-                                        DownsampleWidth="20"
+                                                WidthRequest="10"
+                                        DownsampleWidth="10"
                                             DownsampleToViewSize="True"
-                                                HeightRequest="20"
+                                                HeightRequest="10"
                                                 HorizontalOptions="Start" />
                                                 <Label
                                                 Text="{Binding Location}"
                                                 FontSize="Small"
-                                                FontAttributes="Bold" />
+                                                />
                                             </StackLayout>
                                         </StackLayout>
-                                        <ff:CachedImage  Source="star.png" DownsampleWidth="25" DownsampleToViewSize="True"  IsVisible="{Binding IsNotFavorite}" WidthRequest="25" HeightRequest="25" Margin="0,0,20,0">
+                                        <ff:CachedImage  Source="calendar_gray.png" DownsampleWidth="25" DownsampleToViewSize="True"  IsVisible="{Binding IsNotFavorite}" WidthRequest="25" HeightRequest="25" Margin="0,0,20,0">
                                             <ff:CachedImage.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}"
                                                                   CommandParameter="{Binding .}" />
                                             </ff:CachedImage.GestureRecognizers>
                                         </ff:CachedImage>
-                                        <ff:CachedImage Source="star_selected.png" DownsampleWidth="25" DownsampleToViewSize="True" IsVisible="{Binding IsFavorite}" HeightRequest="25" WidthRequest="25" Margin="0,0,20,0">
+                                        <ff:CachedImage Source="calendar.png" DownsampleWidth="25" DownsampleToViewSize="True" IsVisible="{Binding IsFavorite}" HeightRequest="25" WidthRequest="25" Margin="0,0,20,0">
                                             <ff:CachedImage.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference upcomingEventsPage}}"
                                                                   CommandParameter="{Binding .}" />

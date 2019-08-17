@@ -30,6 +30,8 @@ namespace Makedox2019.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             base.OnCreate(savedInstanceState);
+            App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
+            App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CachedImageRenderer.Init(true);
 

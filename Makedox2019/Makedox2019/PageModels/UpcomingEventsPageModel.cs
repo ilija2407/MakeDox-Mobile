@@ -21,7 +21,6 @@ namespace Makedox2019.PageModels
 {
     public class UpcomingEventsPageModel : ViewModelBase
     {
-
         public ICommand FavoriteMovieCommand => new Command<Movie>(movie =>
         {
             var db = Realm.GetInstance();
@@ -60,6 +59,20 @@ namespace Makedox2019.PageModels
             });
         });
 
+        private int _h;
+        public int heightreg
+        {
+            get
+            {
+                return _h;
+            }
+            set
+            {
+                _h = value;
+
+            }
+        }
+
         public ICommand DetailsCommand => new DelegateCommand<Movie>(async (movie) =>
         {
             var id = movie.ID;
@@ -81,6 +94,7 @@ namespace Makedox2019.PageModels
         public UpcomingEventsPageModel(INavigationService navigationService)
             : base(navigationService)
         {
+    
         }
 
         async Task SyncData()
@@ -160,6 +174,7 @@ namespace Makedox2019.PageModels
                         res.Dispose();
                     }
                 }
+        
             }
         }
 
@@ -169,6 +184,8 @@ namespace Makedox2019.PageModels
                 Device.BeginInvokeOnMainThread(async () => await SyncData());
             else
                 await SyncData();
+
+      
         }
     }
 }

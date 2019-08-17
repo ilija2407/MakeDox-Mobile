@@ -23,6 +23,8 @@ namespace Makedox2019
     {
         private static readonly Lazy<IUserDialogs> _userDialogs = new Lazy<IUserDialogs>(() => UserDialogs.Instance);
         private static TaskCompletionSource<bool> _tcs = new TaskCompletionSource<bool>();
+        public static int ScreenHeight { get; set; }
+        public static int ScreenWidth { get; set; }
         /* 
         * The Xamarin Forms XAML Previewer in Visual Studio uses System.Activator.CreateInstance.
         * This imposes a limitation in which the App class must have a default constructor. 

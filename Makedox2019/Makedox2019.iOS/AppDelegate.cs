@@ -29,6 +29,8 @@ namespace Makedox2019.iOS
 
             Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
+            App.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+            App.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
             LoadApplication(new App(new iOSInitializer()));
             Xamarin.FormsGoogleMaps.Init("AIzaSyCAXlNUOyvZuI9F4kus3dZSK_dkK4yV9ZU");
             ButtonCircleRenderer.Init();

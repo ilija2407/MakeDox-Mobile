@@ -111,6 +111,11 @@
     <BundleResource Include="Resources\Fonts\Intro-Bold.otf" />
     <BundleResource Include="Resources\Fonts\Intro-Regular-Italic.otf" />
     <BundleResource Include="Resources\Fonts\Intro-Regular.otf" />
+    <BundleResource Include="Resources\header.png" />
+    <BundleResource Include="Resources\header_50.png" />
+    <BundleResource Include="Resources\header_75.png" />
+    <BundleResource Include="Resources\calendar.png" />
+    <BundleResource Include="Resources\calendar_gray.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
