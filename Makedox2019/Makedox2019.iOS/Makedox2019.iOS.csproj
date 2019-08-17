@@ -165,6 +165,25 @@
     <ImageAsset Include="Assets.xcassets\MyNewLaunch.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_40x40.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_1_60x60.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_2_58x58.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_3_87x87.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_4_80x80.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_5_120x120.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_5_120x120-1.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_6_20x20.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_40x40-1.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_7_29x29.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_2_58x58-1.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_40x40-2.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_4_80x80-1.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_8_76x76.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_9_152x152.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_10_167x167.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_11_1024x1024.png" />
+    <ImageAsset Include="Assets.xcassets\NewLogo.appiconset\MENU_12_180x180.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -358,4 +377,7 @@
     <BundleResource Include="Resources\coverimg.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\NewLogo.appiconset\" />
+  </ItemGroup>
 </Project>
