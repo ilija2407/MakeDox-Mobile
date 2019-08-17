@@ -22,20 +22,39 @@
                 ItemsSource="{Binding Movies}">
                     <ListView.Header>
                         
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0" Orientation="Vertical">
                             <ff:CachedImage
                                 BindingContextChanged="Handle_BindingContextChanged"
-                            Aspect="Fill"
+                                Aspect="Fill"
                                 x:Name="headerimg"
-                               
                                 HorizontalOptions="FillAndExpand"
-                            Source="header.png" />
-                            <StackLayout BackgroundColor="#fcf9d8"
-                                     Padding="10, 0">
-                                <Label Text="Welcome to MakeDox"
-                                   FontAttributes="Bold" />
-                                <Label Text="Scroll left to view favorites >>>" />
-                            </StackLayout>
+                                Source="header.png" />
+                        
+                           <StackLayout
+                                HeightRequest="70"
+                                 BackgroundColor="#fcf9d8"
+                                HorizontalOptions="FillAndExpand"
+                                 x:Name="favouritesWelcome"
+                                  Orientation="Horizontal"
+                                  Spacing="0">
+                                <StackLayout Orientation="Vertical">
+                                <Label
+                                Margin="20,0,3,0"
+                                Text="Welcome to MakeDox, you favourite events will display here." />
+                         
+                                <Label
+                                    Margin="20,0,3,0"
+                                    Text="Just add them to your program."
+                                    VerticalOptions="Start" />
+                          </StackLayout>
+                                <Image
+                                    HeightRequest="30"
+                                    WidthRequest="30"
+                                    Source="calendar.png"
+                                    Margin="5,5,30,0"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center" />
+                        </StackLayout>
                         </StackLayout>
                     </ListView.Header>
                     <ListView.ItemTemplate>
