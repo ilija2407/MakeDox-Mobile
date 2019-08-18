@@ -5,6 +5,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False"
+             x:Name="docTalksPage"
                           xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              BackgroundImage="backround_fig.png"
@@ -13,27 +14,10 @@
         <StackLayout Orientation="Vertical" Margin="20,0,20,0">
             <Image Source="doctalks_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="0,20,0,0"/>
            
-            <ScrollView HeightRequest="500">
+            <ScrollView HeightRequest="300">
                 <Label Text="The Troyan War lasted ten years, then Odysseus traveled home for another ten. And there's a fig tree in Kurshumli An that for an entire decade is listening and dwelling upon thousands of life stories. In the last nine years, this tree has become no less than our martyr, our confessional, a place for sharing. This is where our bonding rituals begin and where all the connoisseurs gather to share knowledge. An agora, temple and mead hall, all at once. A feast for body and soul. As time goes by, we become slightly convinced that it was the fig tree that found us, as it covered us with cool shade, so we silently gathered together under its crown. Who would've thought that a tree could be so curious!? The number 10, the perfect number of the Pythagoreans, symbolizes an end but also a beginning of a cycle. After all, it seems that we'll have to find a new 'fig tree' next year. We'll be careful while choosing." FontSize="Small"/>
             </ScrollView>
            
-
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Location:"/>
-                <Label Text="Kurshumli An"/>
-            </StackLayout>
-
-
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Date:"/>
-                <Label Text="22.08-27.08 2019"/>
-            </StackLayout>
-
-
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Time:"/>
-                <Label Text="06:00- 08:00 p.m"/>
-            </StackLayout>
 
             <ListView
         x:Name="eventList"
@@ -47,7 +31,19 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout
+                          <Grid Margin="10, 5" BackgroundColor="Transparent" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinitionCollection>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </ColumnDefinitionCollection>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <ContentView WidthRequest="5" BackgroundColor="#fe6800"></ContentView>
+                                <StackLayout Margin="5, 0 ,0, 0" VerticalOptions="Center" HorizontalOptions="Fill">
+     <StackLayout
                         Orientation="Vertical"
                         Padding="10, 0"
                         HorizontalOptions="FillAndExpand">
@@ -61,18 +57,18 @@
                                 HorizontalOptions="FillAndExpand">
 
                                         <StackLayout Orientation="Horizontal"
-                                             Margin="0,0,0,10">
+                                             Margin="0,0,0,0">
                                             <Label
                                         Text="{Binding Title}"
-                                        FontSize="Medium"
+                                        FontSize="Small"
                                         TextColor="Black" />
                                         </StackLayout>
 
                                         <StackLayout Orientation="Horizontal">
                                             <ff:CachedImage
                                         Source="saat"
-                                        WidthRequest="25"
-                                        HeightRequest="25"
+                                        WidthRequest="10"
+                                        HeightRequest="10"
                                         HorizontalOptions="Start" />
 
                                             <Label
@@ -84,8 +80,8 @@
                                         <StackLayout Orientation="Horizontal">
                                             <ff:CachedImage
                                         Source="loc"
-                                        WidthRequest="25"
-                                        HeightRequest="25"
+                                        WidthRequest="10"
+                                        HeightRequest="10"
                                         HorizontalOptions="Start" />
 
                                             <Label
@@ -95,17 +91,28 @@
                                         </StackLayout>
 
                                     </StackLayout>
-                                 
-                                </StackLayout>
-
-
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                Command="{Binding BindingContext.DetailsCommand,Source={x:Reference eventList}}"
-                                CommandParameter="{Binding .}" />
-                                </StackLayout.GestureRecognizers>
-
+                                                <ff:CachedImage  Source="calendar_gray.png" DownsampleWidth="25" DownsampleToViewSize="True"  IsVisible="{Binding IsNotFavorite}" WidthRequest="25" HeightRequest="25" Margin="0,0,20,0">
+                                            <ff:CachedImage.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference docTalksPage}}"
+                                                                  CommandParameter="{Binding .}" />
+                                            </ff:CachedImage.GestureRecognizers>
+                                        </ff:CachedImage>
+                                        <ff:CachedImage Source="calendar.png" DownsampleWidth="25" DownsampleToViewSize="True" IsVisible="{Binding IsFavorite}" HeightRequest="25" WidthRequest="25" Margin="0,0,20,0">
+                                            <ff:CachedImage.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.FavoriteMovieCommand,Source={x:Reference docTalksPage}}"
+                                                                  CommandParameter="{Binding .}" />
+                                            </ff:CachedImage.GestureRecognizers>
+                                        </ff:CachedImage>
+                                </StackLayout>                              
+                                        </StackLayout>
+                                        </StackLayout>
                             </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding BindingContext.DetailsCommand,Source={x:Reference eventList}}"
+                                    CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
 
                         </ViewCell>
                     </DataTemplate>
