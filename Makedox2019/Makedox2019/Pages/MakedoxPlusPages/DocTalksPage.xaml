@@ -11,9 +11,9 @@
              BackgroundImage="backround_fig.png"
              BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Margin="20,0,20,0">
-            <Image Source="doctalks_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="0,20,0,0"/>
-           
+        <StackLayout Orientation="Vertical" >
+            <Image Source="doctalks_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="5,5,5,0"/>
+            <StackLayout Orientation="Vertical" Margin="20,0,20,0">
             <ScrollView HeightRequest="300">
                 <Label Text="The Troyan War lasted ten years, then Odysseus traveled home for another ten. And there's a fig tree in Kurshumli An that for an entire decade is listening and dwelling upon thousands of life stories. In the last nine years, this tree has become no less than our martyr, our confessional, a place for sharing. This is where our bonding rituals begin and where all the connoisseurs gather to share knowledge. An agora, temple and mead hall, all at once. A feast for body and soul. As time goes by, we become slightly convinced that it was the fig tree that found us, as it covered us with cool shade, so we silently gathered together under its crown. Who would've thought that a tree could be so curious!? The number 10, the perfect number of the Pythagoreans, symbolizes an end but also a beginning of a cycle. After all, it seems that we'll have to find a new 'fig tree' next year. We'll be careful while choosing." FontSize="Small"/>
             </ScrollView>
@@ -74,7 +74,7 @@
                                             <Label
                                         Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
                                         FontSize="Small"
-                                        FontAttributes="Bold" />
+                                      />
                                         </StackLayout>
 
                                         <StackLayout Orientation="Horizontal">
@@ -87,7 +87,7 @@
                                             <Label
                                         Text="{Binding Location}"
                                         FontSize="Small"
-                                        FontAttributes="Bold" />
+                                        />
                                         </StackLayout>
 
                                     </StackLayout>
@@ -119,6 +119,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+        </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

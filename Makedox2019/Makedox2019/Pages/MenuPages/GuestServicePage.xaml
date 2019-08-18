@@ -3,15 +3,83 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.GuestServicePage"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False"             
              BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Margin="20,0,20,0">
-            <Image Source="guest_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="0,20,0,0"/>
-            <Label Margin="0,20,0,0" 
-                   Text="Here are some useful information about your stay in Skopje.&#x0a;Guest service is located in Kurshumli An.&#x0a;&#x0a;Contact person: Kirijana A. Nikoloska&#x0a;E-mail address: kirijana.nikoloska@makedox.mk&#x0a;Phone: +38970566789&#x0a;MakeDox recommends:&#x0a;&#x0a;Galerija 7 Restaurant - Old Bazaar&#x0a;Film &amp; Cafe Kotur - City Center&#x0a;Café bar Vinyl - bul. Kliment Ohridski&#x0a;Barik Restaurant - Debar Maalo&#x0a;MKC Club Restaurant (Youth Cultural Center)&#x0a;Global taxi &#x0a;&#x0a;Phone: +389215180
+        <ScrollView Orientation="Vertical">
+            
+        <StackLayout Orientation="Vertical" Margin="5,5,5,0">
+            <Image Source="guest_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit"/>
+            <StackLayout Orientation="Vertical" Margin="20,0,0,0">
+                
+            <Label Margin="0,5,0,0" 
+                   Text="Here are some useful information about your stay in Skopje.&#x0a;Guest service is located in Kurshumli An.&#x0a;&#x0a;Contact person: Kirijana A. Nikoloska&#x0a;E-mail address: kirijana.nikoloska@makedox.mk&#x0a;Phone: +38970566789&#x0a;
                     "  />
+
+            <Label Text="MakeDox recommends:"/>
+            <StackLayout Orientation="Horizontal">
+                <ff:CachedImage
+                            Source="loc"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            HorizontalOptions="Start" />
+                <Label Text="Galerija 7 Restaurant - Old Bazaar"/>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+                <ff:CachedImage
+                            Source="loc"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            HorizontalOptions="Start" />
+                <Label Text="Film &amp; Cafe Kotur - City Center"/>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+                <ff:CachedImage
+                            Source="loc"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            HorizontalOptions="Start" />
+                <Label Text="Café bar Vinyl - bul. Kliment Ohridski"/>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+                <ff:CachedImage
+                            Source="loc"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            HorizontalOptions="Start" />
+                <Label Text="Barik Restaurant - Debar Maalo"/>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+                <ff:CachedImage
+                            Source="loc"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            HorizontalOptions="Start" />
+                <Label Text="MKC Club Restaurant (Youth Cultural Center)"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <ff:CachedImage
+                            Source="taxi"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            HorizontalOptions="Start" />
+                <Label Text="Global taxi: +389215180"/>
+            </StackLayout>
+            </StackLayout>
+
         </StackLayout>
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

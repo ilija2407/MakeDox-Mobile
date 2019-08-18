@@ -3,38 +3,105 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.PhotoExebitionPage"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False"             
              BackgroundColor="White">
     
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Orientation="Vertical" Margin="20,0,20,0">
-                <Image Source="photo_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="0,20,0,0"/>
-            <Label Margin="0" HorizontalOptions="CenterAndExpand" Text="MakeDox Time Machine"/>
-            <Label Margin="0,20,0,0" HorizontalOptions="Start" Text="21 August, 2019"/>
-            <Label Margin="0,20,0,0" HorizontalOptions="Start" Text="Location: Kurshumli An"/>
-            <Label Margin="0,20,0,0" HorizontalOptions="Start" Text="Time: 08:00 p.m"/>
-            <Label Margin="0,20,0,0" Text="Our app puts characters in a time-machine and although it works at a slower pace and does not require access to your personal data, it often reveals depths of personal intimacy. At the 10th Traveling Cinema of MakeDox, carrying on the tradition of the first cinema-screeners, we created photographs by using ancient technology. We put the faces of our contemporaries in an older frame, mainly presenting our warmhearted hosts and the curious guests in one shot. The resulting magic might not be at anyone’s hand and it certainly doesn’t depend on technology but solely on the human qualities that are embedded in each of these photos. The tiny particles and the bad exposition on the glass plates display additional information for the most extraordinary conditions in the making of these photographs, while also exhibiting the indescribable patience and radiant energy of all those who were photographed. Therefore, these photos are invaluable. A great deal of their beauty has seized due to the digital scanning, however,you will have the opportunity to see them in their original form at the 10th edition of MakeDox. "/>   
-            <Label Margin="0,20,0,0" Text="The author of the photos is Sasho Alushevski, earnestly supported by the assistance of the volunteers Laura Andrianaivoravelo and Paul Bevilaqua. Check out the photo album, see for yourselves and share your impressions on our time machine."/>
-            
-                
-            <Label Margin="0" HorizontalOptions="CenterAndExpand" Text="The Loving Ones"/>
-            <Label Margin="0" HorizontalOptions="CenterAndExpand" Text="Memorial to a Life Spent Together"/>
-            <Label Margin="0,20,0,0" HorizontalOptions="Start" Text="21 August, 2019"/>
-            <Label Margin="0,20,0,0" HorizontalOptions="Start" Text="Location: Chifte Hammam"/>
-            <Label Margin="0,20,0,0" HorizontalOptions="Start" Text="Time: 07:00 p.m"/>
-            <Label Margin="0,20,0,0" Text="When the documentary filmmakers Biljana Garvanlieva and Manuel Zimmer found out that Biljana was diagnosed with lethal cancer, she decides not to be overwhelmed by her fear of her approaching death. Instead, she faced those fears and reflected together with her husband Manuel what this would mean for their lives and the lives of their children. These reflections are engraved as augmented reality content upon a series of 12 portraits of Biljana and Manuel. They are a testament to their love in the time of death."/>    
-            <Label Margin="0,20,0,0" Text="As part of their reflections, they asked Berlin-based media artist Tim Deussen to take a series of portraits of them. These portraits were based on a series of photos that were taken by the artist Jovan Balov, when Biljana and Manuel moved to Berlin as a young couple. As their ordeal continued Biljana and Manuel documented moments of their life in the form of sound, video, texts or photos. Biljana passed away, but her artistic spirit to face even the most fragile and sensitive time we as humans eventually all must live through, lead to this exhibition."/>    
+        <StackLayout Orientation="Vertical" >
+                <Image Source="photo_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="5,5,5,0"/>
+                <StackLayout Orientation="Vertical" Margin="20,0,20,0">
+                  
+                    <Label Margin="0"  Text="MakeDox Time Machine" FontSize="Medium" />
 
-            <Label Margin="0,20,0,0" Text="The last series of portraits of Biljana and Manuel forms the base to show the second layer of augmented reality. This is a glimpse into their subjective and personal views. This view spawns an arch starting from the moment when the fell in love, through the ordeal of the illness, to the time of passing away. Two layers of time: intimate hours of being together, and spending a lifetime with each other. Their personal experience that is reflected in the images and AR content, is embraced by the universal themes of love, life, and death that they experienced together. What happened outside of the frame of the photos, leads you inside their lives. It’s those moments that count. Not death, but life and time spent together. Each moment lived through is special. Each moment spent together is eternal."/>
-            <Label Margin="0,20,0,0" Text="Biljana Garvanlieva (*20.07.1973 – †10.09.2016)"/>
-            <Label Margin="0,20,0,0" Text="Biljana was a freelance director of documentary films who lived and worked in Skopje and Berlin. Born in Skopje in 1973, she studied dramaturgy in Macedonia before receiving a grant in 1999 from the German Academic Exchange Service to study theater and film at the Free University of Berlin (Freien Universität Berlin). In 2006, she directed her first documentary for the TV network 3sat, entitled “Macedonian Dream - A Girl and her Accordion”, which has won several awards, including the Golden Lola German Short Film Award. In 2009, she followed up her first success with “Tobacco Girl”, which has received numerous awards for its directing, including nominations for the Golden Lola Award and the Juliane Bartel German Media Award. In 2010, Garvanlieva won the prize Heart of Sarajevo for Best Documentary at the 16th Sarajevo Film Festival for her documentary film “The Seamstresses.”"/>
-            <Label Margin="0,20,0,0" Text="Manuel Zimmer"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <ff:CachedImage
+                            Source="loc"
+                            WidthRequest="10"
+                            HeightRequest="10"
+                            HorizontalOptions="Start" />
+                                <Label Text="Kurshumli An"/>
+                            </StackLayout>
+
+
+                            <StackLayout Orientation="Horizontal">
+                                <ff:CachedImage
+                            Source="saat"
+                            WidthRequest="10"
+                            HeightRequest="10"
+                            HorizontalOptions="Start" />
+                                <Label Text="21/08/2019 20:00"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <ff:CachedImage
+                            Source="calendar"
+                            VerticalOptions="Center"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+
+
+
+                    <Label Margin="0,5,0,0" Text="Our app puts characters in a time-machine and although it works at a slower pace and does not require access to your personal data, it often reveals depths of personal intimacy. At the 10th Traveling Cinema of MakeDox, carrying on the tradition of the first cinema-screeners, we created photographs by using ancient technology.&#x0a;&#x0a; We put the faces of our contemporaries in an older frame, mainly presenting our warmhearted hosts and the curious guests in one shot. The resulting magic might not be at anyone's hand and it certainly doesn't depend on technology but solely on the human qualities that are embedded in each of these photos. &#x0a;&#x0a;The tiny particles and the bad exposition on the glass plates display additional information for the most extraordinary conditions in the making of these photographs, while also exhibiting the indescribable patience and radiant energy of all those who were photographed. Therefore, these photos are invaluable. A great deal of their beauty has seized due to the digital scanning, however,you will have the opportunity to see them in their original form at the 10th edition of MakeDox. "/>   
+            <Label Margin="0,5,0,0" Text="The author of the photos is Sasho Alushevski, earnestly supported by the assistance of the volunteers Laura Andrianaivoravelo and Paul Bevilaqua. Check out the photo album, see for yourselves and share your impressions on our time machine."/>
+
+
+                    <Label Margin="0,15,0,0" FontSize="Medium" Text="The Loving Ones"/>
+                    <Label Margin="0" FontSize="Medium" Text="Memorial to a Life Spent Together"/>
+
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <ff:CachedImage
+                            Source="loc"
+                            WidthRequest="10"
+                            HeightRequest="10"
+                            HorizontalOptions="Start" />
+                                <Label Text="Chifte Hammam"/>
+                            </StackLayout>
+
+
+                            <StackLayout Orientation="Horizontal">
+                                <ff:CachedImage
+                            Source="saat"
+                            WidthRequest="10"
+                            HeightRequest="10"
+                            HorizontalOptions="Start" />
+                                <Label Text="21/08/2019 19:00"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <ff:CachedImage
+                            Source="calendar"
+                            VerticalOptions="Center"
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+
+                    
+                    
+            <Label Margin="0,5,0,0" Text="When the documentary filmmakers Biljana Garvanlieva and Manuel Zimmer found out that Biljana was diagnosed with lethal cancer, she decides not to be overwhelmed by her fear of her approaching death. Instead, she faced those fears and reflected together with her husband Manuel what this would mean for their lives and the lives of their children. These reflections are engraved as augmented reality content upon a series of 12 portraits of Biljana and Manuel. They are a testament to their love in the time of death."/>    
+            <Label Margin="0,5,0,0" Text="As part of their reflections, they asked Berlin-based media artist Tim Deussen to take a series of portraits of them. These portraits were based on a series of photos that were taken by the artist Jovan Balov, when Biljana and Manuel moved to Berlin as a young couple. As their ordeal continued Biljana and Manuel documented moments of their life in the form of sound, video, texts or photos. Biljana passed away, but her artistic spirit to face even the most fragile and sensitive time we as humans eventually all must live through, lead to this exhibition."/>    
+
+            <Label Margin="0,5,0,0" Text="The last series of portraits of Biljana and Manuel forms the base to show the second layer of augmented reality. This is a glimpse into their subjective and personal views. This view spawns an arch starting from the moment when the fell in love, through the ordeal of the illness, to the time of passing away. Two layers of time: intimate hours of being together, and spending a lifetime with each other. Their personal experience that is reflected in the images and AR content, is embraced by the universal themes of love, life, and death that they experienced together. What happened outside of the frame of the photos, leads you inside their lives. It’s those moments that count. Not death, but life and time spent together. Each moment lived through is special. Each moment spent together is eternal."/>
+            <Label Margin="0,5,0,0" Text="Biljana Garvanlieva (*20.07.1973 – †10.09.2016)"/>
+            <Label Margin="0,5,0,0" Text="Biljana was a freelance director of documentary films who lived and worked in Skopje and Berlin. Born in Skopje in 1973, she studied dramaturgy in Macedonia before receiving a grant in 1999 from the German Academic Exchange Service to study theater and film at the Free University of Berlin (Freien Universität Berlin). In 2006, she directed her first documentary for the TV network 3sat, entitled “Macedonian Dream - A Girl and her Accordion”, which has won several awards, including the Golden Lola German Short Film Award. In 2009, she followed up her first success with “Tobacco Girl”, which has received numerous awards for its directing, including nominations for the Golden Lola Award and the Juliane Bartel German Media Award. In 2010, Garvanlieva won the prize Heart of Sarajevo for Best Documentary at the 16th Sarajevo Film Festival for her documentary film “The Seamstresses.”"/>
+            <Label Margin="0,10,0,0" Text="Manuel Zimmer"/>
            
-            <Label Margin="0,20,0,0" Text="Manuel Zimmer studied film at the Filmakademie in Potsdam-Babelsberg. After his studies, he worked as a freelance cameraman, sound engineer, and documentary filmmaker on several film projects that were produced by major TV stations, directors or production companies. His filmography contains “The Seamstresses” and “Polly on the Rocks” with Biljana Garvanlieva, “24 hours Jerusalem” by Zero Film and “An Apartment in Berlin3” by Alice Agneskirchner. Currently,  Manuel is editing the last documentary film that he was making with Biljana."/>
-            <Label Margin="0,20,0,0" Text="Tim Deussen"/>
-            <Label Margin="0,20,0,0" Text="Tim Deussen was born in 1968, in Germany. He studied photography, psychology, and film at New York University. Since he completed his MA Degree in 1996, he participated in his photo and video works in numerous exhibitions in Germany, Israel as well as in Skopje. Deussen has also exhibited his works in his studio in Berlin where he works and realizes media productions, ranging from photography over animations to virtual and augmented reality experiences. Currently, he works on a cross-platform experience that includes animation, books, AR and 3D printing, telling the story of a small elephant that fights against greedy oil pumps to save the planet."/>
+            <Label Margin="0,5,0,0" Text="Manuel Zimmer studied film at the Filmakademie in Potsdam-Babelsberg. After his studies, he worked as a freelance cameraman, sound engineer, and documentary filmmaker on several film projects that were produced by major TV stations, directors or production companies. His filmography contains “The Seamstresses” and “Polly on the Rocks” with Biljana Garvanlieva, “24 hours Jerusalem” by Zero Film and “An Apartment in Berlin3” by Alice Agneskirchner. Currently,  Manuel is editing the last documentary film that he was making with Biljana."/>
+            <Label Margin="0,10,0,0" Text="Tim Deussen"/>
+            <Label Margin="0,5,0,10" Text="Tim Deussen was born in 1968, in Germany. He studied photography, psychology, and film at New York University. Since he completed his MA Degree in 1996, he participated in his photo and video works in numerous exhibitions in Germany, Israel as well as in Skopje. Deussen has also exhibited his works in his studio in Berlin where he works and realizes media productions, ranging from photography over animations to virtual and augmented reality experiences. Currently, he works on a cross-platform experience that includes animation, books, AR and 3D printing, telling the story of a small elephant that fights against greedy oil pumps to save the planet."/>
+                </StackLayout>
                 </StackLayout>
             </ScrollView>
     </ContentPage.Content>

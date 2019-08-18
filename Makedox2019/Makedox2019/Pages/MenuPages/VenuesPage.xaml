@@ -8,8 +8,9 @@
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-             <StackLayout Orientation="Vertical" Margin="20,0,20,0">
-            <Image Source="venues_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="0,20,0,0"/>
+             <StackLayout Orientation="Vertical" >
+            <Image Source="venues_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="5,5,5,0"/>
+            <StackLayout Orientation="Vertical" Margin="20,0,20,0">
             <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
                 
                         <ff:CachedImage  
@@ -29,8 +30,8 @@
                     <TapGestureRecognizer Command="{Binding NavigateToKurshumliCommand}" />
                </StackLayout.GestureRecognizers>
                 </StackLayout>
-                
-                        <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
+            <BoxView HeightRequest="1" Color="DarkGray" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
                         <ff:CachedImage  
                                             Source="kurshumli_out.png" 
                                             Aspect="AspectFit"
@@ -48,8 +49,9 @@
                     <TapGestureRecognizer Command="{Binding NavigateToKurshumliOutCommand}" />
                </StackLayout.GestureRecognizers>
             </StackLayout>
-                
-                        <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
+            <BoxView HeightRequest="1" Color="DarkGray" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand"/>
+
+            <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
                         <ff:CachedImage  
                                             Source="msu.png" 
                                             Aspect="AspectFit"
@@ -67,8 +69,9 @@
                     <TapGestureRecognizer Command="{Binding NavigateToMkcCommand}" />
                </StackLayout.GestureRecognizers>
             </StackLayout>
-                
-                        <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
+            <BoxView HeightRequest="1" Color="DarkGray" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand"/>
+
+            <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
                         <ff:CachedImage  
                                             Source="kinomilenium.png" 
                                             Aspect="AspectFit"
@@ -86,6 +89,9 @@
                     <TapGestureRecognizer Command="{Binding NavigateToKinoMileniumCommand}" />
                </StackLayout.GestureRecognizers>
             </StackLayout>
+            <BoxView HeightRequest="1" Color="DarkGray" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand"/>
+
+        </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

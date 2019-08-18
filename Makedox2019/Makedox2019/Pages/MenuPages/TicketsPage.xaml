@@ -8,8 +8,9 @@
              BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Orientation="Vertical" Margin="20,0,20,0">
-                <Image Source="tickets_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="0,20,0,0"/>
+        <StackLayout Orientation="Vertical" >
+                <Image Source="tickets_2.png"   HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" Margin="5,5,5,0"/>
+                <StackLayout Orientation="Vertical" Margin="20,0,20,0">
                 <Label Margin="0,20,0,0">
                     <Label.FormattedText>
                         <FormattedString>
@@ -39,11 +40,13 @@
                             <Span Text="Single ticket for screening of &quot;Honeyland&quot; in MKC - 100 MKD&#x0a;&#x0a;" />
                             <Span Text="Closing night evening ticket (screening + concert of Foltin) - 400 MKD&#x0a;&#x0a;"/>
                             <Span Text="Closing night concert - 300 MKD&#x0a;&#x0a;"/>
-                                <Span Text="*The entrance for the screenings in MKC is free for kids until the age of 12" />
+                                <Span Text="*The entrance for the screenings in MKC is free for kids until the age of 12&#x0a;&#x0a;" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-        </StackLayout>
+                    
+                </StackLayout>
+            </StackLayout>
             </ScrollView>
     </ContentPage.Content>
 </ContentPage>

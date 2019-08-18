@@ -1,4 +1,5 @@
 ﻿using Makedox2019.Models;
+using Makedox2019.Pages;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Realms;
@@ -18,7 +19,14 @@ namespace Makedox2019.PageModels
         public bool ItemVisibility { get; set; }
 
         public bool OneLinerVisibility { get; set; }
-        
+
+        public ICommand WatchTrailerCommand => new Command<Movie>((movie) =>
+        {
+            var trailer = movie.Trailer;
+            Device.OpenUri(new Uri((string)trailer));
+            //await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", movie.ID } });
+        });
+
         public EventDetailsPageModel(INavigationService navigationService)
             : base(navigationService)
         {

@@ -6,7 +6,6 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"       
              IconImageSource="timeline_gray.png"
-             BackgroundImage="bgmoviedetails.png"
              NavigationPage.HasNavigationBar="False">
         <StackLayout
             BackgroundColor="Transparent"
