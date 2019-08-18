@@ -11,7 +11,120 @@
             Margin="20"
             Orientation="Vertical"
             VerticalOptions="Start">
-        <Image Source="info_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
+
+        <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <Label Text="INFO" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Intro-Regular" />
+                        <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToInfoPageCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+        <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <Label Text="GUEST SERVICE" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Intro-Regular" />
+                        <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToGuestPageCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+
+        <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <Label Text="VENUES" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Intro-Regular" />
+                        <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToVenuesPageCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+
+        <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <Label Text="TICKETS" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Intro-Regular" />
+                        <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToTicketsPageCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+
+        <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <Label Text="SOCIAL" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Intro-Regular" />
+                        <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToSocialPageCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+
+        <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+            <Label Text="MAPS" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Intro-Regular" />
+                        <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToMapsPageCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<Image Source="info_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToInfoPageCommand}" />
                 </Image.GestureRecognizers>
@@ -40,6 +153,6 @@
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToMapsPageCommand}" />
                 </Image.GestureRecognizers>
-            </Image>
+            </Image>-->
         </StackLayout>
 </ContentPage>

@@ -12,7 +12,122 @@
         <StackLayout
             Margin="20"
             VerticalOptions="Start">
-            <Image Source="doctalks_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
+
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label Text="DOC TALKS UNDER THE FIG TREE" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToDocPageCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label Text="WORKSHOPS" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToWorkshopPageCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label Text="MakeCoProDox FORUM" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToCoProPageCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label Text="PHOTO EXHIBITIONS" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToPhotoPageCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label Text="OUT OF COMPETITION" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToOutOfCompetitionCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label Text="NIGHT STORIES" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToMusicPageCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label Text="COLLABORATIONS WITH FESTIVALS" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToColaborationPageCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            
+
+
+
+
+
+            <!--<Image Source="doctalks_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToDocPageCommand}" />
                 </Image.GestureRecognizers>
@@ -46,7 +161,7 @@
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToColaborationPageCommand}" />
                 </Image.GestureRecognizers>
-            </Image>
+            </Image>-->
         </StackLayout>
     </ContentPage.Content>
 
