@@ -19,8 +19,28 @@
     </ContentPage.Resources>
         <ScrollView Padding="20, 0">
             <StackLayout Spacing="10">
-                <ff:CachedImage  Source="{Binding Model.CoverImage}" Aspect="AspectFill" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"  HeightRequest="400" />
-                <Label Text="{Binding Model.Title}" TextColor="#640d20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+            
+            
+                
+           <StackLayout  
+                x:Name="productImgBorder" 
+                BackgroundColor="Transparent" 
+                HorizontalOptions="FillAndExpand">
+            <StackLayout 
+                    BackgroundColor="White"
+                    Margin="1"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand">                    
+             <Image 
+                x:Name="productImg"
+                    Source="{Binding Model.CoverImage}"
+                    Aspect="AspectFill"/>
+                    </StackLayout>
+                </StackLayout>
+            
+            
+<!--                <ff:CachedImage  Source="{Binding Model.CoverImage}" Aspect="AspectFill" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"  HeightRequest="400" />
+-->                <Label Text="{Binding Model.Title}" TextColor="#640d20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10" />
