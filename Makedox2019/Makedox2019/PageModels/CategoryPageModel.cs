@@ -134,16 +134,16 @@ namespace Makedox2019.PageModels
                     url = "victor.png";
                     break;
                 case "mkc":
-                    url = "mkc_cover.png";
+                    url = "mkc_za_venues.png";
                     break;
                 case "kurshumli an":
-                    url = "kurshumli_cover.png";
+                    url = "kurshumli.png";
                     break;
                 case "kurshumli out":
-                    url = "kurshumli_out_cover.png";
+                    url = "kurshumli_out.png";
                     break;
                 case "кино милениум":
-                    url = "milenium_cover.png";
+                    url = "milenium_venues.png";
                     break;
             }
             if (string.IsNullOrEmpty(url))
