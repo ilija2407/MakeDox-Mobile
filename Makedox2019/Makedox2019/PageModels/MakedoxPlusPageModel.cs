@@ -90,8 +90,8 @@ namespace Makedox2019.PageModels
 
         private async void NavigateToWorkshopPage(object obj)
         {
-            var q = await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=Workshops");
-           // _navigationService.NavigateAsync(nameof(WorkshopsPage));
+            //var q = await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=Workshops");
+            _navigationService.NavigateAsync(nameof(WorkshopsPage));
 
             //push a basic page Modally
             //var page = FreshPageModelResolver.ResolvePageModel<WorkshopsPageModel>();

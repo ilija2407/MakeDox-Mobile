@@ -17,6 +17,7 @@ using Android.Content;
 using Acr.UserDialogs;
 using Prism;
 using Prism.Ioc;
+using PanCardView.Droid;
 
 namespace Makedox2019.Droid
 {
@@ -34,6 +35,7 @@ namespace Makedox2019.Droid
             App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CachedImageRenderer.Init(true);
+            CardsViewRenderer.Preserve();
 
             var config = new FFImageLoading.Config.Configuration()
             {

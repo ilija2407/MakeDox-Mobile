@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Makedox2019.Pages.WorkshopsPage"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             NavigationPage.HasNavigationBar="False"
+             x:Name="workshopspage"
              prism:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <StackLayout>
@@ -19,9 +23,38 @@
                 <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
             </StackLayout>
 
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <cards:CoverFlowView 
+                PositionShiftValue="60"
+                IsCyclical="false"
+                
+                IsAutoInteractionRunning="{Binding IsAutoAnimationRunning}"
+                IsUserInteractionRunning="{Binding IsUserInteractionRunning}"
+                SelectedIndex="{Binding CurrentIndex}"
+                ItemsSource="{Binding Items}">
+                <cards:CoverFlowView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="40">
+                            <Frame 
+                            VerticalOptions="Center"
+                            HorizontalOptions="Fill"
+                            HeightRequest="290"
+                            Padding="0" 
+                            HasShadow="false"
+                            IsClippedToBounds="true"
+                            CornerRadius="10"
+                            BackgroundColor="{Binding Color}">
+
+                                <ffimage:CachedImage Source="{Binding Source}" Aspect="AspectFill"/>
+
+                            </Frame>
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.ImgTapped ,Source={x:Reference workshopspage}}" CommandParameter="{Binding .}"/>
+                            </ContentView.GestureRecognizers>
+                        </ContentView>
+                    </DataTemplate>
+                </cards:CoverFlowView.ItemTemplate>
+            </cards:CoverFlowView>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
