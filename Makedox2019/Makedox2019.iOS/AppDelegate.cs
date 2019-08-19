@@ -4,6 +4,7 @@ using System.Linq;
 using ButtonCircle.FormsPlugin.iOS;
 using FFImageLoading.Forms.Platform;
 using Foundation;
+using PanCardView.iOS;
 using Prism;
 using Prism.Ioc;
 using UIKit;
@@ -32,6 +33,7 @@ namespace Makedox2019.iOS
             App.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
             App.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
             LoadApplication(new App(new iOSInitializer()));
+            CardsViewRenderer.Preserve();
             Xamarin.FormsGoogleMaps.Init("AIzaSyCAXlNUOyvZuI9F4kus3dZSK_dkK4yV9ZU");
             ButtonCircleRenderer.Init();
             return base.FinishedLaunching(app, options);
