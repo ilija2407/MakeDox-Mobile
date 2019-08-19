@@ -128,6 +128,7 @@
     <BundleResource Include="Resources\outofcom.png" />
     <BundleResource Include="Resources\short.png" />
     <BundleResource Include="Resources\student.png" />
+    <BundleResource Include="Resources\mkc_za_venues.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

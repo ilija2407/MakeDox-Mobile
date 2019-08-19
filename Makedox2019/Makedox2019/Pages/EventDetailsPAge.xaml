@@ -45,6 +45,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="70" />
                     </Grid.ColumnDefinitions>
                     <ContentView BackgroundColor="#640d20" Grid.Column="0" />
                     <StackLayout Grid.Column="1">
@@ -81,6 +82,16 @@
                                                 />
                                             </StackLayout>
                     </StackLayout>
+                    <ff:CachedImage Grid.Column="2"  Source="calendar_gray.png" DownsampleWidth="25" DownsampleToViewSize="True"  IsVisible="{Binding Model.IsNotFavorite}" WidthRequest="25" HeightRequest="25" Margin="0,0,20,0">
+                                            <ff:CachedImage.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding FavoriteMovieCommand}"/>
+                                            </ff:CachedImage.GestureRecognizers>
+                                        </ff:CachedImage>
+                                        <ff:CachedImage Grid.Column="2"  Source="calendar.png" DownsampleWidth="25" DownsampleToViewSize="True" IsVisible="{Binding Model.IsFavorite}" HeightRequest="25" WidthRequest="25" Margin="0,0,20,0">
+                                            <ff:CachedImage.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding FavoriteMovieCommand}" />
+                                            </ff:CachedImage.GestureRecognizers>
+                                        </ff:CachedImage>
                 </Grid>
             <Grid IsVisible="{Binding ItemVisibility}"  Margin="0, 15">
                     <Grid.ColumnDefinitions>

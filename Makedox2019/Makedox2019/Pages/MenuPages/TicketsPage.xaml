@@ -23,7 +23,7 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Vertical" Margin="20,0,20,0">
-                <Label Margin="0,20,0,0">
+                <Label Margin="0,20,0,0" FontSize="10" LineHeight="1.5">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Tickets can be purchased online at &#x0a;&#x0a;" />

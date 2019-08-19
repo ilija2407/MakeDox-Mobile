@@ -1,10 +1,12 @@
 ﻿using Makedox2019.Models;
 using Makedox2019.Pages;
+using Plugin.LocalNotification;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Realms;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -60,5 +62,43 @@ namespace Makedox2019.PageModels
             }
 
         }
+
+        public ICommand FavoriteMovieCommand => new Command(() =>
+        {
+            var db = Realm.GetInstance();
+            db.Write(() =>
+            {
+                var notifications = db.All<Notification>();
+                Model.IsFavorite = Model.IsFavorite == false ? true : false;
+                var currentNotif = notifications.FirstOrDefault(x => x.MovieId == Model.ID);
+                if (currentNotif != null)
+                    NotificationCenter.Current.Cancel(currentNotif.NotificationId);
+
+                if (Model.IsFavorite)
+                {
+                    if (currentNotif != null)
+                    {
+                        db.Remove(currentNotif);
+                        var notif = new Notification(notifications.Count(), new Random(305006489).Next(100000, 600000), Model.ID);
+
+                        db.Add(notif);
+                        var time = Model.StartTime.Value.AddMinutes(-30).DateTime;
+                        if (time < DateTime.Now)
+                            time = DateTime.Now.AddMinutes(1);
+
+                        var notification = new NotificationRequest
+                        {
+                            NotificationId = notif.NotificationId,
+                            Title = Model.Title,
+                            Description = $"will be displayed at {Model.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
+                            ReturningData = Model.ID.ToString(),// Returning data when tapped on notification.
+                            NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
+                        };
+                        NotificationCenter.Current.Show(notification);
+                    }
+
+                }
+            });
+        });
     }
 }

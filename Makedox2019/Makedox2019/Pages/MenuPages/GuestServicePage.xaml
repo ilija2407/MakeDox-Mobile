@@ -27,67 +27,69 @@
             
             <StackLayout Orientation="Vertical" Margin="20,0,0,0">
                 
-            <Label Margin="0,5,0,0" 
+            <Label Margin="0,5,0,0"
+                   LineHeight="1.5"
+                   FontSize="10"
                    Text="Here are some useful information about your stay in Skopje.&#x0a;Guest service is located in Kurshumli An.&#x0a;&#x0a;Contact person: Kirijana A. Nikoloska&#x0a;E-mail address: kirijana.nikoloska@makedox.mk&#x0a;Phone: +38970566789&#x0a;
                     "  />
 
-            <Label Text="MakeDox recommends:"/>
+            <Label FontSize="10" Text="MakeDox recommends:"/>
             <StackLayout Orientation="Horizontal">
                 <ff:CachedImage
                             Source="loc"
-                            WidthRequest="30"
-                            HeightRequest="30"
+                            WidthRequest="10"
+                            HeightRequest="10"
                             HorizontalOptions="Start" />
-                <Label Text="Galerija 7 Restaurant - Old Bazaar"/>
+                <Label FontSize="10" Text="Galerija 7 Restaurant - Old Bazaar"/>
             </StackLayout>
 
 
             <StackLayout Orientation="Horizontal">
                 <ff:CachedImage
                             Source="loc"
-                            WidthRequest="30"
-                            HeightRequest="30"
+                            WidthRequest="10"
+                            HeightRequest="10"
                             HorizontalOptions="Start" />
-                <Label Text="Film &amp; Cafe Kotur - City Center"/>
+                <Label FontSize="10" Text="Film &amp; Cafe Kotur - City Center"/>
             </StackLayout>
 
 
             <StackLayout Orientation="Horizontal">
                 <ff:CachedImage
                             Source="loc"
-                            WidthRequest="30"
-                            HeightRequest="30"
+                            WidthRequest="10"
+                            HeightRequest="10"
                             HorizontalOptions="Start" />
-                <Label Text="Café bar Vinyl - bul. Kliment Ohridski"/>
+                <Label FontSize="10" Text="Café bar Vinyl - bul. Kliment Ohridski"/>
             </StackLayout>
 
 
             <StackLayout Orientation="Horizontal">
                 <ff:CachedImage
                             Source="loc"
-                            WidthRequest="30"
-                            HeightRequest="30"
+                            WidthRequest="10"
+                            HeightRequest="10"
                             HorizontalOptions="Start" />
-                <Label Text="Barik Restaurant - Debar Maalo"/>
+                <Label FontSize="10" Text="Barik Restaurant - Debar Maalo"/>
             </StackLayout>
 
 
             <StackLayout Orientation="Horizontal">
                 <ff:CachedImage
                             Source="loc"
-                            WidthRequest="30"
-                            HeightRequest="30"
+                            WidthRequest="10"
+                            HeightRequest="10"
                             HorizontalOptions="Start" />
-                <Label Text="MKC Club Restaurant (Youth Cultural Center)"/>
+                <Label FontSize="10"  Text="MKC Club Restaurant (Youth Cultural Center)"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
                 <ff:CachedImage
                             Source="taxi"
-                            WidthRequest="30"
-                            HeightRequest="30"
+                            WidthRequest="10"
+                            HeightRequest="10"
                             HorizontalOptions="Start" />
-                <Label Text="Global taxi: +389215180"/>
+                <Label FontSize="10" Text="Global taxi: +389215180"/>
             </StackLayout>
             </StackLayout>
 

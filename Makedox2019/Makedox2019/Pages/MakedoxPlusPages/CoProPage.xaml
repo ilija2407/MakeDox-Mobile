@@ -24,8 +24,8 @@
 
             <StackLayout Orientation="Vertical" Margin="20,0,20,0">
 
-                    <Label Text="Coproduction is the motto of the 10th edition of the Festival for Creative Documentary Film MakeDox, a leading trendsetter of creativity in its region and further. So, right before the dawn of our new festival edition, we believe that it's our duty to initiate a meeting that would effectively draw the attention to the necessary changes that could prompt documentary coproductions in the region. Why?&#x0a;&#x0a;Namely, most of the countries in the Western Balkans rely on a rather old-fashioned regulative implemented in film funds, which was tailored to the professional experiences realized in the realm of fiction film. These practices, however, have proven to be counterproductive regarding the possibilities of creating high-quality documentary coproductions in the region.&#x0a;&#x0a;Our idea is to provide space for research and studying of documentary forms, leading to the creation of documentary films - a space for high-quality production and post-production that would finally offer promotion and sale of documentary films. Therefore, all of you ( creative producers, authors and documentary film producers) who dedicate most of your time to creating documentary forms in the Western Balkans, are invited to join us! You are welcomed to share and exchange your experiences, so we could create a fertile ground for collaboration that would provide a brighter future for the creative documentary forms in the region. The team of MakeDox is looking forward to your attendance!" 
-                       FontSize="Small"/>
+                    <Label LineHeight="1.5" Text="Coproduction is the motto of the 10th edition of the Festival for Creative Documentary Film MakeDox, a leading trendsetter of creativity in its region and further. So, right before the dawn of our new festival edition, we believe that it's our duty to initiate a meeting that would effectively draw the attention to the necessary changes that could prompt documentary coproductions in the region. Why?&#x0a;&#x0a;Namely, most of the countries in the Western Balkans rely on a rather old-fashioned regulative implemented in film funds, which was tailored to the professional experiences realized in the realm of fiction film. These practices, however, have proven to be counterproductive regarding the possibilities of creating high-quality documentary coproductions in the region.&#x0a;&#x0a;Our idea is to provide space for research and studying of documentary forms, leading to the creation of documentary films - a space for high-quality production and post-production that would finally offer promotion and sale of documentary films. Therefore, all of you ( creative producers, authors and documentary film producers) who dedicate most of your time to creating documentary forms in the Western Balkans, are invited to join us! You are welcomed to share and exchange your experiences, so we could create a fertile ground for collaboration that would provide a brighter future for the creative documentary forms in the region. The team of MakeDox is looking forward to your attendance!" 
+                       FontSize="10"/>
 
                     <Label Text=" "/>
 
@@ -35,7 +35,7 @@
                             WidthRequest="10"
                             HeightRequest="10"
                             HorizontalOptions="Start" />
-                        <Label Text="Youth Cultural Center"/>
+                        <Label FontSize="10" Text="Youth Cultural Center"/>
             </StackLayout>
 
 
@@ -45,45 +45,45 @@
                             WidthRequest="10"
                             HeightRequest="10"
                             HorizontalOptions="Start" />
-                        <Label Text="25.08-27.08 2019"/>
+                        <Label FontSize="10" Text="25.08-27.08 2019"/>
             </StackLayout>
 
 
             <StackLayout Orientation="Horizontal">
-                <Label Text=" Moderator of the Forum:"/>
-                <Label Text="Brigid O'Shea"/>
+                <Label FontSize="10" Text=" Moderator of the Forum:"/>
+                <Label FontSize="10" Text="Brigid O'Shea"/>
             </StackLayout>
                     <Label Text=" "/>
-                    <Label Text="Day 1"/>
+                    <Label FontSize="10" Text="Day 1"/>
                     <StackLayout Orientation="Horizontal">
                         <ff:CachedImage
                             Source="saat"
                             WidthRequest="10"
                             HeightRequest="10"
                             HorizontalOptions="Start" />
-                        <Label Text="25.08. Sunday"/>
+                        <Label FontSize="10" Text="25.08. Sunday"/>
                     </StackLayout>
-                    <Label Text="Open for all film professionals"/>
-            <Label Text="Day 2"/>
+                    <Label FontSize="10" Text="Open for all film professionals"/>
+            <Label  FontSize="10" Text="Day 2"/>
                     <StackLayout Orientation="Horizontal">
                         <ff:CachedImage
                             Source="saat"
                             WidthRequest="10"
                             HeightRequest="10"
                             HorizontalOptions="Start" />
-                        <Label Text="26.08. Monday"/>
+                        <Label FontSize="10" Text="26.08. Monday"/>
                     </StackLayout>
-                    <Label Text="Open for all film professionals"/>
-            <Label Text="Day 3"/>
+                    <Label FontSize="10" Text="Open for all film professionals"/>
+            <Label FontSize="10" Text="Day 3"/>
                     <StackLayout Orientation="Horizontal">
                         <ff:CachedImage
                             Source="saat"
                             WidthRequest="10"
                             HeightRequest="10"
                             HorizontalOptions="Start" />
-                        <Label Text="27.08. Tuesday"/>
+                        <Label FontSize="10" Text="27.08. Tuesday"/>
                     </StackLayout>
-                    <Label Text="Closed discussions for producers, film funds and TV representatives"/>
+                    <Label FontSize="10" Text="Closed discussions for producers, film funds and TV representatives"/>
 
 
 
