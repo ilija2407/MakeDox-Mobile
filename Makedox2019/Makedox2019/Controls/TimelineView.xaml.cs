@@ -74,7 +74,7 @@ namespace Makedox2019.Controls
             locations.RowDefinitions.Add(new RowDefinition { Height = 20 });
 
 
-            var timesLabel = new Label { Text = "Times" };
+            var timesLabel = new Label { Text = "Times", FontSize=10 };
             locations.Children.Add(timesLabel);
 
             var movieRow = 1;
@@ -183,9 +183,11 @@ namespace Makedox2019.Controls
         {
             daysGrid.Children.Clear();
             daysGrid.ColumnDefinitions.Clear();
+            daysGrid.RowDefinitions.Clear();
+            daysGrid.RowDefinitions.Add(new RowDefinition { Height = 45 });
 
             daysGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = 120 });
-            var datesLabel = new Label { Text = "Dates", VerticalTextAlignment = TextAlignment.End };
+            var datesLabel = new Label { FontSize = 10, Text = "Dates", VerticalTextAlignment = TextAlignment.End };
             daysGrid.Children.Add(datesLabel);
             Grid.SetColumn(datesLabel, 0);
             Grid.SetRow(datesLabel, 0);
@@ -205,18 +207,14 @@ namespace Makedox2019.Controls
             daysList.OrderBy(x => x.Date).ToList().ForEach(x =>
             {
                 daysGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = 50 });
-                var formattedDate = new FormattedString();
-                formattedDate.Spans.Add(new Span { Text = x.ToString("ddd") });
-                formattedDate.Spans.Add(new Span { Text = Environment.NewLine });
-                formattedDate.Spans.Add(new Span { Text = x.ToString("dd") });
-                formattedDate.Spans.Add(new Span { Text = Environment.NewLine });
-                formattedDate.Spans.Add(new Span { Text = x.ToString("MMM") });
                 var dateLabel = new Label()
                 {
-                    FormattedText = formattedDate,
+                    Text = $"{x.ToString("ddd")}{Environment.NewLine}{x.ToString("dd")}{Environment.NewLine}{x.ToString("MMM")}",
                     WidthRequest = 40,
+                        FontSize = 10,
                     BackgroundColor = Color.FromRgba(252, 245, 106, .5),
-                    ClassId = x.Date.ToShortDateString()
+                    ClassId = x.Date.ToShortDateString(),
+                    VerticalOptions = LayoutOptions.FillAndExpand
                 };
                 dateLabel.GestureRecognizers.Add(new TapGestureRecognizer
                 {
@@ -250,6 +248,7 @@ namespace Makedox2019.Controls
                 {
                     Text = tempDate.Value.ToString("HH:mm"),
                     WidthRequest = 70,
+                        FontSize = 10,
                     HeightRequest = 50,
                     BackgroundColor = Color.FromRgba(255, 255, 255, .5)
                 };

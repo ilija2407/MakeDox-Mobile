@@ -7,6 +7,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"       
              IconImageSource="timeline_gray.png"
              NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Image Source="timeline_pozadina.png" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
         <StackLayout
             BackgroundColor="Transparent"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -18,4 +20,5 @@
                 ItemsSource="{Binding GroupedMovies}"
                 VerticalOptions="FillAndExpand" />
         </StackLayout>
+        </Grid>
 </ContentPage>

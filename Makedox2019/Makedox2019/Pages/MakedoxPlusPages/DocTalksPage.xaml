@@ -8,9 +8,10 @@
              x:Name="docTalksPage"
                           xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             BackgroundImage="backround_fig.png"
-             BackgroundColor="White">
+             >
     <ContentPage.Content>
+        <Grid>
+            <Image Source="background_fig.png" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
         <StackLayout Orientation="Vertical" >
             <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical" Margin="5,5,5,0">
                 <Label Text="DOC TALKS UNDER THE FIG TREE" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
@@ -132,5 +133,6 @@
 
         </StackLayout>
         </StackLayout>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

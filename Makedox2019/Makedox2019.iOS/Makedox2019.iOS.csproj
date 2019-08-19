@@ -131,6 +131,8 @@
     <BundleResource Include="Resources\mkc_za_venues.png" />
     <BundleResource Include="Resources\milenium_venues.png" />
     <BundleResource Include="Resources\splash.png" />
+    <BundleResource Include="Resources\timeline_pozadina.png" />
+    <BundleResource Include="Resources\background_fig.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
