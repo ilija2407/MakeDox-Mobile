@@ -92,6 +92,7 @@ namespace Makedox2019.PageModels
                     {
                         var db = Realm.GetInstance();
                         MoviesList = db.All<Movie>().Where(x => x.Location == Title).OrderBy(x => x.StartTime).ToList();
+                        SetupCoverImage(Title);
                     }
                 }
 
@@ -131,6 +132,18 @@ namespace Makedox2019.PageModels
                     break;
                 case "victor":
                     url = "victor.png";
+                    break;
+                case "mkc":
+                    url = "mkc_cover.png";
+                    break;
+                case "kurshumli an":
+                    url = "kurshumli_cover.png";
+                    break;
+                case "kurshumli out":
+                    url = "kurshumli_out_cover.png";
+                    break;
+                case "кино милениум":
+                    url = "milenium_cover.png";
                     break;
             }
             if (string.IsNullOrEmpty(url))
