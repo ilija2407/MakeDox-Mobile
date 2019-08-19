@@ -96,24 +96,11 @@
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image 
-                    Margin="10"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Source="snapchat.png"
-                    HorizontalOptions="FillAndExpand"
-                    HeightRequest="50"
-                    WidthRequest="50"
-                    Aspect="AspectFit" >
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OpenLink}" CommandParameter="https://www.facebook.com/makedox.mk/"/>
-                    </Image.GestureRecognizers>
-                </Image>
 
                 <Image 
                     Margin="10"
                     Grid.Row="1"
-                    Grid.Column="2"
+                    Grid.Column="1"
                     Source="issue.png"
                     HorizontalOptions="FillAndExpand" 
                     HeightRequest="50" 

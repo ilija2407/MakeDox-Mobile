@@ -24,8 +24,15 @@ namespace Makedox2019.PageModels
 
         public ICommand WatchTrailerCommand => new Command<Movie>((movie) =>
         {
-            var trailer = movie.Trailer;
-            Device.OpenUri(new Uri((string)trailer));
+            if (movie!=null)
+            {
+                if (!String.IsNullOrEmpty(movie.Trailer))
+                {
+                    var trailer = movie.Trailer;
+                    Device.OpenUri(new Uri((string)trailer));
+                }
+            }
+           
             //await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", movie.ID } });
         });
 
