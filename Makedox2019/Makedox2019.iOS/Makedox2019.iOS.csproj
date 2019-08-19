@@ -117,6 +117,7 @@
     <BundleResource Include="Resources\calendar.png" />
     <BundleResource Include="Resources\calendar_gray.png" />
     <BundleResource Include="Resources\backround_fig.png" />
+    <BundleResource Include="Resources\taxi.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
