@@ -13,7 +13,17 @@
                 </Image.GestureRecognizers>
             </Image>
             <!--<Button Text="Back" Command="{Binding GoBack}"/>-->
-            <Image Margin="20,10,0,0" Source="social_2.png" HorizontalOptions="FillAndExpand" HeightRequest="50" Aspect="AspectFit" />
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical" Margin="20,10,0,0">
+                <Label Text="SOCIAL" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+            </StackLayout>
             <Label Margin="20,10,0,0" Text="Follow us" FontSize="Small"/>
           
             <Grid>

@@ -6,12 +6,19 @@
              prism:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <StackLayout>
-            <Image Source="back.png"  IsVisible="false" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Margin="20,0,0,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoBack}" />
-                </Image.GestureRecognizers>
-            </Image>
-            
+
+            <StackLayout BackgroundColor="Transparent" HeightRequest="50" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <Label Text="WORKSHOPS" Margin="20,14,0,0" FontSize="9" FontAttributes="Bold" TextColor="Black" VerticalOptions="CenterAndExpand">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Intro-Regular" />
+                            <On Platform="Android" Value="Intro-Regular.otf#Intro-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <BoxView HeightRequest="3" BackgroundColor="#d17839" VerticalOptions="EndAndExpand"/>
+            </StackLayout>
+
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
