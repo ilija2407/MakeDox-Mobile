@@ -276,21 +276,7 @@
     <BundleResource Include="Resources\kurshumli_out.png" />
     <BundleResource Include="Resources\kurshumli.png" />
     <BundleResource Include="Resources\timeline_mkc.png" />
-    <BundleResource Include="Resources\workshops.png" />
-    <BundleResource Include="Resources\maps_2.png" />
-    <BundleResource Include="Resources\collab_2.png" />
-    <BundleResource Include="Resources\guest_2.png" />
-    <BundleResource Include="Resources\info_2.png" />
-    <BundleResource Include="Resources\make_copro_2.png" />
-    <BundleResource Include="Resources\music_2.png" />
-    <BundleResource Include="Resources\out_ofcom_2.png" />
-    <BundleResource Include="Resources\photo_2.png" />
-    <BundleResource Include="Resources\social_2.png" />
-    <BundleResource Include="Resources\tickets_2.png" />
-    <BundleResource Include="Resources\workshops_2.png" />
-    <BundleResource Include="Resources\doctalks_2.png" />
-    <BundleResource Include="Resources\nightstories_2.png" />
-    <BundleResource Include="Resources\venues_2.png" />
+
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\timeline.png" />
@@ -303,24 +289,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\makedox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\maps.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\social.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tickets.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\guest.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\info.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\venues.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\snapchat.png" />
@@ -341,18 +309,6 @@
     <BundleResource Include="Resources\issue.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\workshop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\doctalks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\music.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\photo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\bb.png" />
   </ItemGroup>
   <ItemGroup>
@@ -360,9 +316,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\bgmoviedetails.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\bghome.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logo.png" />
@@ -373,14 +326,8 @@
     <BundleResource Include="Resources\timeline_kurshumliout.png" />
     <BundleResource Include="Resources\timeline_kurshumli.png" />
     <BundleResource Include="Resources\kinomilenium.png" />
-    <BundleResource Include="Resources\copro.jpg" />
     <BundleResource Include="Resources\background.png" />
     <BundleResource Include="Resources\ic_makedox_stamp.png" />
-    <BundleResource Include="Resources\collab.png" />
-    <BundleResource Include="Resources\out_ofcom.png" />
-    <BundleResource Include="Resources\make_copro.png" />
-    <BundleResource Include="Resources\nightstories.png" />
-    <BundleResource Include="Resources\doc_talks.png" />
     <BundleResource Include="Resources\coverimg.png" />
   </ItemGroup>
   <ItemGroup />
