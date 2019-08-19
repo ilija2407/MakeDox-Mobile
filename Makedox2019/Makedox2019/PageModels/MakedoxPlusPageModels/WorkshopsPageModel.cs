@@ -87,11 +87,11 @@ namespace Makedox2019.PageModels
 
             if (source.ToString().Contains("jana.png"))
             {
-                await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=Workshops");
+                await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=WorkshopsJana");
             }
             else
             {
-                 await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=Workshops");
+                 await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=WorkshopsVictor");
             }
             //throw new NotImplementedException();
         }

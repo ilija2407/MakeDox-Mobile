@@ -78,6 +78,13 @@ namespace Makedox2019.PageModels
                         SetupCoverImage(Title);
                         var db = Realm.GetInstance();
                         MoviesList = db.All<Movie>().Where(x => x.Category == Title).OrderBy(x => x.StartTime).ToList();
+
+                        if (Title.StartsWith("Workshops", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            var author = Title.Replace("Workshops", "");
+                            SetupCoverImage(author);
+                            MoviesList = db.All<Movie>().Where(x => x.Category == "Workshops").Where(x => x.Subtitle.Contains(author)).ToList();
+                        }
                     }
 
                     Title = (string)parameters["Location"];
@@ -88,10 +95,6 @@ namespace Makedox2019.PageModels
                     }
                 }
 
-                if (Title == "Workshops")
-                {
-                    MoviesList.Distinct().ToList();
-                }
                 RaisePropertyChanged(nameof(MoviesList));
             }
            
@@ -122,6 +125,12 @@ namespace Makedox2019.PageModels
                     break;
                 case "out of competition":
                     url = "outofcom.png";
+                    break;
+                case "jana":
+                    url = "jana.png";
+                    break;
+                case "victor":
+                    url = "victor.png";
                     break;
             }
             if (string.IsNullOrEmpty(url))
