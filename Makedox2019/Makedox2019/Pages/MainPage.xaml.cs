@@ -40,7 +40,7 @@ namespace Makedox2019.Pages
             this.On<Android>().SetIsSwipePagingEnabled(false);
             this.On<Android>().SetIsSmoothScrollEnabled(false);
             this.On<Android>().SetIsLegacyColorModeEnabled(false);
-            this.UnselectedTabColor = Color.Gray;
+            this.UnselectedTabColor = Color.FromHex("#434343");
             this.SelectedTabColor = Color.White;
         }
 

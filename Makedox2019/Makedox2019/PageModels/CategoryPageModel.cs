@@ -103,19 +103,25 @@ namespace Makedox2019.PageModels
             switch (title.ToLowerInvariant())
             {
                 case "main selection":
-                    url = "https://user-images.githubusercontent.com/20807086/62822618-81842680-bb75-11e9-9286-818af5b6433a.png";
+                    url = "main.png";
                     break;
                 case "newcomers":
-                    url = "https://user-images.githubusercontent.com/20807086/62822616-80eb9000-bb75-11e9-90cb-e841c9971e4f.png";
+                    url = "new.png";
                     break;
                 case "country in focus: germany":
-                    url = "https://user-images.githubusercontent.com/20807086/62822617-81842680-bb75-11e9-86f1-1e5c421d025d.png";
+                    url = "fokus.png";
                     break;
                 case "short dox":
-                    url = "https://user-images.githubusercontent.com/20807086/62822619-81842680-bb75-11e9-9d35-028e789df1d2.png";
+                    url = "short.png";
                     break;
                 case "student dox":
-                    url = "https://user-images.githubusercontent.com/20807086/62822620-81842680-bb75-11e9-9204-ff03c6222c76.png";
+                    url = "student.png";
+                    break;
+                case "kids and youth program":
+                    url = "kids.png";
+                    break;
+                case "out of competition":
+                    url = "outofcom.png";
                     break;
             }
             if (string.IsNullOrEmpty(url))

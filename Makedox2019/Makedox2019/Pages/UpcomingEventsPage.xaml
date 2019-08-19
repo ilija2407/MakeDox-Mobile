@@ -24,8 +24,8 @@
                         
                         <StackLayout Spacing="0" Orientation="Vertical">
                             <ff:CachedImage
-                                BindingContextChanged="Handle_BindingContextChanged"
                                 Aspect="Fill"
+                                HeightRequest="422"
                                 x:Name="headerimg"
                                 HorizontalOptions="FillAndExpand"
                                 Source="header.png" />
@@ -39,13 +39,17 @@
                                   Spacing="0">
                                 <StackLayout Orientation="Vertical">
                                 <Label
-                                Margin="20,0,3,0"
-                                Text="Welcome to MakeDox, you favourite events will display here." />
+                                Margin="10,5,3,0"
+                                    FontFamily="Intro Bold"
+                                    VerticalOptions="StartAndExpand"
+                                    FontAttributes="Bold"
+                                Text="Welcome to MakeDox" />
                          
                                 <Label
-                                    Margin="20,0,3,0"
-                                    Text="Just add them to your program."
-                                    VerticalOptions="Start" />
+                                    Margin="10,0,3,5"
+                                    FontSize="12"
+                                    Text="Swipe left to see your favourite events. Just add them to your program."
+                                    VerticalOptions="End" />
                           </StackLayout>
                                 <Image
                                     HeightRequest="30"
@@ -79,11 +83,6 @@
                                                 <fftransformations:CircleTransformation/>
                                             </ff:CachedImage.Transformations>
                                         </ff:CachedImage>
-                                        <!--<ff:CachedImage
-                                        Source="{Binding CoverImage}"
-                                        WidthRequest="70"
-                                        HeightRequest="70"
-                                        HorizontalOptions="Start" />-->
                                         <StackLayout
                                         Orientation="Vertical"
                                         HorizontalOptions="FillAndExpand">
@@ -91,7 +90,7 @@
                                                      Margin="0,0,0,0">
                                                 <Label
                                                 Text="{Binding Title}"
-                                                FontSize="Small"
+                                                FontSize="14"
                                                 TextColor="Black" />
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal">
@@ -104,7 +103,8 @@
                                                 HorizontalOptions="Start" />
                                                 <Label
                                                 Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
-                                                FontSize="Small"
+                                                    TextColor="#434343"
+                                                FontSize="10"
                                                 />
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal">
@@ -117,7 +117,8 @@
                                                 HorizontalOptions="Start" />
                                                 <Label
                                                 Text="{Binding Location}"
-                                                FontSize="Small"
+                                                FontSize="10"
+                                                    TextColor="#434343"
                                                 />
                                             </StackLayout>
                                         </StackLayout>

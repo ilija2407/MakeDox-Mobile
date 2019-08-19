@@ -120,6 +120,14 @@
     <BundleResource Include="Resources\taxi.png" />
     <BundleResource Include="Resources\jana.png" />
     <BundleResource Include="Resources\victor.png" />
+    <Compile Include="Renderers\CustomLabelRenderer.cs" />
+    <BundleResource Include="Resources\fokus.png" />
+    <BundleResource Include="Resources\kids.png" />
+    <BundleResource Include="Resources\main.png" />
+    <BundleResource Include="Resources\new.png" />
+    <BundleResource Include="Resources\outofcom.png" />
+    <BundleResource Include="Resources\short.png" />
+    <BundleResource Include="Resources\student.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -166,9 +174,6 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\makedox.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\MyNewLaunch.launchimage\background_najavna_1242x2688.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\MyNewLaunch.launchimage\Contents.json">

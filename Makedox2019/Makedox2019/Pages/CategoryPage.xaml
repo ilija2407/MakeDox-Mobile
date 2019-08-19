@@ -19,13 +19,16 @@
         VerticalOptions="FillAndExpand"
         ItemsSource="{Binding MoviesList}">
         <ListView.Header>
+            <ContentView Padding="10" HorizontalOptions="CenterAndExpand">
             <ff:CachedImage
-                BindingContextChanged="Handle_BindingContextChanged"
+                HeightRequest="422"
+                WidthRequest="422"
                 Margin="10"
+                HorizontalOptions="Center"
                 IsVisible="{Binding HasCoverImage}"
                 Source="{Binding CoverImageSource}"
-                Aspect="AspectFit"
-                HorizontalOptions="FillAndExpand" />
+                Aspect="AspectFit" />
+            </ContentView>
         </ListView.Header>
         <ListView.ItemTemplate>
             <DataTemplate>
