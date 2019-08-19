@@ -85,7 +85,7 @@
 
             <StackLayout Orientation=" Horizontal" HorizontalOptions="FillAndExpand">
                         <ff:CachedImage  
-                                            Source="kinomilenium.png" 
+                                            Source="milenium_venues.png" 
                                             Aspect="AspectFit"
                                             HorizontalOptions="Start" 
                                             WidthRequest="50"
