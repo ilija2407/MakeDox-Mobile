@@ -40,48 +40,76 @@
             
             
 <!--                <ff:CachedImage  Source="{Binding Model.CoverImage}" Aspect="AspectFill" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"  HeightRequest="400" />
--->                <Label Text="{Binding Model.Title}" TextColor="#640d20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+-->                <Label Margin="0, 15" Text="{Binding Model.Title}" FontSize="24" TextColor="#640d20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="5" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <ContentView BackgroundColor="#640d20" Grid.Column="0" />
                     <StackLayout Grid.Column="1">
                     <Label IsVisible="{Binding Model.Subtitle, Converter={StaticResource hideConverter}}" Text="{Binding Model.Subtitle}" FontAttributes="Bold" />
-                    <Label Text="{Binding Model.StartTime, StringFormat='{0:D}'}" />
-                    <Label Text="{Binding Model.StartTime, StringFormat='{0:t}'}" />
-                    <Label IsVisible="{Binding Model.Location, Converter={StaticResource hideConverter}}" Text="{Binding Model.Location}" />
+                    
+                    <Label Text="{Binding Model.StartTime, StringFormat='{0:D}'}" FontSize="10" />
+                        
+                    <Label Text="{Binding Model.Location}" FontSize="10" />
+                        <StackLayout Orientation="Horizontal">
+                                                <ff:CachedImage
+                                                Source="saat"
+                                        DownsampleWidth="10"
+                                                WidthRequest="10"
+                                            DownsampleToViewSize="True"
+                                                HeightRequest="10"
+                                                HorizontalOptions="Start" />
+                                                <Label
+                                                FontSize="10"
+                                                Text="{Binding Model.StartTime, StringFormat='{0:t}'}"
+                                                />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal"
+                                                    IsVisible="{Binding Model.Location, Converter={StaticResource hideConverter}}" >
+                                                <ff:CachedImage
+                                                Source="loc"
+                                                WidthRequest="10"
+                                        DownsampleWidth="10"
+                                            DownsampleToViewSize="True"
+                                                HeightRequest="10"
+                                                HorizontalOptions="Start" />
+                                                <Label
+                                                FontSize="10"
+                                                Text="{Binding Model.Location}"
+                                                />
+                                            </StackLayout>
                     </StackLayout>
                 </Grid>
-            <Grid IsVisible="{Binding ItemVisibility}">
+            <Grid IsVisible="{Binding ItemVisibility}"  Margin="0, 15">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"  />
                         <ColumnDefinition Width="6*" />
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0">
-                    <Label IsVisible="{Binding Model.Team.Script, Converter={StaticResource hideConverter}}" Text="Script:" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Director, Converter={StaticResource hideConverter}}" Text="Director:" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Photography, Converter={StaticResource hideConverter}}" Text="Photography by:" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Editing, Converter={StaticResource hideConverter}}" Text="Editing:" FontAttributes="Bold" FontSize="Small" />
-                    <Label IsVisible="{Binding Model.Team.Sound, Converter={StaticResource hideConverter}}" Text="Sound:" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Production, Converter={StaticResource hideConverter}}" Text="Production:" FontAttributes="Bold" FontSize="Small" />
-                    <Label IsVisible="{Binding Model.Team.Coproduction, Converter={StaticResource hideConverter}}" Text="Co-Production:" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Animation, Converter={StaticResource hideConverter}}" Text="Animation:" FontAttributes="Bold" FontSize="Small" />
+                    <Label IsVisible="{Binding Model.Team.Script, Converter={StaticResource hideConverter}}" Text="Script:" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Director, Converter={StaticResource hideConverter}}" Text="Director:" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Photography, Converter={StaticResource hideConverter}}" Text="Photography by:" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Editing, Converter={StaticResource hideConverter}}" Text="Editing:" FontAttributes="Bold" FontSize="10" />
+                    <Label IsVisible="{Binding Model.Team.Sound, Converter={StaticResource hideConverter}}" Text="Sound:" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Production, Converter={StaticResource hideConverter}}" Text="Production:" FontAttributes="Bold" FontSize="10" />
+                    <Label IsVisible="{Binding Model.Team.Coproduction, Converter={StaticResource hideConverter}}" Text="Co-Production:" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Animation, Converter={StaticResource hideConverter}}" Text="Animation:" FontAttributes="Bold" FontSize="10" />
                     </StackLayout>
                     <StackLayout Grid.Column="1">
-                    <Label IsVisible="{Binding Model.Team.Script, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Script}" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Director, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Director}" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Photography, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Photography}" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Editing, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Editing}" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Sound, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Sound}" FontAttributes="Bold" FontSize="Small" />
-                    <Label IsVisible="{Binding Model.Team.Production, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Production}" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Coproduction, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Coproduction}" FontAttributes="Bold" FontSize="Small"/>
-                    <Label IsVisible="{Binding Model.Team.Animation, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Animation}" FontAttributes="Bold" FontSize="Small" />
+                    <Label IsVisible="{Binding Model.Team.Script, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Script}" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Director, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Director}" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Photography, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Photography}" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Editing, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Editing}" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Sound, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Sound}" FontAttributes="Bold" FontSize="10" />
+                    <Label IsVisible="{Binding Model.Team.Production, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Production}" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Coproduction, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Coproduction}" FontAttributes="Bold" FontSize="10"/>
+                    <Label IsVisible="{Binding Model.Team.Animation, Converter={StaticResource hideConverter}}" Text="{Binding Model.Team.Animation}" FontAttributes="Bold" FontSize="10" />
                     </StackLayout>
                 </Grid>
-            <Label IsVisible="{Binding Model.Description, Converter={StaticResource hideConverter}}" Text="{Binding Model.Description}" Margin="0,0,0,10"/>
-            <Label Text="{Binding Model.OneLiner}" IsVisible="{Binding OneLinerVisibility}" />
+            <Label LineHeight="1.5" FontSize="10" IsVisible="{Binding Model.Description, Converter={StaticResource hideConverter}}" Text="{Binding Model.Description}" Margin="0,0,0,10"/>
+            <Label LineHeight="1.5" FontSize="10" Text="{Binding Model.OneLiner}" IsVisible="{Binding OneLinerVisibility}" />
             <Button Text="Watch trailer" Command="{Binding BindingContext.WatchTrailerCommand, Source={x:Reference eventDetailsPage}}" CommandParameter="{Binding Model}" HorizontalOptions="FillAndExpand"/>
         </StackLayout>
         </ScrollView>
