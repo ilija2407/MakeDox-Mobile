@@ -142,6 +142,8 @@ namespace Makedox2019.PageModels
 
                                 db.Add(movie, shouldUpdate);
 
+                         
+
                                 if (movie.IsFavorite)
                                 {
                                     var notif = new Notification(i++, new Random(305006489).Next(100000, 600000), movie.ID);
@@ -160,6 +162,21 @@ namespace Makedox2019.PageModels
                                         NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
                                     };
                                     NotificationCenter.Current.Show(notification);
+                                }
+                            }
+                            if (currentMovies.Count > 0)
+                            {
+                                foreach (var item in currentMovies)
+                                {
+                                    var ss = moviesList.Find(x => x.ID == item.ID);
+                                    if (ss != null)
+                                    {
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        db.Remove(item);
+                                    }
                                 }
                             }
                             UpComingEvents = db.All<Movie>().Where(x => x.StartTime > DateTimeOffset.Now).OrderBy(x => x.StartTime).AsRealmCollection();
