@@ -76,7 +76,11 @@ namespace Makedox2019.PageModels
         public ICommand DetailsCommand => new DelegateCommand<Movie>(async (movie) =>
         {
             var id = movie.ID;
-            var q = await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", id } });
+            if(movie.Type != "Event" && movie.Type !="Talks" )
+            {
+                var q = await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", id } });
+            }
+
         });
 
 

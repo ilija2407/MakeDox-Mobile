@@ -110,13 +110,13 @@ namespace Makedox2019.PageModels
                     url = "main.png";
                     break;
                 case "newcomers":
-                    url = "new.png";
+                    url = "new1.png";
                     break;
                 case "country in focus: germany":
                     url = "fokus.png";
                     break;
                 case "short dox":
-                    url = "short.png";
+                    url = "short1.png";
                     break;
                 case "student dox":
                     url = "student.png";

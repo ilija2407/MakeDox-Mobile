@@ -120,8 +120,8 @@
                     </StackLayout>
                 </Grid>
             <Label LineHeight="1.5" FontSize="10" IsVisible="{Binding Model.Description, Converter={StaticResource hideConverter}}" Text="{Binding Model.Description}" Margin="0,0,0,10"/>
-            <Label LineHeight="1.5" FontSize="10" Text="{Binding Model.OneLiner}" IsVisible="{Binding OneLinerVisibility}" />
-            <Button Text="Watch trailer" Command="{Binding BindingContext.WatchTrailerCommand, Source={x:Reference eventDetailsPage}}" CommandParameter="{Binding Model}" HorizontalOptions="FillAndExpand"/>
+            <Label LineHeight="1.5" FontSize="10" Text="{Binding Model.OneLiner}" IsVisible="{Binding OneLinerVisibility}" Margin="0,0,0,10"/>
+            <Button Text="Watch trailer" Command="{Binding BindingContext.WatchTrailerCommand, Source={x:Reference eventDetailsPage}}" IsVisible="{Binding ItemVisibility}" CommandParameter="{Binding Model}" HorizontalOptions="FillAndExpand"/>
         </StackLayout>
         </ScrollView>
 </ContentPage>

@@ -19,6 +19,7 @@ namespace Makedox2019.PageModels
         public Movie Model { get; set; }
 
         public bool ItemVisibility { get; set; }
+        public bool btnVisibility { get; set; }
 
         public bool OneLinerVisibility { get; set; }
 

@@ -124,9 +124,9 @@
     <BundleResource Include="Resources\fokus.png" />
     <BundleResource Include="Resources\kids.png" />
     <BundleResource Include="Resources\main.png" />
-    <BundleResource Include="Resources\new.png" />
+    <BundleResource Include="Resources\new1.png" />
     <BundleResource Include="Resources\outofcom.png" />
-    <BundleResource Include="Resources\short.png" />
+    <BundleResource Include="Resources\short1.png" />
     <BundleResource Include="Resources\student.png" />
     <BundleResource Include="Resources\mkc_za_venues.png" />
     <BundleResource Include="Resources\milenium_venues.png" />

@@ -13,6 +13,7 @@ namespace Makedox2019.PageModels
     public class WorkshopsPageModel : ViewModelBase, INotifyPropertyChanged
     {
         public ObservableCollection<Image> Items { get; set; }
+        public string Title { get; set; }
         public ICommand PanPositionChangedCommand { get; }
         public ICommand ImgTapped { get; set; }
         public ICommand RemoveCurrentItemCommand { get; }
@@ -25,6 +26,14 @@ namespace Makedox2019.PageModels
             {
                 _currentIndex = value;
 
+                if (value==0)
+                {
+                    Title = "IDEAS ACROSS BORDERS";
+                }
+                else
+                {
+                    Title = "Don’t Follow My Rules. Find Your Own Rules";
+                }
                 //base.OnPropertyChanged(_currentIndex);
                     RaisePropertyChanged(nameof(CurrentIndex));
 
@@ -39,7 +48,7 @@ namespace Makedox2019.PageModels
             : base(navigationService)
         {
             SetCommands();
-
+            Title = "IDEAS ACROSS BORDERS";
             Items = new ObservableCollection<Image>
             {
                 new Image{Source="jana.png"},
@@ -87,11 +96,13 @@ namespace Makedox2019.PageModels
 
             if (source.ToString().Contains("jana.png"))
             {
-                await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=WorkshopsJana");
+                await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", 79 } });
+                //await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=WorkshopsJana");
             }
             else
             {
-                 await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=WorkshopsVictor");
+                await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", 82 } });
+                //await _navigationService.NavigateAsync($"{nameof(CategoryPage)}?Category=WorkshopsVictor");
             }
             //throw new NotImplementedException();
         }
