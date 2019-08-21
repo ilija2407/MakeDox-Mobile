@@ -29,10 +29,10 @@ namespace Makedox2019.PageModels
                     if (currentNotif != null)
                         NotificationCenter.Current.Cancel(currentNotif.NotificationId);
 
-                    if (movie.IsFavorite)
+                    if (movie.IsFavorite && movie.StartTime > App.DateTimeNow.AddMinutes(-30))
                     {
                         db.Remove(currentNotif);
-                        var notif = new Notification(notifications.Count(), new Random(305006489).Next(100000, 600000), movie.ID);
+                        var notif = new Notification(new Random(305006489).Next(100000, 600000), movie.ID);
 
                         db.Add(notif);
                         var time = movie.StartTime.Value.AddMinutes(-30).DateTime;

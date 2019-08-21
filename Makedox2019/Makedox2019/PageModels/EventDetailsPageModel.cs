@@ -25,7 +25,7 @@ namespace Makedox2019.PageModels
 
         public ICommand WatchTrailerCommand => new Command<Movie>((movie) =>
         {
-            if (movie!=null)
+            if (movie != null)
             {
                 if (!String.IsNullOrEmpty(movie.Trailer))
                 {
@@ -33,7 +33,7 @@ namespace Makedox2019.PageModels
                     Device.OpenUri(new Uri((string)trailer));
                 }
             }
-           
+
             //await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", movie.ID } });
         });
 
@@ -45,7 +45,7 @@ namespace Makedox2019.PageModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters!= null)
+            if (parameters != null)
             {
                 if (parameters.Count > 0)
                 {
@@ -82,29 +82,27 @@ namespace Makedox2019.PageModels
                 if (currentNotif != null)
                     NotificationCenter.Current.Cancel(currentNotif.NotificationId);
 
-                if (Model.IsFavorite)
+                if (Model.IsFavorite && Model.StartTime > App.DateTimeNow.AddMinutes(-30))
                 {
                     if (currentNotif != null)
-                    {
                         db.Remove(currentNotif);
-                        var notif = new Notification(notifications.Count(), new Random(305006489).Next(100000, 600000), Model.ID);
 
-                        db.Add(notif);
-                        var time = Model.StartTime.Value.AddMinutes(-30).DateTime;
-                        if (time < DateTime.Now)
-                            time = DateTime.Now.AddMinutes(1);
+                    var notif = new Notification(new Random(305006489).Next(100000, 600000), Model.ID);
 
-                        var notification = new NotificationRequest
-                        {
-                            NotificationId = notif.NotificationId,
-                            Title = Model.Title,
-                            Description = $"will be displayed at {Model.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
-                            ReturningData = Model.ID.ToString(),// Returning data when tapped on notification.
-                            NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
-                        };
-                        NotificationCenter.Current.Show(notification);
-                    }
+                    db.Add(notif);
+                    var time = Model.StartTime.Value.AddMinutes(-30).DateTime;
+                    if (time < DateTime.Now)
+                        time = DateTime.Now.AddMinutes(1);
 
+                    var notification = new NotificationRequest
+                    {
+                        NotificationId = notif.NotificationId,
+                        Title = Model.Title,
+                        Description = $"will be displayed at {Model.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
+                        ReturningData = Model.ID.ToString(),// Returning data when tapped on notification.
+                        NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
+                    };
+                    NotificationCenter.Current.Show(notification);
                 }
             });
         });

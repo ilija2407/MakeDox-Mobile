@@ -10,7 +10,7 @@ namespace Makedox2019.Models
     public class Notification : RealmObject
     {
         [PrimaryKey]
-        public int Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public int NotificationId { get; set; }
         public int MovieId { get; set; }
 
@@ -19,10 +19,9 @@ namespace Makedox2019.Models
 
         }
 
-        public Notification(int id, int notificationId, int movieId)
+        public Notification(int notificationId, int movieId)
         {
             NotificationId = notificationId;
-            Id = id;
             MovieId = movieId;
         }
     }

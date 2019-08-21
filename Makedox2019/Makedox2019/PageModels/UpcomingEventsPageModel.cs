@@ -31,30 +31,28 @@ namespace Makedox2019.PageModels
                 var currentNotif = notifications.FirstOrDefault(x => x.MovieId == movie.ID);
                 if (currentNotif != null)
                     NotificationCenter.Current.Cancel(currentNotif.NotificationId);
-                    
-                if (movie.IsFavorite)
+
+                if (movie.IsFavorite && movie.StartTime > App.DateTimeNow.AddMinutes(-30))
                 {
                     if (currentNotif != null)
-                    {
                         db.Remove(currentNotif);
-                        var notif = new Notification(notifications.Count(), new Random(305006489).Next(100000, 600000), movie.ID);
 
-                        db.Add(notif);
-                        var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
-                        if (time < DateTime.Now)
-                            time = DateTime.Now.AddMinutes(1);
+                    var notif = new Notification(new Random(305006489).Next(100000, 600000), movie.ID);
 
-                        var notification = new NotificationRequest
-                        {
-                            NotificationId = notif.NotificationId,
-                            Title = movie.Title,
-                            Description = $"will be displayed at {movie.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
-                            ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
-                            NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
-                        };
-                        NotificationCenter.Current.Show(notification);
-                    }
-              
+                    db.Add(notif);
+                    var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
+                    if (time < DateTime.Now)
+                        time = DateTime.Now.AddMinutes(1);
+
+                    var notification = new NotificationRequest
+                    {
+                        NotificationId = notif.NotificationId,
+                        Title = movie.Title,
+                        Description = $"will be displayed at {movie.StartTime?.ToString("dd/MM/yyyy HH:mm")}",
+                        ReturningData = movie.ID.ToString(),// Returning data when tapped on notification.
+                        NotifyTime = time // Used for Scheduling local notification, if not specified notification will show immediately.
+                    };
+                    NotificationCenter.Current.Show(notification);
                 }
             });
         });
@@ -76,7 +74,7 @@ namespace Makedox2019.PageModels
         public ICommand DetailsCommand => new DelegateCommand<Movie>(async (movie) =>
         {
             var id = movie.ID;
-            if(movie.Type != "Event" && movie.Type !="Talks" )
+            if (movie.Type != "Event" && movie.Type != "Talks")
             {
                 var q = await _navigationService.NavigateAsync(nameof(EventDetailsPage), new NavigationParameters { { "Id", id } });
             }
@@ -98,7 +96,7 @@ namespace Makedox2019.PageModels
         public UpcomingEventsPageModel(INavigationService navigationService)
             : base(navigationService)
         {
-    
+
         }
 
         async Task SyncData()
@@ -108,7 +106,7 @@ namespace Makedox2019.PageModels
                 var xv = UserDialogs.Instance;
                 using (xv.Loading("Loading...", null, null, true, MaskType.Black))
                 {
-                    var res = await client.GetAsync("https://gist.githubusercontent.com/ilija2407/44704a17534728a286d0693d29cb0f27/raw/.json");
+                    var res = await client.GetAsync("https://gist.githubusercontent.com/ice-j/2b60034d079a306182160cc1f9c1516f/raw/movies.json");
 
                     if (!res.IsSuccessStatusCode)
                     {
@@ -127,7 +125,6 @@ namespace Makedox2019.PageModels
                         var currentMovies = db.All<Movie>().ToList();
                         db.Write(() =>
                         {
-                            var i = 1;
                             db.RemoveAll<Notification>();
                             NotificationCenter.Current.CancelAll();
                             foreach (var movie in moviesList)
@@ -142,12 +139,12 @@ namespace Makedox2019.PageModels
 
                                 db.Add(movie, shouldUpdate);
 
-                         
 
-                                if (movie.IsFavorite)
+
+                                if (movie.IsFavorite && movie.StartTime > App.DateTimeNow.AddMinutes(-30))
                                 {
-                                    var notif = new Notification(i++, new Random(305006489).Next(100000, 600000), movie.ID);
-
+                                    var notif = new Notification(new Random(305006489).Next(100000, 600000), movie.ID);
+                                    
                                     db.Add(notif);
                                     var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
                                     if (time < DateTime.Now)
@@ -179,7 +176,7 @@ namespace Makedox2019.PageModels
                                     }
                                 }
                             }
-                            UpComingEvents = db.All<Movie>().Where(x => x.StartTime > DateTimeOffset.Now).OrderBy(x => x.StartTime).AsRealmCollection();
+                            UpComingEvents = db.All<Movie>().Where(x => x.StartTime > App.DateTimeNow).OrderBy(x => x.StartTime).AsRealmCollection();
                             FavoriteMovies = db.All<Movie>().Where(x => x.IsFavorite).AsRealmCollection();
                             MoviesModel = new List<MovieLists>
                             {
@@ -195,7 +192,7 @@ namespace Makedox2019.PageModels
                         res.Dispose();
                     }
                 }
-        
+
             }
         }
 
@@ -206,7 +203,7 @@ namespace Makedox2019.PageModels
             else
                 await SyncData();
 
-      
+
         }
     }
 }

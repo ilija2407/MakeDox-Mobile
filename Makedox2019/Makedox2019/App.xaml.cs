@@ -10,6 +10,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using Realms;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
@@ -38,7 +39,7 @@ namespace Makedox2019
 
             InitializeComponent();
             var con = RealmConfiguration.DefaultConfiguration;
-            con.SchemaVersion = 1;  // set explicit, ascending number to auo-migrate
+            con.SchemaVersion = 2;  // set explicit, ascending number to auo-migrate
             await NavigationService.NavigateAsync($"NavigationPage/{nameof(MainPage)}");
         }
 
@@ -105,7 +106,7 @@ namespace Makedox2019
             return _tcs.Task;
         }
 
-
+        public static DateTimeOffset DateTimeNow => DateTimeOffset.ParseExact(DateTimeOffset.Now.ToString("dd/MM/yyyy HH:mm"), "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat, System.Globalization.DateTimeStyles.AssumeUniversal);
         //protected override void ConfigureViewModelLocator()
         //{
         //    base.ConfigureViewModelLocator();
