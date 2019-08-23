@@ -36,9 +36,10 @@ namespace Makedox2019.PageModels
                 {
                     if (currentNotif != null)
                         db.Remove(currentNotif);
-
-                    var notif = new Notification(new Random(305006489).Next(100000, 600000), movie.ID);
-
+                    var rnd = new Random(305006489);
+                    var notif = new Notification(rnd.Next(100000, 600000), movie.ID);
+                    while (db.All<Notification>().Any(x => x.NotificationId == notif.NotificationId))
+                        notif.NotificationId = rnd.Next(100000, 600000);
                     db.Add(notif);
                     var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
                     if (time < DateTime.Now)
@@ -118,6 +119,7 @@ namespace Makedox2019.PageModels
                     var dtConverter = new IsoDateTimeConverter() { DateTimeFormat = "dd/MM/yyyy HH:mm", Culture = System.Globalization.CultureInfo.GetCultureInfo("MK"), DateTimeStyles = System.Globalization.DateTimeStyles.AssumeUniversal };
                     var booleanConverter = new BooleanConverter();
                     var moviesList = JsonConvert.DeserializeObject<List<Movie>>(stringContent, converters: dtConverter);
+                    var rnd = new Random(305006489);
                     if (moviesList?.Count > 0)
                     {
                         var db = Realm.GetInstance();
@@ -143,8 +145,10 @@ namespace Makedox2019.PageModels
 
                                 if (movie.IsFavorite && movie.StartTime > App.DateTimeNow.AddMinutes(-30))
                                 {
-                                    var notif = new Notification(new Random(305006489).Next(100000, 600000), movie.ID);
-                                    
+                                    var notif = new Notification(rnd.Next(100000, 600000), movie.ID);
+                                    while (db.All<Notification>().Any(x => x.NotificationId == notif.NotificationId))
+                                        notif.NotificationId = rnd.Next(100000, 600000);
+
                                     db.Add(notif);
                                     var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
                                     if (time < DateTime.Now)

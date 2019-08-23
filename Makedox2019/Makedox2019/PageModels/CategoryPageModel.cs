@@ -31,8 +31,12 @@ namespace Makedox2019.PageModels
 
                     if (movie.IsFavorite && movie.StartTime > App.DateTimeNow.AddMinutes(-30))
                     {
-                        db.Remove(currentNotif);
-                        var notif = new Notification(new Random(305006489).Next(100000, 600000), movie.ID);
+                        if (currentNotif != null)
+                            db.Remove(currentNotif);
+                        var rnd = new Random(305006489);
+                        var notif = new Notification(rnd.Next(100000, 600000), movie.ID);
+                        while (db.All<Notification>().Any(x => x.NotificationId == notif.NotificationId))
+                            notif.NotificationId = rnd.Next(100000, 600000);
 
                         db.Add(notif);
                         var time = movie.StartTime.Value.AddMinutes(-30).DateTime;
@@ -68,7 +72,7 @@ namespace Makedox2019.PageModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters!=null)
+            if (parameters != null)
             {
                 if (string.IsNullOrEmpty(Title))
                 {
@@ -98,7 +102,7 @@ namespace Makedox2019.PageModels
 
                 RaisePropertyChanged(nameof(MoviesList));
             }
-           
+
         }
 
         private void SetupCoverImage(string title)

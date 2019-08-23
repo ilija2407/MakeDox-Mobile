@@ -87,7 +87,10 @@ namespace Makedox2019.PageModels
                     if (currentNotif != null)
                         db.Remove(currentNotif);
 
-                    var notif = new Notification(new Random(305006489).Next(100000, 600000), Model.ID);
+                    var rnd = new Random(305006489);
+                    var notif = new Notification(rnd.Next(100000, 600000), Model.ID);
+                    while (db.All<Notification>().Any(x => x.NotificationId == notif.NotificationId))
+                        notif.NotificationId = rnd.Next(100000, 600000);
 
                     db.Add(notif);
                     var time = Model.StartTime.Value.AddMinutes(-30).DateTime;
